@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 21 13:48:57 2019
-
-@author: A
-"""
-
-# Import libraries
 import math
 
 def StCoordLine(trd, plg, sttype):
@@ -22,6 +15,8 @@ def StCoordLine(trd, plg, sttype):
     NOTE: trend and plunge should be entered in radians
 
     StCoordLine uses function ZeroTwoPi
+    Python function translated from the Matlab function StCoordLine
+    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
     '''
     
     # Take care of negative plunges

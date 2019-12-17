@@ -1,5 +1,7 @@
 import numpy as np
 from numpy import linalg as la
+from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from CartToSph import CartToSph as CartToSph
 
 # Note: str is changed to strike, because str has a meaning in python and can
 # therefore not be used as variable name

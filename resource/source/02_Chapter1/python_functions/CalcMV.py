@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
 import math
+from SphToCart import SphToCart as SphToCart
+from CartToSph import CartToSph as CartToSph
 
 def CalcMV(T, P):
     '''
@@ -16,11 +17,11 @@ def CalcMV(T, P):
 
     CalcMV uses functions SphToCart and CartToSph
     
-    Python function translated from the Matlab function CalcMV
-    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
+    Python function translated from the Matlab function CalcMV in the book:
+    Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2012
     '''
     # Number of lines
-    nlines = len(T) #???
+    nlines = len(T) 
     
     # Initialize the 3 direction cosines which contain the sums of the
     # individual vectors (i.e. the coordinates of the resultant vector)
@@ -41,7 +42,7 @@ def CalcMV(T, P):
     Rave = R/nlines
     # If Rave is lower than 0.1, the mean vector is insignificant, return error
     if Rave < 0.1:
-        print('Error: Mean vector is insignificant.')
+        raise ValueError('Error: Mean vector is insignificant.')
     #Else 
     else:
         # Divide the resultant vector by its length to get the average

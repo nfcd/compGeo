@@ -1,5 +1,7 @@
-# -*- coding: utf-8 -*-
 import math
+from SphToCart import SphToCart as SphToCart
+from CartToSph import CartToSph as CartToSph
+from Pole import Pole as Pole
 
 def Angles(trd1,plg1,trd2,plg2,ans0):
     '''
@@ -23,14 +25,14 @@ def Angles(trd1,plg1,trd2,plg2,ans0):
       ans0 = 'p' -> the angle between two planes
  
       In the above two cases the user sends the strike and dip of two
-      planes following the right hand rule
+      planes following the right hand rule convention
 
     NOTE: Input/Output angles are in radians
 
     Angles uses functions SphToCart, CartToSph and Pole
 
-    Python function translated from the Matlab function Angles
-    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
+    Python function translated from the Matlab function Angles in the book:
+    Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2012
     '''
     # If planes have been entered
     if ans0 == 'i' or ans0 == 'p':
@@ -53,10 +55,8 @@ def Angles(trd1,plg1,trd2,plg2,ans0):
     # apparent dips
     if ans0 == 'a' or ans0 == 'i':
         # If the 2 planes or apparent dips are parallel return an error
-        if trd1 == trd2 & plg1 == plg2:
-            # Is there another possibility to display a custom error message?
-            print('Error: lines or planes are parallel')
-            break
+        if trd1 == trd2 and plg1 == plg2:
+            raise ValueError('Error: lines or planes are parallel')
         # Else use cross product
         else:
             cn = ce1*cd2 - cd1*ce2

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import math
 
 def SphToCart(trd,plg,k):
@@ -16,15 +15,15 @@ def SphToCart(trd,plg,k):
  
     NOTE: Angles should be entered in radians
     
-    Python function translated from the Matlab function SphTpCart
-    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
+    Python function translated from the Matlab function SphTpCart in the book:
+    Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2012
     '''
-    # If line (see Table 2.1)
+    # If line 
     if k == 0:
         cd = math.sin(plg)
         ce = math.cos(plg) * math.sin(trd)
         cn = math.cos(plg) * math.cos(trd)
-    # Else pole to plane (see Table 2.1)
+    # Else pole to plane 
     elif k == 1:
         cd = math.cos(plg)
         ce = -math.sin(plg) * math.cos(trd)

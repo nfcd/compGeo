@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 import math
-
 
 def ZeroTwoPi(a):
     '''
@@ -9,8 +7,8 @@ def ZeroTwoPi(a):
     
     NOTE: Azimuths a and b are input/output in radians
     
-    Python function translated from the Matlab function ZeroTwoPi
-    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
+    Python function translated from the Matlab function ZeroTwoPi in the book:
+    Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2012
     '''
     b=a
     twopi = 2*math.pi

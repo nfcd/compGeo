@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 import math
+from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
 def CartToSph(cn,ce,cd):
     '''
@@ -13,10 +13,10 @@ def CartToSph(cn,ce,cd):
 
     CartToSph uses function ZeroTwoPi
     
-    Python function translated from the Matlab function CartToSph
-    of Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2011
+    Python function translated from the Matlab function CartToSph in the book:
+    Structural Geology Algorithms by Allmendinger, Cardozo, & Fisher, 2012
     '''
-    # Plunge (see Table 2.1)
+    # Plunge 
     plg = math.asin(cd)
     
     #Trend
@@ -27,7 +27,7 @@ def CartToSph(cn,ce,cd):
             trd = 3.0/2.0*math.pi # trend is west
         else:
             trd = math.pi/2.0 # trend is east
-    # Else use Table 2.1
+    # Else
     else:
         trd = math.atan(ce/cn)
         if cn < 0.0:

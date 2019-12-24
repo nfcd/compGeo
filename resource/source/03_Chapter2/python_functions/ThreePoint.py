@@ -41,15 +41,15 @@ def ThreePoint(p1,p2,p3):
     uvcu = vcu/mvcu # unit vector
     
     # make the pole vector in NED coordinates
-    p = [uvcu[2], uvcu[1], -uvcu[3]]
-    
+    p = [uvcu[1], uvcu[0], -uvcu[2]]
+
     # if pole is pointing upwards make it point downwards
-    if p[3] < 0:
-        p = p * (-1)
+    if p[2] < 0:
+        p = [-elem for elem in p]
         
     # find the trend and plunge of the pole
     # use function CartToSph
-    trd, plg = CartToSph(p[1],p[2],p[3])
+    trd, plg = CartToSph(p[0],p[1],p[2])
     
     # find strike and dip of plane
     # make sure strike is between 0 and 360

@@ -3,7 +3,7 @@ Computational geosciences resource at UiS
 
 
 
-Working with this repository:
+## Manual: Working with this repository
 ### Getting started - Clone the repository
 This step saves the repository to your local machine. It behaves almost like a copy.
 1. Open a terminal.
@@ -32,7 +32,7 @@ Whenever you start working on the files after someone else made changes on the r
 
 
 
-# Standard libraries for this project
+## Standard libraries for this project
 In order to keep our functions consistent, please use the libraries below and import them with the same name in all the functions. Whenever you feel the need to add another library to the list, don't hesitate to do so.
 
 `import numpy as np`

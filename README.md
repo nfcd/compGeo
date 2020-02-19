@@ -9,13 +9,13 @@ This step saves the repository to your local machine. It behaves almost like a c
 1. Open a terminal.
 2. Navigate to the folder where you would like to store the local copy of the repository. (`cd <foldername>`)
 3. Press the green button 'Clone or download' on the right hand side and copy the path.
-4. Execute the terminal command `git clone <fill in path here>`
+4. Execute the terminal command `git clone <fill in path here>`.
 5. Now you can start working on the files. They are saved in the folder you chose in the 2. step.
 
 ### Continue working - Pull the repository
 Whenever you start working on the files after someone else made changes on the repository, you should update your local files with these changes.
 1. Open a terminal.
-2. Navigate inside the folder of the repository on your machine. (`cd foldername`)
+2. Navigate inside the folder of the repository on your machine. (`cd <foldername>`)
 3. Execute the terminal command `git pull`
 
 ### Save local changes to the common repository - Commit changes

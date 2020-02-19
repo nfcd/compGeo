@@ -16,6 +16,8 @@ Working with this repository:
 
 # Standard libraries for this project
 In order to keep our functions consistent, please use the libraries below and import them with the same name in all the functions. Whenever you feel the need to add another library to the list, don't hesitate to do so.
+
 `import numpy as np
+
 import matplotlib as plt`
 

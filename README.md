@@ -1,7 +1,7 @@
 # compGeo
 Computational Geosciences resource at UiS. An educational project funded by the Faculty of Science and Technology, Departments of Energy Resources (IER) and Mechanical and Structural Engineering (IMBM), University of Stavanger. Authors: Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut Giljarhus (IMBM). Students: Angela Hoch (IER), Adham Amer (IMBM), and Vania Mansoor (IER).
 
-Please feel free to use this material for teaching purposes. If you have any comments or want to contribute to the resource, please contact Nestor Cardozo at [nestor.cardozo@uis.no](nestor.cardozo@uis.no).
+Please feel free to use this material for teaching purposes. If you have any comments or want to contribute to the resource, please contact Nestor Cardozo at nestor.cardozo@uis.no
 
 ## Manual: Working with this repository
 ### Getting started - Clone the repository

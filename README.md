@@ -37,5 +37,5 @@ In order to keep our functions consistent, please use the libraries below and im
 
 `import numpy as np`
 
-`import matplotlib as plt`
+`import matplotlib.pyplot as plt`
 

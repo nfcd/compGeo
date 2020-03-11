@@ -15,13 +15,13 @@ def TrueThickness(strike, dip, top, base):
     NOTE: strike and dip should be input in radians
     '''
     # make the transformation matrix from ENU coordinates 
-    # to SDP coordinates
+    # to SDP coordinates. Eq. 5.10
     a = [[np.sin(strike), np.cos(strike), 0],
     [np.cos(strike)*np.cos(dip), -np.sin(strike)*np.cos(dip), -np.sin(dip)],
     [-np.cos(strike)*np.sin(dip), np.sin(strike)*np.sin(dip), -np.cos(dip)]]
     
     # transform the top and base points 
-    # from ENU to SDP coordinates 
+    # from ENU to SDP coordinates. Eq. 5.4 
     topn = np.zeros(3)
     basen = np.zeros(3)
     for i in range(0,3,1):
@@ -29,7 +29,7 @@ def TrueThickness(strike, dip, top, base):
             topn[i] = a[i][j]*top[j] + topn[i]
             basen[i] = a[i][j]*base[j] + basen[i]
     
-    # compute the thickness of the unit
+    # compute the thickness of the unit. Eq. 5.12
     t = np.abs(basen[2] - topn[2])
     
     return t

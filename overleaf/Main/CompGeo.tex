@@ -51,7 +51,7 @@
 \lstset{style=mystyle}
 \lstset{language=Python,upquote=true} % This fixes the problem with single quotes in Python
 \title{Computational Geosciences}
-\author{Faculty of Science and Technology \\ \\ University of Stavanger}
+\author{An educational project funded by the \\ \\ Faculty of Science and Technology \\ \\ University of Stavanger}
 \date{2020}
 
 \setlength{\parindent}{0pt}.
@@ -68,13 +68,13 @@ Welcome to the Computational Geosciences resource at the University of Stavanger
 
 This resource is designed based on the same principles and with emphasis on problem-solving. However, the access to data and the tools used to visualize data have improved tremendously over the last 20 years. Today, a geologist carrying a mobile device in the field has access to a collection of sensors collecting data in real time (magnetometer, accelerometers, gravity, GPS, etc.), and accurate databases of topography, aerial photos, and satellite imagery. Such information not only supports the geologist in the field, but also allows her to test hypotheses and take decisions. Computation is greatly facilitated by high-level programming languages (e.g. Matlab and Python) that focus on visualizing and solving problems, rather than on coding details. The digital era is here, and to analyze the large number of data associated with it, we need math and computing. 
 
-To develop this resource, we put together an interesting group of faculty from the Departments of Energy Resources (IER) and Mechanical and Structural Engineering (IMBM) with expertise in Geographic Information Science (GIS, Lisa Watson, IER), Geophysics (Wiktor Weibull, IER), Structural Geology (Nestor Cardozo, IER), Fluid Mechanics (Knut Giljarhus, IMBM), and Computational Engineering (Aksel Hiorth, IER). Master students from Geosciences (Vania Mansoor), Computational Engineering (Angela Hoch), and Offshore Engineering (Adham Amer) were instrumental. They organized the chapters into a centralized editorial system (Overleaf), and wrote our scattered code into structured functions and notebooks. They also tested the resource. 
+To develop this resource, we put together an interesting group of faculty from the Departments of Energy Resources (IER) and Mechanical and Structural Engineering (IMBM) with expertise in Geographic Information Science (GIS, Lisa Watson, IER), Geophysics (Wiktor Weibull, IER), Structural Geology (Nestor Cardozo, IER), and Fluid Mechanics (Knut Giljarhus, IMBM). Master students from Computational Engineering (Angela Hoch), Offshore Engineering (Adham Amer), and Geosciences (Vania Mansoor) were instrumental. They wrote our scattered code into functions and notebooks and help editing the resource in \href {www.overleaf.com}{Overleaf}. They also tested the resource. 
 
-Python is the programming language of choice. The resource consists of ten chapters covering an introduction to computation in Geosciences and Python (chapter 1), understanding location (chapter 2), orientation and display of geologic features (chapter 3), coordinate systems and vectors (chapter 4), transformations (chapter 5), tensors (chapter 6), stress (chapter 7), strain (chapter 8), elasticity (chapter 9), and the inverse problem (chapter 10). Each of these chapters describes shortly the basic theory before going directly into applications and problems. Exercises at the end of each chapter are essential to master the material. 
+Python is the programming language of choice. The resource consists of ten chapters covering an introduction to computation in Geosciences and Python (chapter 1), understanding location (chapter 2), orientation and display of geologic features (chapter 3), coordinate systems and vectors (chapter 4), transformations (chapter 5), tensors (chapter 6), stress (chapter 7), strain (chapter 8), elasticity (chapter 9), and the inverse problem (chapter 10). Each chapter describes shortly the basic theory before going directly into applications and problems. Exercises at the end of each chapter are essential to master the material. 
 
 Much of the material is based on the book Structural Geology Algorithms: Vectors and Tensors (Allmendinger et al., 2012), and the lab manual: Modern Structural Practice (Allmendinger, 2019). However, we have also included additional GIS and Geophysics topics. The resource is focused on our areas of expertise, but we hope you can use and further develop the material for other geoscience areas.
 
-There are different ways to access this resource: 1. In a web browser (html), 2. As a pdf document, or 3. As Python notebooks. You can also download or subscribe to changes in the resource using our git repository . We hope you enjoy this resource and learn from it, as well as use it for teaching. This will be the measure of our success. We also hope to spark enough interest for users to contribute to the resource with additional material and more chapters in the future. Finally, we are grateful to the Faculty of Science and Technology at the University of Stavanger for sponsoring this project.
+You can download or subscribe to changes in the resource using our git repository . We hope you enjoy this resource and learn from it, as well as use it for teaching. This will be the measure of our success. We also hope to spark enough interest for users to contribute to the resource with additional material and more chapters in the future. Finally, we are grateful to the Faculty of Science and Technology at the University of Stavanger for sponsoring this project.
 
 \section*{References}
 Allmendinger, R.W., Cardozo, N. and Fisher, D.M. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
@@ -107,7 +107,7 @@ In this resource, the language of choice is Python. Besides the reasons above, P
   \item Python can be learned quickly. It typically involves less code than other languages and its syntax is easier to read.
   \item Python comes with robust standard libraries for arrays and mathematical functions (NumPy), visualization (PyPlot), and scientific computing (SciPy).
   \item Python is one of the most popular programming languages, with a large base of developers and users. It is used by every major technology company and it is almost a skill you must have in your CV to land a job as a geoscientist.
-  \item Because of its large developers base, Python has access to a large amount of additional libraries, including several libraries for geosciences.
+  \item Because of its large developers base, Python has access to a large amount of additional libraries, including several libraries for geosciences. We make use of some of these libraries in this resource.
   \item Python can be installed easily through a single distribution that includes all the standard libraries and provides access to additional libraries (see next section).
   \item Last but not least, Python is free and open source. This is probably why Python is more popular than its commercial counterpart Matlab.
 \end{itemize}
@@ -115,7 +115,7 @@ In this resource, the language of choice is Python. Besides the reasons above, P
 % SECTION: INSTALLING PYTHON
 \section{Installing Python}
 
-We recommend installing Python using the free Anaconda distribution. This distribution includes Python as well as many other useful libraries, including Jupyter, which is the system we use to make the notebooks in this resource. Anaconda can be easily installed on any major operating system, including Windows, macOS, or Linux.
+We recommend installing Python using the free Anaconda distribution. This distribution includes Python as well as many other useful libraries, including Jupyter, which is the system we use to write the notebooks in this resource. Anaconda can be easily installed on any major operating system, including Windows, macOS, or Linux.
 
 The installation process is quite straightforward. From the \href {https://www.anaconda.com/distribution/}{Anaconda distribution} page, go to the Download section. The website will recognize your operating system and present you with two possible installers, one for Python 3 and another for Python 2. We recommend you install the Python 3 version. Download the installer. Windows and macOS users just need to run the installer and follow the steps to install Anaconda. Linux users need to type a set of commands in a terminal window. Further instructions can be found in the online \href {https://docs.anaconda.com/anaconda/} {Anaconda documentation}, installation section.
 
@@ -242,7 +242,7 @@ Radians 0.785398
 }}   
 \end{center}
 
-We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. Using a text editor, create a file called \textit{mylib.py} and put it in the same folder as your notebook. In the file, write a function to convert from radians to degrees:
+We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. We will write functions that solve common problems in geosciences. Using a text editor, create a file called \textit{mylib.py} and put it in the same folder as your notebook. In the file, write a function to convert from radians to degrees:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -376,7 +376,7 @@ b has 3 rows and 2 columns.
 }}    
 \end{center}
 
-Let us make a function to multiply two matrices. Considering an $n$ $\times$ $m$ matrix \textbf{A} and a $m$ $\times$ $p$ matrix \textbf{B}. The formula to multiply these matrices can be written as:
+Let us make a function to multiply two matrices. Consider a $n$ $\times$ $m$ matrix \textbf{A} and a $m$ $\times$ $p$ matrix \textbf{B}. The formula to multiply these matrices can be written as:
 
 \begin{equation}
     \textbf{C} = \textbf{AB} =\sum_{k=1}^m A_{ik}B_{kj}
@@ -448,7 +448,7 @@ Output: \\
 }}    
 \end{center}
 
-Try changing the multiplication function from \textit{matrix\_multiply} to \textit{np.dot} and note the difference in runtime. On a standard computer, our \textit{matrix\_multiply} function uses $\approx$ 500 milliseconds, while NumPy \textit{dot} function uses $\approx$ 200 microseconds. The NumPy function is a staggering 2500 times faster!
+Try changing the multiplication function from \textit{matrix\_multiply} to \textit{np.dot} and note the difference in runtime. On a standard computer, our \textit{matrix\_multiply} function uses $\approx$ 500 milliseconds, while NumPy \textit{dot} function uses $\approx$ 200 microseconds. The NumPy \textit{dot} function is a staggering 2500 times faster!
 
 % SUBSECTION: PLOTTING
 \subsection{Plotting}
@@ -472,7 +472,7 @@ plt.plot(x, y)
 }}    
 \end{center}
 
-We end with a slightly more advanced plot, showing how to change line style and markers, and add axes labels and a legend. The NumPy \textit{cos} function takes the cosine of the array, and \textit{xlabel}, \textit{ylabel} and \textit{legend} are all Matplotlib commands.
+We end with a slightly more advanced plot, showing how to change line style and markers, and add axes labels and a legend. The NumPy \textit{cos} function takes the cosine of the array, and \textit{xlabel}, \textit{ylabel} and \textit{legend} are all Matplotlib commands to add labels to the axes and a legend to the graph.
 
 \begin{center} {t}
 \begin{lstlisting}[language=Python, frame=single]
@@ -500,7 +500,7 @@ plt.legend(['Cosine', 'Quadratic'])
 \begin{enumerate}
     \item Write a program that prints each number from 1 to 20 on a new line. For each multiple of 3, print "Fizz" instead of the number. For each multiple of 5, print "Buzz" instead of the number. For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number. The correct answer is: 1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz.
     
-    \item Write a more complete function to convert an angle from degrees to radians or from radians to degrees. The function should accept two inputs: the angle, and a flag to tell the function whether the angle should be converted to radians (flag = 1) or degrees (flag = 2).
+    \item Write a more complete function to convert an angle from degrees to radians or from radians to degrees. The function should accept two inputs: the angle, and a flag to tell the function whether the angle should be converted from degrees to radians (flag = 1) or from radians to degrees (flag = 2).
     
     \item Given two 3 $\times$ 3 matrices \textbf{A} = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ] and \textbf{B} = [ [5, 7, 2], [3, 5, 1], [2, 4, 3] ], compute: 
     \begin{enumerate}
@@ -512,7 +512,7 @@ plt.legend(['Cosine', 'Quadratic'])
     \item  The column sum of matrix \textbf{A}, 
     \item  The row sum of matrix \textbf{A}, 
     \item  The transpose of matrix $\textbf{A}\, (\textbf{A}^T)$, 
-    \item  The product $\textbf{AA}^T$.
+    \item  The product $\textbf{AA}^T$. What is this product equal to?
     \end{enumerate} 
     
     \textit{Hint}: Look at the functions \textit{add, subtract, dot, sqrt, sum} and \textit{transpose} in the NumPy library. 
@@ -587,7 +587,7 @@ Two important properties of lines and planes are location (chapter 2) and orient
 % SUBSECTION: PLANES: STRIKE AND DIP
 \subsection{Planes: Strike and dip}
 
-A plane orientation can be defined by the angle a horizontal line on the plane makes with the geographic north, known as the \textit{strike} and the maximum angle measured downward from the horizontal to the plane, known as the \textit{dip} (Fig 3.1a). The strike is measured as an azimuth, an angle between 0 and  360\degree (0 = north, 90 = east, 180 = south, 270 = west). The dip is an angle between 0 (horizontal plane) and 90\degree (vertical plane). The projection of the dip onto the horizontal is known as the \textit{dip direction} and is always 90\degree from the strike. However, is the dip direction plus or minus 90\degree the given strike? Which direction of the strike line should we use? To avoid ambiguities, we will use a format known as the \textit{right hand rule} (RHR). In the RHR format, one gives the strike direction such that the dip direction is always the strike plus 90\degree, i.e. the dip direction is to the right of the strike (Fig. 3.1a).
+A plane orientation can be defined by the angle a horizontal line on the plane makes with the geographic north, known as the \textit{strike} and the maximum angle measured downward from the horizontal to the plane, known as the \textit{dip} (Fig 3.1a). The strike is measured as an azimuth, an angle between 0 and  360\degree (0 = north, 90 = east, 180 = south, 270 = west). The dip is an angle between 0 (horizontal plane) and 90\degree (vertical plane). The projection of the dip onto the horizontal is known as the \textit{dip direction} and is always 90\degree from the strike. However, is the dip direction plus or minus 90\degree the given strike? Which end of the strike line should we use? To avoid ambiguities, we will use a format known as the \textit{right hand rule} (RHR). In the RHR format, one gives the strike such that the dip direction is always the strike plus 90\degree, i.e. the dip direction is to the right of the strike (Fig. 3.1a).
 
 \begin{figure}[ht]
     \centering
@@ -601,12 +601,12 @@ It is only along the dip direction that the true dip can be determined, any othe
     \tan\alpha=\tan\delta\sin\beta
 \end{equation}
 
-where $\beta$ is the angle between the strike (horizontal) line on the plane and the vertical section on which the apparent dip is measured (Fig. 3.1b). This is also Eq. 1.3 which we plotted in problem 4 of chapter 1 (Fig. 1.1). You can quickly verify that it works by setting $\beta$ = 0 (a cross section parallel to strike) which gives $\alpha$ = 0 (since $\sin(0)$ is 0), and $\beta$ = 90\degree ( a cross section perpendicular to strike) which gives $\alpha$ = $\delta$ (since $\sin (90)$ is 1). This leads to a very important conclusion: \textit{Any plane on a vertical section parallel to strike looks horizontal (even if it’s dipping), and the true dip of the plane is only observed on a vertical section perpendicular to strike}. This is why we should always visualize planes (bedding, faults, etc.) on cross sections perpendicular to strike.
+where $\beta$ is the angle between the strike (horizontal) line on the plane and the vertical section on which the apparent dip is measured (Fig. 3.1b). This is also Eq. 1.3, which we plotted in problem 4 of chapter 1 (Fig. 1.1). You can quickly verify that it works by setting $\beta$ = 0 (a cross section parallel to strike) which gives $\alpha$ = 0 (since $\sin(0)$ is 0), and $\beta$ = 90\degree ( a cross section perpendicular to strike) which gives $\alpha$ = $\delta$ (since $\sin (90)$ is 1). This leads to a very important observation: \textit{Any plane on a vertical section parallel to strike looks horizontal (even if it’s dipping), and the true dip of the plane can only be observed on a vertical section perpendicular to strike}. This is why we should always visualize planes (bedding, faults, etc.) on cross sections perpendicular to strike.
 
 % SUBSECTION: LINES: TREND AND PLUNGE
 \subsection{Lines: Trend and plunge or rake}
 
-The orientation of a line is specified by the azimuth of the horizontal projection of the line, or trend, and the vertical angle measured downward from the horizontal to the line, or plunge (Fig. 3.2a). The plunge has a range between -90 and 90\degree. Positive plunge indicates lines pointing downwards, and negative plunge lines pointing upwards. To measure the trend and plunge one must determine the vertical plane containing the line. This is quite difficult and often results in errors (section 3.2.5). For this reason, and if the line is on a plane, it is more accurate (and convenient) to measure the angle on the plane between the strike line and the line. This angle is known as the rake or pitch (Fig. 3.2b). To avoid any confusion, the rake should be always measured from the given strike and thus it varies between 0 and 180\degree.
+The orientation of a line is specified by the azimuth of the horizontal projection of the line, or \textit{trend}, and the vertical angle measured downward from the horizontal to the line, or \textit{plunge} (Fig. 3.2a). The plunge has a range between -90 and 90\degree. Positive plunge indicates lines pointing downwards, and negative plunge lines pointing upwards. To measure the trend and plunge one must determine the vertical plane containing the line. This is quite difficult and often results in errors (section 3.2.5). For this reason, and if the line is on a plane, it is more accurate (and convenient) to measure the angle on the plane between the strike line and the line. This angle is known as the rake or pitch (Fig. 3.2b). To avoid any confusion, the rake should be always measured from the given strike and thus it varies between 0 and 180\degree.
 
 \begin{figure}[ht]
     \centering
@@ -626,7 +626,7 @@ Any plane can be uniquely represented by its downward normal. This line is known
     \end{split}
 \end{equation}
 
-The pole facilitates analyzing planes graphically and by computation. The Python function \textit{Pole} below computes the pole of a plane (\textit{k} = 1) or the plane from its pole (\textit{k} = 0). It is followed by the helper function \textit{ZeroTwoPi} which makes sure azimuths are always between 0 and 360\degree. Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians, and the plane follows the RHR format.
+The pole facilitates analyzing planes graphically and by computation. Our first Python function \textit{Pole} below computes the pole of a plane (\textit{k} = 1) or the plane from its pole (\textit{k} = 0). It is followed by the helper function \textit{ZeroTwoPi} which makes sure azimuths are always between 0 and 360\degree. Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians, and the plane must follow the RHR format.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -699,7 +699,7 @@ def ZeroTwoPi(a):
 % SUBSECTION: INSTRUMENTS USED IN THE FIELD
 \subsection{Instruments used in the field}
 
-Traditionally, geologists have used a geological compass/clinometer to measure the orientation of planes and lines in the field. Figure 3.3 shows four of the most common compasses used in geology: the Silva compass (Fig. 3.3a), the Brunton compass (Fig. 3.3b), the Krantz compass (Fig. 3.3c, a less expensive variant of the Freiberg compass), and the Brunton Geo compass (Fig. 3.3d). All of these compasses have a magnetic needle that points  to the magnetic north (N or white end of the needle), a horizontal level, and a clinometer (an instrument to measure vertical angles). The Silva compass has an azimuth scale that can be rotated to follow the magnetic needle, while in the other three compasses the azimuth scale is fixed. This is why east-west (E-W) are in the right place in the Silva compass, while they are flipped in the other three compasses (Fig. 3.3a-d).
+Traditionally, geologists use a geological compass/clinometer to measure the orientation of planes and lines in the field. Figure 3.3 shows four of the most common compasses used in geology: the Silva compass (Fig. 3.3a), the Brunton compass (Fig. 3.3b), the Krantz compass (Fig. 3.3c, a less expensive variant of the Freiberg compass), and the Brunton Geo compass (Fig. 3.3d). All these compasses have a magnetic needle that points  to the magnetic north (N or white end of the needle), a horizontal level, and a clinometer (an instrument to measure vertical angles). The Silva compass has an azimuth scale that can be rotated to follow the magnetic needle, while in the other three compasses the azimuth scale is fixed. This is why east-west (E-W) are in the right place in the Silva compass, while they are flipped in the other three compasses (Fig. 3.3a-d).
 
 \begin{figure}[ht]
     \centering
@@ -707,7 +707,7 @@ Traditionally, geologists have used a geological compass/clinometer to measure t
     \caption{\textbf{a.} Silva, \textbf{b.} Brunton, \textbf{c.} Krantz, \textbf{d.} Brunton Geo, and \textbf{e.} Smartphone with Stereonet Mobile.}
 \end{figure}
 
-The Silva and Brunton compasses are designed to measure strike and dip through two measurements, while the Krantz and Freiberg compasses measure dip direction and dip at once. The Brunton Geo compass can work either as a Brunton or Freiberg compass, and it has higher precision than the other three compasses (it is also the most expensive). The use of these compasses is well explained in field geology books such as Compton (1985) and Coe (2010). For illustration, Figure 3.4 shows how strike and dip are measured with the Brunton compass (the same principles apply to the Silva compass). Notice that in this measurement, it is crucial to determine when the compass is horizontal (Fig. 3.4a). We will see that this can be a source of error (section 3.2.5).
+The Silva and Brunton compasses are designed to measure strike and dip through two measurements, while the Krantz compass measures dip direction and dip at once. The Brunton Geo compass can work either as a Brunton or Krantz compass, and it has higher precision than the other three compasses (it is also the most expensive). The use of these compasses is well explained in field geology books such as Compton (1985) and Coe (2010). For illustration, Figure 3.4 shows how strike and dip are measured with the Brunton compass (the same principles apply to the Silva compass). Notice that in this measurement, it is crucial to determine when the compass is horizontal (Fig. 3.4a). We will see that this can be a source of error (section 3.2.5).
 
 \begin{figure}[ht]
     \centering
@@ -715,7 +715,7 @@ The Silva and Brunton compasses are designed to measure strike and dip through t
     \caption{Measuring the \textbf{a.} strike and \textbf{b.} dip of a plane. Modified from Compton (1985).}
 \end{figure}
 
-These days, digital devices in the form of smartphone programs or apps (Fig. 3.3e) are slowly replacing the analog compasses. Smartphones contain instruments such as accelerometers, gyroscopes, and magnetometers, which enable apps such as Stereonet Mobile (Richard Allmendinger) or Fieldmove Clino (MVE) to determine the exact orientation of the device in space. Measuring a plane or a line just requires placing the phone on the plane or along the line. Thus, one can capture a large number of measurements quickly. However, smartphones are very sensitive to nearby magnetic fields and one can get spurious results (Novakova and Plavlis, 2017). Smartphones also have access to accurate geographic location (GPS, cell and wireless networks) as well as satellite imagery and raster data such as elevation. They can greatly facilitate mapping in the field.
+These days, digital devices in the form of smartphone programs or apps (Fig. 3.3e) are slowly replacing the analog compasses. Smartphones contain instruments such as accelerometers, gyroscopes, and magnetometers, which enable apps such as Stereonet Mobile (Richard Allmendinger) or Fieldmove Clino (Petroleum Experts) to determine the exact orientation of the device in space. Measuring a plane or a line just requires placing the phone on the plane or along the line. Thus, one can capture a large number of measurements quickly. However, smartphones are very sensitive to nearby magnetic fields and one can easily get spurious results (Novakova and Plavlis, 2017). Smartphones also have access to accurate geographic location (GPS, cell and wireless networks) as well as satellite imagery and raster data such as elevation. They can greatly facilitate mapping in the field.
 
 % SUBSECTION: UNCERTAINTIES
 \subsection{Uncertainties in orientations}
@@ -728,18 +728,18 @@ Geological planes and lines are irregular and therefore it is difficult to take 
     \caption{Geometrical relations for estimating the strike error $\varepsilon_s$ from the operator error (or departure of the compass from the horizontal) $\varepsilon_o$.  Modified from Ragan (2009).}
 \end{figure}
 
-From the three right-triangles in Figure 3.5 and their corresponding equations, and by substituting the first two equations for \textit{w} and \textit{l} into the third equation for $\varepsilon_s$, one gets the following relation (Woodcock, 1976):
+From the three right-triangles and their corresponding equations in Figure 3.5, and by substituting the first two equations for \textit{w} and \textit{l} into the third equation for $\varepsilon_s$, one gets the following relation (Woodcock, 1976):
 
 \begin{equation}
     \sin\varepsilon_s = \frac{\tan\varepsilon_o}{\tan\delta}
 \end{equation}
 
-where $\delta$ is the dip angle of the plane. This equation is plotted in Figure 3.6 for dip angles $\delta$ of 0 to 40\degree and operator errors $\varepsilon_o$ of 1 to 5\degree. It is clear that the strike error $\varepsilon_s$ increases with decreasing dip. For a gentle 5\degree dipping plane, an operator error $\varepsilon_o$ of 2\degree (a compass just 2\degree off the horizontal) results in a strike error $\varepsilon_s$ of about 24\degree! Thus, one should always be suspicious of the accuracy of strike and dip measurements, particularly if they are from gently dipping planes.
+where $\delta$ is the dip angle of the plane. This equation is plotted in Figure 3.6 for dip angles $\delta$ of 0 to 40\degree and operator errors $\varepsilon_o$ of 1 to 5\degree. It is clear that the strike error $\varepsilon_s$ increases with decreasing dip. For a gentle 5\degree dipping plane, an operator error $\varepsilon_o$ of 2\degree (a compass just 2\degree off the horizontal) results in a strike error $\varepsilon_s$ of about 24\degree! Thus, one should always be suspicious about the accuracy of strike and dip measurements, particularly if they are from gently dipping planes.
 
 \begin{figure}[ht]
     \centering
     {\includegraphics[width=13cm]{Figures/ch3f6.png}}
-    \caption{Strike error $\varepsilon_s$ as a function of dip $\delta$ for values of operator error $\varepsilon_o$  of 1-5\degree. Click the graph to see the notebook that produced it.}
+    \caption{Strike error $\varepsilon_s$ as a function of dip $\delta$ for values of operator error $\varepsilon_o$  of 1-5\degree. The notebook that produced this graph is available in our git repository.}
 \end{figure}
 
 For line measurements, this situation is not better. When measuring the orientation of a line, it is common practice to align the compass in the direction of the horizontal projection of the line, which, as anyone who has tried this in the field knows, it is quite difficult. There will be an operator error and the measured trend $\beta\text{$'$}$ will differ from the true trend $\beta$ (Fig. 3.7a). The trend error $\varepsilon_t$ ($|\beta\text{$'$}- \beta|$)in terms of the angle on the plane $\varepsilon_o$ which the measured line makes with the true line, is given by the following equations (Woodcock, 1976): 
@@ -747,7 +747,7 @@ For line measurements, this situation is not better. When measuring the orientat
 \begin{figure}[ht]
     \centering
     \includegraphics[width=13cm]{Figures/ch3f7.png}
-    \caption{\textbf{a.} Geometrical relations for estimating the trend error $\varepsilon_t$ from the rake \textit{r} of the line, the dip $\delta$  of the plane, and the angle on the plane $\varepsilon_o$ between the measured and the true lines. Trend error as function of dip for \textbf{b.} a measured line on the down-dip side of the line, and \textbf{c.} a measured line on the up-dip side of the line. In b and c, $\varepsilon_o$ is 3\degree. Click the graphs to see the notebooks that produced them.}
+    \caption{\textbf{a.} Geometrical relations for estimating the trend error $\varepsilon_t$ from the rake \textit{r} of the line, the dip $\delta$  of the plane, and the angle on the plane $\varepsilon_o$ between the measured and the true lines. Trend error as function of dip for \textbf{b.} a measured line on the down-dip side of the line, and \textbf{c.} a measured line on the up-dip side of the line. In b and c, $\varepsilon_o$ is 3\degree. The notebooks that produced graphs b and c are available in our git repository.}
 \end{figure}
 
 \begin{equation}
@@ -791,9 +791,9 @@ Geologic features are rarely isolated, and they usually have different orientati
     \caption{Outcrop pattern across a valley of \textbf{a.} Horizontal bed, \textbf{b.} Vertical bed, \textbf{c.} Bed dipping downstream, and \textbf{d.} Bed dipping upstream. Modified from Ragan (2009).}
 \end{figure}
 
-The Rule of V’s says that when a planar contact crosses a valley, its outcrop pattern will V or curve in the direction that the contact is dipping, but only if the contact if steeper than the slope of the valley, which is normally the case (Fig. 3.8c-d). There are two exceptions: 1. If the contact is horizontal, its outcrop pattern will follow the topographic contours, which makes sense since the contours are the intersection of horizontal planes at different elevations with the ground (Fig. 3.8a), and 2. If the contact is vertical, its outcrop pattern across the valley is a straight line. Vertical planes “ignore” topography.
+The Rule of V’s says that when a planar contact crosses a valley, its outcrop pattern will V or curve in the direction that the contact is dipping, but only if the contact if steeper than the slope of the valley, which is normally the case (Fig. 3.8c-d). There are two exceptions: 1. If the contact is horizontal, its outcrop pattern will follow the topographic contours, which makes sense since the contours are the intersection of horizontal planes of different elevation with the ground (Fig. 3.8a), and 2. If the contact is vertical, its outcrop pattern across the valley is a straight line. Vertical planes “ignore” topography.
 
-Determining the outcrop trace of a planar contact on irregular topography is not straightforward. Graphically, this problem involves making elevation contours on the planar contact. These are called structure contours. Then one should look at the locations where the structure contours on the contact have the same elevation than the topographic contours on the land surface. On these locations, the contact outcrops. Finally, one should join these locations with a line, to make the outcrop trace of the contact. Figure 3.9 illustrates this procedure for a plane dipping north and intersecting irregular topography. Notice how in the stream valleys, the outcrop trace of the plane curves to the north, clearly following the Rule of V’s.
+Determining the outcrop trace of a planar contact on irregular topography is not straightforward. Graphically, this problem involves making elevation contours on the planar contact. These are called structure contours. Then one should look at the locations where the structure contours of the contact have the same elevation than the topographic contours of the land surface. On these locations, the contact outcrops. Finally, one should join these locations with a line, to make the outcrop trace of the contact. Figure 3.9 illustrates this procedure for a plane dipping north and intersecting irregular topography. Notice how in the stream valleys, the outcrop trace of the plane curves to the north, clearly following the Rule of V’s.
 
 \begin{figure}[ht]
     \centering
@@ -801,7 +801,7 @@ Determining the outcrop trace of a planar contact on irregular topography is not
     \caption{Outcrop trace of a plane dipping 20\degree N. The left figure is the map, and the right figure is a N-S cross section. Color points are the locations where the plane's structure contours have the same elevation than the topographic contours. The line joining these points is the outcrop trace of the plane. Modified from Ragan (2009).}
 \end{figure}
 
-This graphical approach requires a great deal of patience and drawing skills. In chapter 4, we sill see that if we have the plane’s orientation and one outcrop location, it is possible to project the plane throughout the terrain using computation, provided we have a digital elevation model (DEM) of the terrain. This saves a lot of time and it’s a great help to quality control mapping, test different hypotheses, and take better decisions in the field.
+This graphical approach requires a great deal of patience and drawing skills. In chapter 4, we sill see that if we have the plane’s orientation and one outcrop location, it is possible to project the plane throughout the terrain using computation, provided we have a digital elevation model (DEM) of the terrain. This saves a lot of time and it’s a great way to quality control mapping, test different hypotheses, and take better decisions in the field.
 
 % SUBSECTION: STEREONETS
 \subsection{Stereonets}
@@ -828,9 +828,9 @@ For our purpose, it is more important to know how this projection actually works
     x = R\tan\left(45\degree-\frac{\phi}{2}\right) \tag{3.6}
 \end{equation}
 
-where \textit{x} is the is the distance of the point from the center of the net, \textit{R} is the radius of the net, and $\phi$ is the plunge of the line. This method preserves angles perfectly and thus, on the primitive circle, degrees are equally spaced, and a small circle will be a circle anywhere on the net (Fig. 3.11b). This is why this projection is called the equal angle or Wulff stereonet. The preservation of angles has a disadvantage: areas are distorted. Thus, for example, a 10\degree radius small circle will look smaller near the center of the net but larger near the edges (Fig. 3.11b). This poses a problem when trying to assess visually or graphically the density of points plotted on the net.
+where \textit{x} is the is the distance of the point from the center of the net, \textit{R} is the radius of the net, and $\phi$ is the plunge of the line. This method preserves angles perfectly and thus, on the primitive circle, degrees are equally spaced, and a small circle will be a circle anywhere on the net (Fig. 3.11b). This is why this projection is called the equal angle or Wulff stereonet. However, the preservation of angles has a disadvantage: areas are distorted. Thus, for example, a 10\degree radius small circle will look smaller near the center of the net but larger near the edges (Fig. 3.11b). This poses a problem when trying to assess visually or graphically the density of points plotted on the net.
 
-The equal area or Schmidt net (Fig. 3.12) overcomes this problem. Strictly speaking, this projection is not a stereographic projection because the projection plane is at the bottom of the sphere. The point of intersection of the line and the surface of the lower hemisphere, is projected to the horizontal plane at the bottom of the sphere, along a circular arc centered at the bottom of the sphere. The \textit{x} distance of the point is then scaled by a factor of $\sqrt{2}$ to fit the radius \textit{R} of the net (Fig. 3.12a). This is expressed by the following equation:
+The equal area or Schmidt net (Fig. 3.12) overcomes this problem. Strictly speaking, this projection is not a stereographic projection because the projection plane is at the bottom of the sphere. The point of intersection of the line and the surface of the lower hemisphere, is projected to the horizontal plane at the lowest point of the sphere, along a circular arc centered at the bottom of the sphere. The \textit{x} distance of the point is then scaled by a factor of $\sqrt{2}$ to fit the radius \textit{R} of the net (Fig. 3.12a). This is expressed by the following equation:
 
 \begin{figure}[ht]
     \centering
@@ -1043,14 +1043,14 @@ Woodcock, N.H. 1976. The accuracy of structural field measurements. Journal of G
 % CHAPTER 4: COORDINATE SYSTEMS AND VECTORS
 \chapter{Coordinate systems and vectors}
 
-Strike and dip, and trend and plunge, are a convenient way to represent the orientation of planes and lines. However, it is difficult to handle these angles using computation. In this chapter, we will see how to convert linear features (lines and poles to planes) from spherical (trend and plunge) to Cartesian (direction cosines) coordinates, thus representing these features as vectors. This facilitates the analysis of planes and lines using linear algebra and computation, and it will allow us to solve a range of interesting problems using simple vector operations.
+Strike and dip, and trend and plunge, are a convenient way to represent the orientation of planes and lines. However, it is difficult to handle these angles using computation. In this chapter, we will see how to convert linear features (lines and poles to planes) from spherical (trend and plunge) to Cartesian (direction cosines) coordinates, thus representing these features as vectors. This facilitates the analysis of planes and lines using linear algebra and computation, and it will allow us to solve a range of interesting problems using vector operations.
 
 % SECTION: Coordinate systems
 \section{Coordinate systems}
 
 Any point or location in space can be represented by the coordinates of the point with respect to the three orthogonal axes of a Cartesian coordinate system. We will call the three axes of this coordinate system $\mathbf{X_1}$, $\mathbf{X_2}$ and $\mathbf{X_3}$ (Fig. 4.1). In addition, we will follow a right-handed naming convention: If you hold your right hand so that your thumb points in the positive direction of the first axis $\mathbf{X_1}$, your other fingers should curl from the positive direction of the second axis $\mathbf{X_2}$ toward the positive direction of the third axis $\mathbf{X_3}$ (Fig. 4.1). Such a coordinate system is called a right-handed coordinate system.
 
-In geosciences, we use mainly two types of right-handed coordinate systems: An east (\textbf{E}), north (\textbf{N}), up (\textbf{U}) coordinate system (Fig. 4.1a), and a north (\textbf{N}), east (\textbf{E}), down (\textbf{D}) coordinate system (Fig. 4.1b). The \textbf{ENU} coordinate system is used in GIS and Geophysics when dealing with elevations (e.g. topography), while the \textbf{NED} coordinate system is used in Structural Geology where, by convention, angles measured downwards from the horizontal (e.g. plunge of a downward pointing line) are considered positive. In this chapter, we will use the \textbf{NED} coordinate system, but when dealing with topography and elevations, we will have to think about the \textbf{ENU} coordinate system.
+In geosciences, we use mainly two types of right-handed coordinate systems: An east (\textbf{E}), north (\textbf{N}), up (\textbf{U}) coordinate system (Fig. 4.1a), and a north (\textbf{N}), east (\textbf{E}), down (\textbf{D}) coordinate system (Fig. 4.1b). The \textbf{ENU} coordinate system is used in GIS and Geophysics when dealing with elevations (e.g. topography), while the \textbf{NED} coordinate system is used in Structural Geology where, by convention, angles measured downwards from the horizontal (e.g. plunge of a downward pointing line) are considered positive. In this chapter, we will use the \textbf{NED} coordinate system, but when dealing with topography and elevations, we will use the \textbf{ENU} coordinate system.
 
 \begin{figure}[ht]
     \centering
@@ -1140,7 +1140,7 @@ To add two vectors, just sum their components:
     \mathbf u + \mathbf v=\mathbf v+\mathbf u=[u_1+v_1,u_2+v_2,u_3+v_3]
 \end{equation}
 
-Vector addition as well as subtraction is commutative. Graphically, vector addition obeys the parallelogram rule, whereby the resulting vector bisects the two vectors to be added (Fig. 4.3a).
+Vector addition is commutative. However, vector subtraction is not. Graphically, vector addition obeys the parallelogram rule, whereby the resulting vector bisects the two vectors to be added (Fig. 4.3a).
 
 \begin{figure}[ht]
     \centering
@@ -1215,7 +1215,7 @@ u x v =  [-4  8 -4] \\
 % SECTION: GEOLOGIC FEATURES AS VECTORS
 \section{Geologic features as vectors}
 
-We have now all the mathematical tools to represent geologic features as vectors. Since we are only interested in the orientation of these features, we will treat lines and poles to planes as unit vectors. We will also use the structural geology \textbf{NED} coordinate system.
+We have now all the mathematical tools to represent geologic features as vectors. Since we are only interested in the orientation of these features, we will treat lines and poles to planes as unit vectors. We will also use the Structural Geology \textbf{NED} coordinate system.
 
 \subsection{From spherical to Cartesian coordinates}
 
@@ -1249,7 +1249,7 @@ The magnitude and sign of the direction cosines tell us a lot about the orientat
     \caption{Lower hemisphere stereonet showing the sign of the direction cosines in each quadrant. In the NE quadrant, all three direction cosines are positive. Modified from Allmendinger et al. (2012).}
 \end{figure}
 
-To determine the direction cosines of a pole to a plane, we just need to express the trend and plunge of the pole in terms of the strike and dip of the plane, assuming a RHR format (Eq. 3.2), and use these in Eq. 4.11. The direction cosines of the pole to the plane are then:
+To determine the direction cosines of a pole to a plane, we just need to express the trend and plunge of the pole in terms of the strike and dip of the plane assuming a RHR format (Eq. 3.2), and use these in Eq. 4.11. The direction cosines of the pole to the plane are then:
 
 \begin{equation}
     \cos\alpha=\cos(strike-90\degree)\cos(90\degree-dip)=\sin(strike)\sin(dip) \tag{4.12a}
@@ -1280,7 +1280,7 @@ These equations are summarized in Table 4.1.
 \caption{Conversion from spherical to Cartesian coordinates}
 \end{table}
 
-The following Python function \textit{SphToCart} converts a line (\textit{k} = 0) or a pole to a plane (\textit{k} = 1) from spherical to Cartesian coordinates. Notice that the angles (\textit{trd} and \textit{plg}) should be entered in radians:
+The following Python function \textit{SphToCart} converts a line (\textit{k} = 0) or a plane (\textit{k} = 1) from spherical to Cartesian coordinates. Notice that the angles (\textit{trd} and \textit{plg}) should be entered in radians:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1704,7 +1704,7 @@ def Angles(trd1,plg1,trd2,plg2,ans0):
 \end{lstlisting}    
 \end{center}
 
-The notebook ch4-4.ipynb illustrates the use of the function \textit{Angles} to solve several interesting problems. Let's start with the following problem from Leyshon and Lisle (1996): Two limbs of a chevron fold (A and B) have orientations (RHR) as follows: Limb A = 120/40, Limb B = 250/60. Determine: (a) the trend and plunge of the hinge line of the fold, (b) the rake of the hinge line in limb A, (c) the rake of the hinge line in limb B. 
+The notebook ch4-4.ipynb below illustrates the use of the function \textit{Angles} to solve several interesting problems. Let's start with the following problem from Leyshon and Lisle (1996): Two limbs of a chevron fold (A and B) have orientations (RHR) as follows: Limb A = 120/40, Limb B = 250/60. Determine: (a) the trend and plunge of the hinge line of the fold, (b) the rake of the hinge line in limb A, (c) the rake of the hinge line in limb B. 
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1803,7 +1803,7 @@ There are many interesting problems you can solve using the function \textit{Ang
 
 \subsection{Three point problem}
 
-The three point problem is a fundamental problem in geology. It derives from the fact that three non-collinear points on a plane define the orientation of the plane. The graphical solution to this problem is typically introduced early in the Geosciences Bachelor. It involves finding the strike line (a line connecting two points of equal elevation) on the plane, and the dip from two strike lines (two structure contours) on the plane. 
+The three point problem is a fundamental problem in geology. It derives from the fact that three non-collinear points on a plane define the orientation of the plane. The graphical solution to this problem is introduced early in the Geosciences Bachelor. It involves finding the strike line (a line connecting two points of equal elevation) on the plane, and the dip from two strike lines (two structure contours) on the plane. 
 
 There is however an easier, faster, and perhaps more accurate solution to this problem using linear algebra and computation: The three points on the plane define two lines, and the downward unit vector parallel to the cross product between these two lines, is the pole to the plane, from which the orientation of the plane can be estimated. The Python function \textit{ThreePoint} computes the strike and dip of plane from the east (\textbf{E}), north (\textbf{N}), and up (\textbf{U}) coordinates of three points on the plane:
 
@@ -1870,7 +1870,7 @@ point2 = [1323, 2362, 500]
 
 point3 = [2003, 2913, 700] 
 
-Calculate the strike and dip of the plane. The Python notebook ch4-5.ipynb below shows the solution to this problem:\\ 
+Calculate the strike and dip of the plane. The Python notebook ch4-5.ipynb below shows the solution of this problem:\\ 
 
 \begin{figure}[ht]
     \centering
@@ -2113,7 +2113,7 @@ Taylor, J.R. 1997. An Introduction to Error Analysis, 2nd edition. University Sc
 % CHAPTER 5: 
 \chapter{Transformations}
 
-Many problems in geology, as in many situations in life, become simpler when viewed from a different perspective. For example, when studying the movement of continents through time because of plate tectonics (Fig. 5.1a), two coordinate systems are required, one in a present-day geographic frame, and another one attached to the continent. Or to analyze a fault (Fig. 5.1b), we need one coordinate system attached to the fault (with one axis parallel to the pole and another to the slickensides), which we want to relate to the more familiar \textbf{NED} system. A change in coordinate system is called a coordinate transformation and this is an operation that happens everytime and everywhere. Computer games, flight simulators, and 3D interpretation programs rely heavily on coordinate transformations. 
+Many problems in geology, as in life, become simpler when viewed from another perspective. For example, when studying the movement of continents through time because of plate tectonics (Fig. 5.1a), two coordinate systems are required, one in a present-day geographic frame, and another one attached to the continent. Or to analyze a fault (Fig. 5.1b), we need one coordinate system attached to the fault (with one axis parallel to the pole and another to the slickensides), which we want to relate to the more familiar \textbf{NED} system. A change in coordinate system is called a coordinate transformation and this is an operation that happens everytime and everywhere. Computer games, flight simulators, and 3D interpretation programs rely heavily on coordinate transformations. 
 
  \begin{figure}[ht]
     \centering
@@ -2175,7 +2175,7 @@ or using the Einstein summation notation:
     v_i\text{$'$}=a_{ij}v_j
 \end{equation}
 
-where \textit{i} is the free suffix, and \textit{j} is the dummy suffix. Assuming that ($i,\,j=1,2,3$), Equation 5.4 represents three separate equations (the three indexes of \textit{i}), each of which has three terms (the three indexes of \textit{j}). These equations are easy to implement in Python code:
+where \textit{i} is the free suffix, and \textit{j} is the dummy suffix. Assuming that ($i,\,j=1,2,3$), Equation 5.4 represents three separate equations (the three indexes of \textit{i}), each one with three terms (the three indexes of \textit{j}). These equations are easy to implement in Python code:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2186,7 +2186,7 @@ for i in range(0,3,1):
 \end{lstlisting}
 \end{center}
 
-You will see this code snippet in the functions of this chapter. Linear algebra is very elegant. To convert the vector from the new coordinate system back to the old coordinate system, you just need to do:
+You will see this code snippet repeatedly in the functions of this chapter. Linear algebra is very elegant. To convert the vector from the new coordinate system back to the old coordinate system, you just need to do:
 
 \begin{equation}
     v_i=a_{ji}v_j\text{$'$}
@@ -2233,11 +2233,141 @@ When we use this matrix in Eq. 5.4, we get:
     v_1\text{$'$}=v_2;\quad v_2\text{$'$}=v_1; \quad v_3\text{$'$}=-v_3;
 \end{equation}
 
-In the following section, we will look at more complicated coordinate transformations, but the principles will still be the same.
+Notice that in this special case \textbf{a} is symmetric ($a_{ij}=a_{ji}$), so the elements of \textbf{a} are also the direction cosines of the axes \textbf{ENU} with respect to the axes \textbf{NED}. In the following section, we will look at more complicated coordinate transformations, but the principles will still be the same.
 
 \section{Applications}
 
 \subsection{Stratigraphic thickness}
+
+The thickness of a stratigraphic unit is the perpendicular distance between the parallel planes bounding the unit. This is also called the true or stratigraphic thickness (Ragan, 2009). A general problem though is that points on the planes bounding the unit, are commonly given in a geographic (e.g. \textbf{ENU}) coordinate system. One therefore must use ortographic projections and trigonometry to determine the stratigraphic thickness of the unit from the points (Ragan, 2009).
+
+An easier approach is to use a transformation. Figure 5.3 illustrates the situation. Points on the top and base of the unit are given in an \textbf{ENU} coordinate system. We can transform these points into a coordinate system attached to the bounding planes, where the strike (RHR) of the planes is the first axis, the dip the second axis, and the pole to the planes the third axis. We will call this coordinate system the \textbf{SDP} system. The thickness of the unit is just the difference between the \textbf{P} coordinate of a point on the top of the unit and the \textbf{P} coordinate of any point on the base.
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{Figures/ch5f3.png}
+    \caption{Coordinate transformation from an \textbf{ENU} to a Strike-Dip-Pole (\textbf{SDP}) coordinate system. The thickness of the unit can be calculated by subtracting the \textbf{P} coordinates of any point on the top and any point on the base. Modified from Allmendinger (2019).}
+\end{figure}
+
+We can find the elements of the matrix \textbf{a} for this transformation using trigonometry. However, we are going to follow a more didactic approach. We will reference the two \textbf{ENU} and \textbf{SDP} coordinate systems with respect to the Structural Geology \textbf{NED} coordinate system, and use the dot product to determine the direction cosines of \textbf{SDP} into \textbf{ENU}. 
+
+The direction cosines of the \textbf{ENU} coordinate system with respect to the \textbf{NED} coordinate system are given by Eq. 5.7. The direction cosines of the \textbf{SDP} coordinate system with respect to the \textbf{NED} coordinate system, can be found using Table 4.1:
+
+\begin{gather*}
+    \mathbf{S} = [\cos(strike),\sin(strike),0] \\
+    \mathbf{D} = [\cos(strike+90)\cos(dip),\sin(strike+90)\cos(dip),\sin(dip)] \\
+    \mathbf{P} = [\cos(strike-90)\cos(90-dip),\sin(strike-90)\cos(90-dip),\sin(90-dip)]
+\end{gather*}
+
+which simplifies to:
+
+\begin{equation}
+    \begin{split}
+        \mathbf{S} = [\cos(strike),\sin(strike),0] \hspace{70pt}  \\
+        \mathbf{D} = [-\sin(strike)\cos(dip),\cos(strike)\cos(dip),\sin(dip)] \\
+        \mathbf{P} = [\sin(strike)\sin(dip),-\cos(strike)\sin(dip),\cos(dip)]
+    \end{split}
+\end{equation}
+
+Now, the transformation matrix \textbf{a} from the \textbf{ENU} to the \textbf{SDP} coordinate system has as elements the direction cosines of the new \textbf{SDP} axes into the old \textbf{ENU} axes. From Eq. 4.9, one can see that these are just the dot product between the new and old axes:
+
+\begin{equation*}
+    \textbf{a}=
+    \begin{bmatrix}
+    \mathbf{S}\cdot\mathbf{E} & \mathbf{S}\cdot\mathbf{N} & \mathbf{S}\cdot\mathbf{U} \\
+    \mathbf{D}\cdot\mathbf{E} & \mathbf{D}\cdot\mathbf{N} & \mathbf{D}\cdot\mathbf{U} \\
+    \mathbf{P}\cdot\mathbf{E} & \mathbf{P}\cdot\mathbf{N} & \mathbf{P}\cdot\mathbf{U}
+\end{bmatrix}
+\end{equation*}
+
+which is equal to:
+
+\begin{equation}
+    \textbf{a}=
+    \begin{bmatrix}
+    \sin(strike) & \cos(strike & 0 \\
+    \cos(strike)\cos(dip) & -\sin(strike)\cos(dip) & -\sin(dip) \\
+    -\cos(strike)\sin(dip) & \sin(strike)\sin(dip) & -\cos(dip)
+\end{bmatrix}
+\end{equation}
+
+So if point 1 is at the top of the unit and has coordinates $[E_1,N_1,U_1]$ and point 2 is at the base of the unit and has coordinates $[E_2,N_2,U_2]$, the \textbf{P} coordinates of these points are:
+
+\begin{equation}
+    \begin{split}
+        P_1 = -\cos(strike)\sin(dip)E_1+\sin(strike)\sin(dip)N_1-\cos(dip)U_1  \\
+        P_2 = -\cos(strike)\sin(dip)E_2+\sin(strike)\sin(dip)N_2-\cos(dip)U_2  \\
+    \end{split}
+\end{equation}
+
+and the thickness of the unit is:
+
+\begin{equation}
+    t = P_2-P_1
+\end{equation}{}
+
+The Python function \textit{TrueThickness} calculates the thickness of a unit given the strike and dip of the unit, and the \textbf{ENU} coordinates of two, top and base, points.
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+
+def TrueThickness(strike, dip, top, base):
+    '''
+    TrueThickness calculates the thickness (t) of a unit 
+    given the strike (strike) and dip (dip) of the unit, 
+    and points at its top (top) and base (base) 
+
+    top and base are 1 x 3 vectors defining the location 
+    of top and base points in an ENU coordinate system. 
+    For each of these vectors, the first entry is the E 
+    coordinate, the second entry the N coordinate, 
+    and the third entry the U coordinate
+
+    NOTE: strike and dip should be input in radians
+    '''
+    # make the transformation matrix from ENU coordinates 
+    # to SDP coordinates. Eq. 5.10
+    a = [[np.sin(strike), np.cos(strike), 0],
+    [np.cos(strike)*np.cos(dip), -np.sin(strike)*np.cos(dip), -np.sin(dip)],
+    [-np.cos(strike)*np.sin(dip), np.sin(strike)*np.sin(dip), -np.cos(dip)]]
+    
+    # transform the top and base points 
+    # from ENU to SDP coordinates. Eq. 5.4 
+    topn = np.zeros(3)
+    basen = np.zeros(3)
+    for i in range(0,3,1):
+        for j in range(0,3,1):
+            topn[i] = a[i][j]*top[j] + topn[i]
+            basen[i] = a[i][j]*base[j] + basen[i]
+    
+    # compute the thickness of the unit. Eq. 5.12
+    t = np.abs(basen[2] - topn[2])
+    
+    return t
+\end{lstlisting}
+ 
+Let's use this function to determine the thickness of the sedimentary units T to Q in the geologic map of Fig. 4.6. This time we have points at the top and base of these units (Fig. 5.4), and their \textbf{ENU} coordinates are:
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{Figures/ch5f4.png}
+    \caption{Geologic map of sedimentary units with an orientation 84.5/22.5 (RHR) (Bennison etal.,  2011). Points at the top and base of units T to Q are used to determine the thickness of these units.}
+\end{figure}
+
+point1 = [1147, 3329, 400]
+
+point2 = [1323, 2362, 500]
+
+point3 = [1105, 1850, 400]
+
+point4 = [1768, 940, 300]
+
+point5 = [1842, 191, 200]
+
+The Python notebook ch5-1.ipynb shows the solution of this problem:
+
+
+
 
 
 

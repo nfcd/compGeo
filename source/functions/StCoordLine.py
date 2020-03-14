@@ -1,7 +1,7 @@
 import math
 from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
-def StCoordLine(trd, plg, sttype):
+def StCoordLine(trd,plg,sttype):
     '''
     StCoordLine computes the coordinates of a line 
     in an equal angle or equal area stereonet of unit radius

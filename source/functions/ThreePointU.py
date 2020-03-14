@@ -9,9 +9,9 @@ def ThreePointU(p1,p2,p3):
     of a plane given the east (E), north (N), and up (U) 
     coordinates of three non-collinear points on the plane
     
-    p1, p2 and p3 are 1 x 3 vectors defining the location 
+    p1, p2 and p3 are 1 x 3 arrays defining the location 
     of the points in an ENU coordinate system. For each one 
-    of these vectors the first entry is the E coordinate, 
+    of these arrays the first entry is the E coordinate, 
     the second entry the N coordinate, and the third entry 
     the U coordinate. These coordinates have uncertainties
     
@@ -23,12 +23,6 @@ def ThreePointU(p1,p2,p3):
     It also uses the uncertainties package from
     Eric O. Lebigot
     '''
-    # if points are given as lists, 
-    # they must be converted to np.arrays
-    p1 = np.array(p1)
-    p2 = np.array(p2)
-    p3 = np.array(p3)
-    
     # make vectors v (p1 - p3) and u (p2 - p3)
     v = p1 - p2
     u = p2 - p3

@@ -2,7 +2,7 @@ import math
 from SphToCart import SphToCart as SphToCart
 from CartToSph import CartToSph as CartToSph
 
-def CalcMV(T, P):
+def CalcMV(T,P):
     '''
     CalcMV calculates the mean vector for a group of lines
 
@@ -69,7 +69,6 @@ def CalcMV(T, P):
         if Rave >= 0.65 and Rave < 1.0:
             afact = 1.0/0.01
             bfact = 1.0/(nlines-1.0)
-            print(R, afact, bfact)
             d99 = math.acos(1.0-((nlines-R)/R)*(afact**bfact-1.0))
             afact = 1.0/0.05
             d95 = math.acos(1.0-((nlines-R)/R)*(afact**bfact-1.0))

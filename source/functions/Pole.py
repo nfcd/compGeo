@@ -1,7 +1,7 @@
 import math
 from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
-def Pole(trd, plg, k):
+def Pole(trd,plg,k):
     '''
     Pole returns the pole to a plane or the plane from a pole  
 

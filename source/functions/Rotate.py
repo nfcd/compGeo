@@ -25,9 +25,9 @@ def Rotate(raz,rdip,rot,trd,plg,ans0):
 	'''
     # Allocate some arrays
     a = np.zeros((3,3)) #'Transformation matrix
-    pole = np.zeros((1,3)) #'Direction cosines of rotation axis
-    plotr = np.zeros((1,3)) #'Direction cosines of rotated vector
-    temp = np.zeros((1,3))  #'Direction cosines of unrotated vector
+    pole = np.zeros(3) #'Direction cosines of rotation axis
+    plotr = np.zeros(3) #'Direction cosines of rotated vector
+    temp = np.zeros(3)  #'Direction cosines of unrotated vector
     
     # Convert rotation axis to direction cosines. Note that the 
     # convention here is X1 = North, X2 = East, X3 = Down
@@ -51,9 +51,9 @@ def Rotate(raz,rdip,rot,trd,plg,ans0):
     temp[1] , temp[2], temp[3] = SphToCart(trd,plg,0)
     
     # Perform the coordinate transformation
-    for i in np.arange(1,3):
+    for i in range(0,3,1):
         plotr[i] = 0.0
-        for j in np.arange(1,3):
+        for j in range(0,3,1):
             plotr[i] = a[i,j]*temp[j] + plotr[i]
     if plotr[3] < 0.0 and ans0 == 'a' :
         plotr[1] = -plotr[1]

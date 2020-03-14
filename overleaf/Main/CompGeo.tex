@@ -115,7 +115,7 @@ In this resource, the language of choice is Python. Besides the reasons above, P
 % SECTION: INSTALLING PYTHON
 \section{Installing Python}
 
-We recommend installing Python using the free Anaconda distribution. This distribution includes Python as well as many other useful libraries, including Jupyter, which is the system we use to write the notebooks in this resource. Anaconda can be easily installed on any major operating system, including Windows, macOS, or Linux.
+We recommend installing Python using the free Anaconda distribution. This distribution includes Python as well as many other useful applications, including Jupyter, which is the system we use to write the notebooks in this resource. Anaconda can be easily installed on any major operating system, including Windows, macOS, or Linux.
 
 The installation process is quite straightforward. From the \href {https://www.anaconda.com/distribution/}{Anaconda distribution} page, go to the Download section. The website will recognize your operating system and present you with two possible installers, one for Python 3 and another for Python 2. We recommend you install the Python 3 version. Download the installer. Windows and macOS users just need to run the installer and follow the steps to install Anaconda. Linux users need to type a set of commands in a terminal window. Further instructions can be found in the online \href {https://docs.anaconda.com/anaconda/} {Anaconda documentation}, installation section.
 
@@ -633,7 +633,7 @@ The pole facilitates analyzing planes graphically and by computation. Our first 
 import math
 from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
-def Pole(trd, plg, k):
+def Pole(trd,plg,k):
     '''
     Pole returns the pole to a plane or the plane from a pole  
 
@@ -851,7 +851,7 @@ The Python function \textit{StCoordLine} below computes the coordinates of a lin
 import math
 from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
-def StCoordLine(trd, plg, sttype):
+def StCoordLine(trd,plg,sttype):
     '''
     StCoordLine computes the coordinates of a line 
     in an equal angle or equal area stereonet of unit radius
@@ -967,7 +967,7 @@ plt.axis('off')
 # equal angle or equal area stereonet
 for i in range(nrow):
     # Compute pole of plane
-    trend, plunge = Pole(planesr[i,0], planesr[i,1], 1)
+    trend, plunge = Pole(planesr[i,0],planesr[i,1],1)
     # Equal angle coordinates
     eqAngle[i,0], eqAngle[i,1] = StCoordLine(trend,plunge,0) 
     # Equal area coordinates
@@ -1511,7 +1511,6 @@ def CalcMV(T, P):
         if Rave >= 0.65 and Rave < 1.0:
             afact = 1.0/0.01
             bfact = 1.0/(nlines-1.0)
-            print(R, afact, bfact)
             d99 = math.acos(1.0-((nlines-R)/R)*(afact**bfact-1.0))
             afact = 1.0/0.05
             d95 = math.acos(1.0-((nlines-R)/R)*(afact**bfact-1.0))
@@ -1533,8 +1532,8 @@ from CalcMV import CalcMV as CalcMV
 
 # Arrays T and P contain the trend (T) 
 # and plunge (P) of the 10 poles
-T = np.array ([206, 220, 204, 198, 200, 188, 192, 228, 236, 218])
-P = np.array ([32, 30, 46, 40, 20, 32, 54, 56, 36, 44])
+T = np.array([206, 220, 204, 198, 200, 188, 192, 228, 236, 218])
+P = np.array([32, 30, 46, 40, 20, 32, 54, 56, 36, 44])
 
 # Convert T and P from degrees to radians
 pi = np.pi
@@ -1819,9 +1818,9 @@ def ThreePoint(p1,p2,p3):
     of a plane given the east (E), north (N), and up (U) 
     coordinates of three non-collinear points on the plane
     
-    p1, p2 and p3 are 1 x 3 vectors defining the location 
+    p1, p2 and p3 are 1 x 3 arrays defining the location 
     of the points in an ENU coordinate system. For each one 
-    of these vectors the first entry is the E coordinate, 
+    of these arrays the first entry is the E coordinate, 
     the second entry the N coordinate, and the third entry 
     the U coordinate
 
@@ -1830,11 +1829,6 @@ def ThreePoint(p1,p2,p3):
 
     ThreePoint uses functions CartToSph and Pole
     '''
-    # if points are given as lists, 
-    # they must be converted to np.arrays
-    p1 = np.array(p1)
-    p2 = np.array(p2)
-    p3 = np.array(p3)
     # make vectors v (p1 - p3) and u (p2 - p3)
     v = p1 - p2
     u = p2 - p3
@@ -1857,7 +1851,7 @@ def ThreePoint(p1,p2,p3):
     trd, plg = CartToSph(p[0],p[1],p[2])
     
     # find strike and dip of plane
-    strike, dip = Pole(trd, plg, 0)
+    strike, dip = Pole(trd,plg,0)
     
     return strike , dip
 \end{lstlisting}
@@ -1880,14 +1874,14 @@ Calculate the strike and dip of the plane. The Python notebook ch4-5.ipynb below
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
-import numpy as np
-pi = np.pi
+import math
+pi = math.pi
 from ThreePoint import ThreePoint as ThreePoint
 
 # ENU coordinates of the three points
-p1 = [509, 2041, 400]
-p2 = [1323, 2362, 500]
-p3 = [2003, 2913, 700]
+p1 = np.array([509, 2041, 400])
+p2 = np.array([1323, 2362, 500])
+p3 = np.array([2003, 2913, 700])
 
 # Compute the orientation of the plane
 strike, dip = ThreePoint(p1,p2,p3)
@@ -1925,8 +1919,8 @@ In the first problem on page 64, the uncertainty in strike is 4\degree and in di
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
-import math
-pi = math.pi
+import numpy as np
+pi = np.pi
 import uncertainties as unc
 from AnglesU import AnglesU as AnglesU
 
@@ -1973,19 +1967,17 @@ print('Rake of hinge in NE dipping limb = {:.1f}'.format(ang1*180/pi))
 }}
 \end{center}
 
-In the map of Fig. 4.6, the error in East and North coordinates is 10 m, and in elevation is 5 m. What is uncertainty in the strike and dip of the T-S contact? 
+In the map of Fig. 4.6, the error in east and north coordinates is 10 m, and in elevation is 5 m. What is uncertainty in the strike and dip of the T-S contact? 
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
-import numpy as np
-pi = np.pi
 from ThreePointU import ThreePointU as ThreePointU
 
 # ENU coordinates of the three points
 # with uncertainties in E-N = 10, and U = 5
-p1 = [unc.ufloat(509, 10), unc.ufloat(2041, 10), unc.ufloat(400, 5)]
-p2 = [unc.ufloat(1323, 10), unc.ufloat(2362, 10), unc.ufloat(500, 5)]
-p3 = [unc.ufloat(2003, 10), unc.ufloat(2913, 10), unc.ufloat(700, 5)]
+p1 = np.array([unc.ufloat(509, 10), unc.ufloat(2041, 10), unc.ufloat(400, 5)])
+p2 = np.array([unc.ufloat(1323, 10), unc.ufloat(2362, 10), unc.ufloat(500, 5)])
+p3 = np.array([unc.ufloat(2003, 10), unc.ufloat(2913, 10), unc.ufloat(700, 5)])
 
 # Compute the orientation of the plane
 strike, dip = ThreePointU(p1,p2,p3)
@@ -2130,10 +2122,10 @@ A transformation involves a change in the origin and orientation of the coordina
  \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{Figures/ch5f2.png}
-    \caption{\textbf{a.} A rotation of the coordinate system. The new axes are primed and red. Only three of the nine possible angles are shown. \textbf{b.} Graphic device for remembering how the subscript of the direction cosines relate to the new and the old axes. Modified from Allmendinger et al. (2012).}
+    \caption{\textbf{a.} Rotation of a Cartesian coordinate system. The old axes are black, the new axes are primed and red. Only three of the nine possible angles are shown. \textbf{b.} Graphic device for remembering how the subscript of the direction cosines relate to the new and the old axes. Modified from Allmendinger et al. (2012).}
 \end{figure}
 
-To define the transformation, we use the cosines of these angles rather than the angles themselves (Fig. 5.2b). These are the direction cosines of the new axes with respect to the old axes. The subscript convention is exactly the same. For example, $a_{23}$ is the direction cosine of the $\mathbf{X_2\text{$'$}}$ axis with respect to the $\mathbf{X_3}$ axis. There are nine direction cosines that form a 3 $\times$ 3 array, where each row refers to a new axis and each column to an old axis (Fig. 5.2b). This matrix \textbf{a} of direction cosines is known as the \textit{transformation matrix}, and it is the key element to determine for a transformation.
+To define the transformation, we use the cosines of these angles rather than the angles themselves (Fig. 5.2b). These are the direction cosines of the new axes with respect to the old axes. The subscript convention is exactly the same. For example, $a_{23}$ is the direction cosine of the $\mathbf{X_2\text{$'$}}$ axis with respect to the $\mathbf{X_3}$ axis. There are nine direction cosines that form a 3 $\times$ 3 array, where each row refers to a new axis and each column to an old axis (Fig. 5.2b). This matrix \textbf{a} of direction cosines is known as the \textit{transformation matrix}, and it is the key element that defines the transformation.
 
 Fortunately, not all the nine direction cosines in the transformation matrix are independent. Since the base vectors of the new coordinate system are unit vectors, their magnitude is 1:
 
@@ -2182,7 +2174,7 @@ where \textit{i} is the free suffix, and \textit{j} is the dummy suffix. Assumin
 for i in range(0,3,1):
     v_new[i] = 0
     for j in range(0,3,1):
-        v_new[i] = a[i][j]*v_old[j] + v_new[i]
+        v_new[i] = a[i,j]*v_old[j] + v_new[i]
 \end{lstlisting}
 \end{center}
 
@@ -2199,7 +2191,7 @@ or in Python code:
 for i in range(0,3,1):
     v_old[i] = 0
     for j in range(0,3,1):
-        v_old[i] = a[j][i]*v_new[j] + v_old[i]
+        v_old[i] = a[j,i]*v_new[j] + v_old[i]
 \end{lstlisting}
 \end{center}
 
@@ -2233,7 +2225,7 @@ When we use this matrix in Eq. 5.4, we get:
     v_1\text{$'$}=v_2;\quad v_2\text{$'$}=v_1; \quad v_3\text{$'$}=-v_3;
 \end{equation}
 
-Notice that in this special case \textbf{a} is symmetric ($a_{ij}=a_{ji}$), so the elements of \textbf{a} are also the direction cosines of the axes \textbf{ENU} with respect to the axes \textbf{NED}. In the following section, we will look at more complicated coordinate transformations, but the principles will still be the same.
+Notice that in this special case \textbf{a} is symmetric ($a_{ij}=a_{ji}$), so the elements of \textbf{a} are also the direction cosines of the axes \textbf{ENU} with respect to the axes \textbf{NED}. In the following section, we will look at more complicated coordinate transformations, but the principles mentioned here will still apply.
 
 \section{Applications}
 
@@ -2249,9 +2241,9 @@ An easier approach is to use a transformation. Figure 5.3 illustrates the situat
     \caption{Coordinate transformation from an \textbf{ENU} to a Strike-Dip-Pole (\textbf{SDP}) coordinate system. The thickness of the unit can be calculated by subtracting the \textbf{P} coordinates of any point on the top and any point on the base. Modified from Allmendinger (2019).}
 \end{figure}
 
-We can find the elements of the matrix \textbf{a} for this transformation using trigonometry. However, we are going to follow a more didactic approach. We will reference the two \textbf{ENU} and \textbf{SDP} coordinate systems with respect to the Structural Geology \textbf{NED} coordinate system, and use the dot product to determine the direction cosines of \textbf{SDP} into \textbf{ENU}. 
+We can find the elements of the matrix \textbf{a} for this transformation using trigonometry. However, we are going to follow a more didactic approach. We will reference the two \textbf{ENU} and \textbf{SDP} coordinate systems with respect to the \textbf{NED} coordinate system, and use the dot product to determine the direction cosines of \textbf{SDP} into \textbf{ENU}. 
 
-The direction cosines of the \textbf{ENU} coordinate system with respect to the \textbf{NED} coordinate system are given by Eq. 5.7. The direction cosines of the \textbf{SDP} coordinate system with respect to the \textbf{NED} coordinate system, can be found using Table 4.1:
+The direction cosines of the \textbf{ENU} coordinate system with respect to the \textbf{NED} coordinate system are given by Eq. 5.7. The direction cosines of the \textbf{SDP} coordinate system with respect to the \textbf{NED} coordinate system are given by Table 4.1:
 
 \begin{gather*}
     \mathbf{S} = [\cos(strike),\sin(strike),0] \\
@@ -2269,7 +2261,7 @@ which simplifies to:
     \end{split}
 \end{equation}
 
-Now, the transformation matrix \textbf{a} from the \textbf{ENU} to the \textbf{SDP} coordinate system has as elements the direction cosines of the new \textbf{SDP} axes into the old \textbf{ENU} axes. From Eq. 4.9, one can see that these are just the dot product between the new and old axes:
+The transformation matrix \textbf{a} from the \textbf{ENU} to the \textbf{SDP} coordinate system has as components the direction cosines of the new \textbf{SDP} axes into the old \textbf{ENU} axes. From Eq. 4.9, one can see that these are just the dot product between the new and old axes:
 
 \begin{equation*}
     \textbf{a}=
@@ -2291,7 +2283,7 @@ which is equal to:
 \end{bmatrix}
 \end{equation}
 
-So if point 1 is at the top of the unit and has coordinates $[E_1,N_1,U_1]$ and point 2 is at the base of the unit and has coordinates $[E_2,N_2,U_2]$, the \textbf{P} coordinates of these points are:
+So if point 1 is at the top of the unit and has coordinates $[E_1,N_1,U_1]$, and point 2 is at the base of the unit and has coordinates $[E_2,N_2,U_2]$, the \textbf{P} coordinates of these points are:
 
 \begin{equation}
     \begin{split}
@@ -2306,20 +2298,20 @@ and the thickness of the unit is:
     t = P_2-P_1
 \end{equation}{}
 
-The Python function \textit{TrueThickness} calculates the thickness of a unit given the strike and dip of the unit, and the \textbf{ENU} coordinates of two, top and base, points.
+The Python function \textit{TrueThickness} calculates the thickness of a unit given the strike and dip of the unit, and the \textbf{ENU} coordinates of two points at the top and base of the unit:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 
-def TrueThickness(strike, dip, top, base):
+def TrueThickness(strike,dip,top,base):
     '''
     TrueThickness calculates the thickness (t) of a unit 
     given the strike (strike) and dip (dip) of the unit, 
     and points at its top (top) and base (base) 
 
-    top and base are 1 x 3 vectors defining the location 
+    top and base are 1 x 3 arrays defining the location 
     of top and base points in an ENU coordinate system. 
-    For each of these vectors, the first entry is the E 
+    For each of these arrays, the first entry is the E 
     coordinate, the second entry the N coordinate, 
     and the third entry the U coordinate
 
@@ -2327,9 +2319,13 @@ def TrueThickness(strike, dip, top, base):
     '''
     # make the transformation matrix from ENU coordinates 
     # to SDP coordinates. Eq. 5.10
-    a = [[np.sin(strike), np.cos(strike), 0],
-    [np.cos(strike)*np.cos(dip), -np.sin(strike)*np.cos(dip), -np.sin(dip)],
-    [-np.cos(strike)*np.sin(dip), np.sin(strike)*np.sin(dip), -np.cos(dip)]]
+    sinStr = np.sin(strike)
+    cosStr = np.cos(strike)
+    sinDip = np.sin(dip)
+    cosDip = np.cos(dip)
+    a = np.array([[sinStr, cosStr, 0],
+    [cosStr*cosDip, -sinStr*cosDip, -sinDip],
+    [-cosStr*sinDip, sinStr*sinDip, -cosDip]])
     
     # transform the top and base points 
     # from ENU to SDP coordinates. Eq. 5.4 
@@ -2337,8 +2333,8 @@ def TrueThickness(strike, dip, top, base):
     basen = np.zeros(3)
     for i in range(0,3,1):
         for j in range(0,3,1):
-            topn[i] = a[i][j]*top[j] + topn[i]
-            basen[i] = a[i][j]*base[j] + basen[i]
+            topn[i] = a[i,j]*top[j] + topn[i]
+            basen[i] = a[i,j]*base[j] + basen[i]
     
     # compute the thickness of the unit. Eq. 5.12
     t = np.abs(basen[2] - topn[2])
@@ -2364,12 +2360,95 @@ point4 = [1768, 940, 300]
 
 point5 = [1842, 191, 200]
 
-The Python notebook ch5-1.ipynb shows the solution of this problem:
+The Python notebook ch5-1.ipynb below shows the solution of this problem:
 
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+pi = np.pi
+from TrueThickness import TrueThickness as TrueThickness
 
+# Strike and dip of the unit in radians
+strike = 84.5 * pi/180
+dip = 22.5 * pi/180
 
+# ENU coordinates of the points
+p1 = np.array([1147, 3329, 400]) 
+p2 = np.array([1323, 2362, 500]) 
+p3 = np.array([1105, 1850, 400]) 
+p4 = np.array([1768, 940, 300]) 
+p5 = np.array([1842, 191, 200])
 
+# Compute the thickness of the units
+thickT = TrueThickness(strike,dip,p2,p1)
+thickS = TrueThickness(strike,dip,p3,p2)
+thickR = TrueThickness(strike,dip,p4,p3)
+thickQ = TrueThickness(strike,dip,p5,p4)
+print('Thickness of unit T = {:.1f} m'.format(thickT))
+print('Thickness of unit S = {:.1f} m'.format(thickS))
+print('Thickness of unit R = {:.1f} m'.format(thickR))
+print('Thickness of unit Q = {:.1f} m'.format(thickQ))
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    Thickness of unit T = 467.2 m \\
+    Thickness of unit S = 94.6 m \\
+    Thickness of unit R = 278.6 m \\
+    Thickness of unit Q = 195.6 m
+}}
+\end{center}
 
+What about if there are uncertainties in the strike and dip of the unit, and in the top and base points? The function \textit{TrueThicknessU} in our git repository handles this case. Suppose that in the problem above, the uncertainties in strike and dip are 4\degree and 2\degree respectively, the uncertainty in east and north coordinates is 10 m, and in elevation is 5 m. The Python notebook ch5-2.ipynb below shows the solution of this problem:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+pi = np.pi
+import uncertainties as unc
+from TrueThicknessU import TrueThicknessU as TrueThicknessU
+
+# Strike and dip of the unit in radians
+strike = 84.5 * pi/180
+dip = 22.5 * pi/180
+
+# Strike and dip errors in radians
+ustrike = 4 * pi/180
+udip = 2 * pi/180
+
+# Create the strike and dip with uncertainties
+strike = unc.ufloat(strike, ustrike) # strike +/- ustrike
+dip = unc.ufloat(dip, udip) # dip +/- udip
+
+# ENU coordinates of the points
+# with uncertainties in E-N = 10, and U = 5
+p1 = np.array([unc.ufloat(1147, 10), unc.ufloat(3329, 10), unc.ufloat(400, 5)]) 
+p2 = np.array([unc.ufloat(1323, 10), unc.ufloat(2362, 10), unc.ufloat(500, 5)]) 
+p3 = np.array([unc.ufloat(1105, 10), unc.ufloat(1850, 10),unc.ufloat(400, 5)]) 
+p4 = np.array([unc.ufloat(1768, 10), unc.ufloat(940, 10), unc.ufloat(300, 5)]) 
+p5 = np.array([unc.ufloat(1842, 10), unc.ufloat(191, 10), unc.ufloat(200, 5)])
+
+# Compute the thickness of the units
+thickT = TrueThicknessU(strike, dip, p2, p1)
+thickS = TrueThicknessU(strike, dip, p3, p2)
+thickR = TrueThicknessU(strike, dip, p4, p3)
+thickQ = TrueThicknessU(strike, dip, p5, p4) 
+print('Thickness of unit T = {:.1f} m'.format(thickT))
+print('Thickness of unit S = {:.1f} m'.format(thickS))
+print('Thickness of unit R = {:.1f} m'.format(thickR))
+print('Thickness of unit Q = {:.1f} m'.format(thickQ))
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    Thickness of unit T = 467.2+/-31.5 m \\
+    Thickness of unit S = 94.6+/-20.4 m \\
+    Thickness of unit R = 278.6+/-37.0 m \\
+    Thickness of unit Q = 195.6+/-27.0 m \\
+}}
+\end{center}
+
+For the thinnest unit S, the uncertainty in thickness is as much as 20\% the unit thickness!
 
 \subsection{Outcrop trace of a plane}
 

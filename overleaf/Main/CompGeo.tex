@@ -532,7 +532,7 @@ plt.legend(['Cosine', 'Quadratic'])
     
     The graph should look like the figure below:
     
-    \begin{figure}[H]
+    \begin{figure}[ht]
         \centering
         \includegraphics[width=12cm]{Figures/ch1f3.png}
         \caption{Apparent dip $\alpha$ as function of section bearing $\beta$ and true dip $\delta$}
@@ -1576,7 +1576,7 @@ plt.plot(mvx,mvy,'ro')
     Output: \\
     Mean vector trend = 208.6, plunge 40.0 \\
     Mean resultant length = 0.963 \\
-    \includegraphics[width=5cm]{Figures/ch4f6.png}
+    \includegraphics[width=4.75cm]{Figures/ch4f6.png}
 }}
 \end{center}
 
@@ -2237,11 +2237,11 @@ An easier approach is to use a transformation. Figure 5.3 illustrates the situat
 
  \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{Figures/ch5f3.png}
+    \includegraphics[width=10cm]{Figures/ch5f3.png}
     \caption{Coordinate transformation from an \textbf{ENU} to a Strike-Dip-Pole (\textbf{SDP}) coordinate system. The thickness of the unit can be calculated by subtracting the \textbf{P} coordinates of any point on the top and any point on the base. Modified from Allmendinger (2019).}
 \end{figure}
 
-We can find the elements of the matrix \textbf{a} for this transformation using trigonometry. However, we are going to follow a more didactic approach. We will reference the two \textbf{ENU} and \textbf{SDP} coordinate systems with respect to the \textbf{NED} coordinate system, and use the dot product to determine the direction cosines of \textbf{SDP} into \textbf{ENU}. 
+We can find the elements of the matrix \textbf{a} for this transformation using trigonometry. However, we will follow a more didactic approach. We will reference the two \textbf{ENU} and \textbf{SDP} coordinate systems with respect to the \textbf{NED} coordinate system, and use the dot product to determine the direction cosines of \textbf{SDP} into \textbf{ENU}. 
 
 The direction cosines of the \textbf{ENU} coordinate system with respect to the \textbf{NED} coordinate system are given by Eq. 5.7. The direction cosines of the \textbf{SDP} coordinate system with respect to the \textbf{NED} coordinate system are given by Table 4.1:
 
@@ -2311,9 +2311,8 @@ def TrueThickness(strike,dip,top,base):
 
     top and base are 1 x 3 arrays defining the location 
     of top and base points in an ENU coordinate system. 
-    For each of these arrays, the first entry is the E 
-    coordinate, the second entry the N coordinate, 
-    and the third entry the U coordinate
+    For each one of these arrays, the first, second
+    and third entries are the E, N and U coordinates
 
     NOTE: strike and dip should be input in radians
     '''
@@ -2342,12 +2341,12 @@ def TrueThickness(strike,dip,top,base):
     return t
 \end{lstlisting}
  
-Let's use this function to determine the thickness of the sedimentary units T to Q in the geologic map of Fig. 4.6. This time we have points at the top and base of these units (Fig. 5.4), and their \textbf{ENU} coordinates are:
+Let's use this function to determine the thickness of the sedimentary units T to Q in the geologic map of Fig. 5.4. This time we have points at the top and base of these units, and their \textbf{ENU} coordinates are:
 
  \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{Figures/ch5f4.png}
-    \caption{Geologic map of sedimentary units with an orientation 84.5/22.5 (RHR) (Bennison etal.,  2011). Points at the top and base of units T to Q are used to determine the thickness of these units.}
+    \caption{Geologic map of sedimentary units with an orientation 84.5/22.5 (RHR) (Bennison etal.,  2011). Points at the top and base of units T to Q are used to determine the thickness of these units. This is also the geologic map of Fig. 4.6.}
 \end{figure}
 
 point1 = [1147, 3329, 400]
@@ -2448,17 +2447,129 @@ print('Thickness of unit Q = {:.1f} m'.format(thickQ))
 }}
 \end{center}
 
-For the thinnest unit S, the uncertainty in thickness is as much as 20\% the unit thickness!
+For the thinnest unit S, the uncertainty in thickness is as much as 20\% the thickness of this unit!
 
 \subsection{Outcrop trace of a plane}
 
+The \textbf{ENU} to \textbf{SDP} transformation is useful to solve another important problem, namely determining the outcrop trace of a plane on irregular terrain (section 3.3.1 and Fig. 3.9). If we know the orientation of the plane (strike and dip), the \textbf{ENU} coordinates of a location where the plane outcrops, and have a digital elevation model (DEM) of the terrain, which is a grid of regularly spaced points in \textbf{E} and \textbf{N} and with elevation (\textbf{U}) information, we can determine the outcrop trace of the plane using computation. The solution is surprisingly simple, the plane outcrops wherever the \textbf{P} coordinate of the terrain is equal to the \textbf{P} coordinate of the location where the plane outcrops.
+
+Let's call the \textbf{P} coordinate of the outcrop location $P_1$, and the \textbf{P} coordinate of a point in the DEM grid $P_{gp}$. The difference between these two is:
+
+\begin{equation}
+    D=P_1-P_{gp}
+\end{equation}
+
+At each point in the DEM grid we can calculate and store this difference. The plane will outcrop wherever $D$ is zero. Therefore, to draw the outcrop trace, we just need to contour the $D$ value zero on the grid. The function \textit{OutcropTrace} below computes the value of $D$ on a DEM grid of regularly spaced points defined by \textbf{E} ($\mathbf{XG}$), \textbf{N} ($\mathbf{YG}$) and \textbf{U} ($\mathbf{XG}$) coordinates. Notice that these arrays must follow the format given by the NumPy \textit{meshgrid} function:
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+
+def OutcropTrace(strike,dip,p1,XG,YG,ZG):
+    '''
+    OutcropTrace estimates the outcrop trace of a plane,
+    given the strike (strike) and dip (dip) of the plane,
+    the ENU coordinates of a point (p1) where the plane
+    outcrops, and a DEM of the terrain as a regular grid
+    of points with E (XG), N (YG) and U (ZG) coordinates.
+    
+    After using this function, to draw the outcrop trace 
+    of the plane, you just need to draw the contour 0 on 
+    the grid XG,YG,DG
+    
+    NOTE: strike and dip should be input in radians
+          p1 must be an array
+          XG and YG arrays should be constructed using 
+          the Numpy function meshgrid
+    '''
+    
+    # make the transformation matrix from ENU coordinates to 
+    # SDP coordinates. We just need the third row of this matrix
+    a = np.zeros((3,3))
+    a[2,0] = -np.cos(strike)*np.sin(dip) 
+    a[2,1] = np.sin(strike)*np.sin(dip) 
+    a[2,2] = -np.cos(dip);
+    
+    # Initialize DG
+    n, m = XG.shape
+    DG = np.zeros((n,m))
+    
+    # Estimate the P coordinate of the outcrop point p1
+    P1 = a[2,0]*p1[0] + a[2,1]*p1[1] + a[2,2]*p1[2]
+    
+    # Estimate the P coordinate at each point of the DEM
+    # grid and subtract P1. Eq. 5.13
+    for i in range(n):
+        for j in range(m):
+            DG[i,j] = P1 - (a[2,0]*XG[i,j] + a[2,1]*YG[i,j] + a[2,2]*ZG[i,j])
+    
+    return DG  
+\end{lstlisting}
+
+Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). Determine the outcrop trace of the contact. The Python notebook ch5-3.ipynb below shows the solution of this problem. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are read from text files (\textit{XG.txt}, \textit{YG.txt}, and \textit{ZG.txt}) which are available from our git repository.
+
+ \begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{Figures/ch5f5.png}
+    \caption{The contact between units B and C outcrops at point 2 with orientation 020/22 (RHR), and at point y with orientation 160/22 (RHR). From this information and a DEM of the terrain, we can determine the outcrop trace of the contact. This is also the map of Fig. 4.8.}
+\end{figure}
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+import matplotlib.pyplot as plt
+from OutcropTrace import OutcropTrace as OutcropTrace
+
+# Read the DEM grid
+XG = np.loadtxt('XG.txt')
+YG = np.loadtxt('YG.txt')
+ZG = np.loadtxt('ZG.txt')
+
+# Contour the terrain
+cval = np.linspace(200,700,6)
+cp = plt.contour(XG,YG,ZG,cval)
+plt.clabel(cp, inline=True, fontsize=10, fmt="%d")
+
+# Western contact
+pi = np.pi
+strike = 20*pi/180
+dip = 22*pi/180
+point2 = np.array([692, 1212, 600])
+DG = OutcropTrace(strike,dip,point2,XG,YG,ZG)
+cval = 0 # Contour only CG zero value
+cp = plt.contour(XG,YG,DG,cval,colors='red',linewidths=3)
+
+# Eastern contact
+strike = 160*pi/180
+dip = 22*pi/180
+pointy = np.array([3203, 1031, 200])
+DG = OutcropTrace(strike,dip,pointy,XG,YG,ZG)
+cp = plt.contour(XG,YG,DG,cval,colors='red',linewidths=3)
+
+# Make axes equal
+plt.axis('scaled')
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    \includegraphics[width=9cm]{Figures/ch5f6.png}
+}}
+\end{center}
+
 \subsection{Downplunge projection}
+
+
 
 \subsection{Rotations}
 
+
+
 \subsection{Plotting great and small circles on stereonets}
 
+
+
 \section{Exercises}
+
+
 
 \section*{References}
 

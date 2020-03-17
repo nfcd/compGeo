@@ -12,10 +12,9 @@ def TrueThicknessU(strike,dip,top,base):
 
     top and base are 1 x 3 arrays defining the location 
     of top and base points in an ENU coordinate system. 
-    For each of these arrays, the first entry is the E 
-    coordinate, the second entry the N coordinate, 
-    and the third entry the U coordinate. These
-    coordinates have uncertainties
+    For each one of these arrays, the first, second
+    and third entries are the E, N and U coordinates. 
+    These coordinates have uncertainties
 
     NOTE: strike and dip should be input in radians and
             they have uncertainties in radians. The

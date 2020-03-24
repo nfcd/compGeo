@@ -1,4 +1,5 @@
 import numpy as np
+
 def DownPlunge(bedseg,trd,plg):
    '''
    DownPlunge constructs the down plunge projection of a bed
@@ -24,7 +25,7 @@ def DownPlunge(bedseg,trd,plg):
    a=np.zeros((3,3))
    dpbedseg = np.zeros((np.shape(bedseg)))
    
-   # Calculate the transformation matrix a(i,j)
+   # Calculate the transformation matrix a(i,j) Eq. 5.15
    a[0,0] = np.sin(trd)*np.sin(plg)
    a[0,1] = np.cos(trd)*np.sin(plg)
    a[0,2] = np.cos(plg)

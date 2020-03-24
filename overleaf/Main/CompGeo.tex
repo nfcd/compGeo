@@ -2451,15 +2451,15 @@ For the thinnest unit S, the uncertainty in thickness is as much as 20\% the thi
 
 \subsection{Outcrop trace of a plane}
 
-The \textbf{ENU} to \textbf{SDP} transformation is useful to solve another important problem, namely determining the outcrop trace of a plane on irregular terrain (section 3.3.1 and Fig. 3.9). If we know the orientation of the plane (strike and dip), the \textbf{ENU} coordinates of a location where the plane outcrops, and have a digital elevation model (DEM) of the terrain, which is a grid of regularly spaced points in \textbf{E} and \textbf{N} and with elevation (\textbf{U}) information, we can determine the outcrop trace of the plane using computation. The solution is surprisingly simple, the plane outcrops wherever the \textbf{P} coordinate of the terrain is equal to the \textbf{P} coordinate of the location where the plane outcrops.
+The \textbf{ENU} to \textbf{SDP} transformation is useful to solve another important problem, namely determining the outcrop trace of a plane on irregular terrain (Fig. 3.9). If we know the orientation of the plane (strike and dip), the \textbf{ENU} coordinates of the location where the plane outcrops, and the topography of the terrain as a digital elevation model (DEM\footnote{A grid of regularly spaced points in east and north and with elevation information.}), we can determine the outcrop trace of the plane using computation. The solution is surprisingly simple, the plane outcrops wherever the \textbf{P} coordinate of the terrain is equal to the \textbf{P} coordinate of the location where the plane outcrops.
 
-Let's call the \textbf{P} coordinate of the outcrop location $P_1$, and the \textbf{P} coordinate of a point in the DEM grid $P_{gp}$. The difference between these two is:
+Let's call the \textbf{P} coordinate of the location where the plane outcrops $P_1$, and the \textbf{P} coordinate of a point in the DEM grid $P_{gp}$. The difference between these two is:
 
 \begin{equation}
     D=P_1-P_{gp}
 \end{equation}
 
-At each point in the DEM grid we can calculate and store this difference. The plane will outcrop wherever $D$ is zero. Therefore, to draw the outcrop trace, we just need to contour the $D$ value zero on the grid. The function \textit{OutcropTrace} below computes the value of $D$ on a DEM grid of regularly spaced points defined by \textbf{E} ($\mathbf{XG}$), \textbf{N} ($\mathbf{YG}$) and \textbf{U} ($\mathbf{XG}$) coordinates. Notice that these arrays must follow the format given by the NumPy \textit{meshgrid} function:
+At each point in the DEM grid, we can calculate and store this difference. The plane will outcrop wherever $D$ is zero. Therefore, to draw the outcrop trace, we just need to contour the $D$ value zero on the grid. The function \textit{OutcropTrace} below computes the value of $D$ on a DEM grid of regularly spaced points defined by \textbf{E} ($\mathbf{XG}$), \textbf{N} ($\mathbf{YG}$) and \textbf{U} ($\mathbf{ZG}$) coordinates. Notice that these arrays must follow the format given by the NumPy \textit{meshgrid} function:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -2505,11 +2505,11 @@ def OutcropTrace(strike,dip,p1,XG,YG,ZG):
     return DG  
 \end{lstlisting}
 
-Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). Determine the outcrop trace of the contact. The Python notebook ch5-3.ipynb below shows the solution of this problem. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are read from text files (\textit{XG.txt}, \textit{YG.txt}, and \textit{ZG.txt}) which are available from our git repository.
+Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). The Python notebook ch5-3.ipynb below draws the outcrop trace of the contact. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are input from text files (\textit{XG.txt}, \textit{YG.txt}, and \textit{ZG.txt}) which are available from our git repository.
 
  \begin{figure}[ht]
     \centering
-    \includegraphics[width=12cm]{Figures/ch5f5.png}
+    \includegraphics[width=11.8cm]{Figures/ch5f5.png}
     \caption{The contact between units B and C outcrops at point 2 with orientation 020/22 (RHR), and at point y with orientation 160/22 (RHR). From this information and a DEM of the terrain, we can determine the outcrop trace of the contact. This is also the map of Fig. 4.8.}
 \end{figure}
 
@@ -2555,11 +2555,273 @@ plt.axis('scaled')
 }}
 \end{center}
 
-\subsection{Downplunge projection}
+\subsection{Down-Plunge projection}
 
+Folded rock layers normally have a cylindrical symmetry; the layers are bent about a single axis or direction, called the fold axis. The fold axis is a line of minimum, zero curvature, and the lines of maximum, non-zero curvature are perpendicular to it (Suppe, 1985). The least distorted view of such structure is in the plane perpendicular to the fold axis, which is called the profile plane (Fig. 5.7). Projecting the fold data to this profile plane is called a \textit{Down-Plunge} projection.
 
+Constructing a Down-Plunge projection by hand typically involves an orthographic projection, and this problem is complicated (and tedious), particularly if points on the fold are not at the same elevation. Fortunately, we can solve this problem instead as a coordinate transformation, where points on the fold referenced in an \textbf{ENU} coordinate system, are transformed to a new $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ coordinate system, with $\mathbf{X_3\text{$'$}}$ parallel to the fold axis, and $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}$ defining the profile plane (Fig. 5.6).
+
+We will again derive the matrix \textbf{a} for this transformation using linear algebra. The direction cosines of the \textbf{ENU} coordinate system with respect to the \textbf{NED} coordinate system are given by Eq. 5.7. The direction cosines of the $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ coordinate system with respect to the \textbf{NED} coordinate system are given by Table 4.1. If the trend and plunge of the fold axis are $T$ and $P$, these direction cosines are (Fig. 5.6):
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{Figures/ch5f7.png}
+    \caption{The two coordinate systems involved in a Down-Plunge projection of a fold. Modified from Allmendinger et al. (2012).}
+\end{figure}
+
+\begin{gather*}
+    \mathbf{X_1\text{$'$}} = [\cos(T)\cos(P-90),\sin(T)\cos(P-90),\sin(P-90)] \\
+    \mathbf{X_2\text{$'$}} = [\cos(T+90),\sin(T+90),0)] \\
+    \mathbf{X_3\text{$'$}} = [\cos(T)\cos(P),\sin(T)\cos(P),\sin(P)]
+\end{gather*}
+
+which simplifies to:
+
+\begin{equation}
+    \begin{split}
+        \mathbf{X_1\text{$'$}} = [\cos(T)\sin(P),\sin(T)\sin(P),-\cos(P)]  \\
+        \mathbf{X_2\text{$'$}} = [-\sin(T),\cos(T),0] \hspace{40pt} \\
+        \mathbf{X_3\text{$'$}} = [\cos(T)\cos(P),\sin(T)\cos(P),\sin(P)]
+    \end{split}
+\end{equation}
+
+The direction cosines of the new $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ axes into the old \textbf{ENU} axes are the dot product between the new and old axes:
+
+\begin{equation*}
+    \textbf{a}=
+    \begin{bmatrix}
+    \mathbf{X_1\text{$'$}}\cdot\mathbf{E} & \mathbf{X_1\text{$'$}}\cdot\mathbf{N} & \mathbf{X_1\text{$'$}}\cdot\mathbf{U} \\
+    \mathbf{X_2\text{$'$}}\cdot\mathbf{E} & \mathbf{X_2\text{$'$}}\cdot\mathbf{N} & \mathbf{X_2\text{$'$}}\cdot\mathbf{U} \\
+    \mathbf{X_3\text{$'$}}\cdot\mathbf{E} & \mathbf{X_3\text{$'$}}\cdot\mathbf{N} & \mathbf{X_3\text{$'$}}\cdot\mathbf{U}
+\end{bmatrix}
+\end{equation*}
+
+which is equal to:
+
+\begin{equation}
+    \textbf{a}=
+    \begin{bmatrix}
+    \sin(T)\sin(P) & \cos(T)\sin(P) & \cos(P) \\
+    \cos(T) & -\sin(T) & 0 \\
+    \sin(T)\cos(P) & \cos(T)\cos(P) & -\sin(P)
+\end{bmatrix}
+\end{equation}
+
+This is the transformation matrix \textbf{a} for the Down-Plunge projection. To project $i$ points on the fold with coordinates $[E_i,N_i,U_i]$, we just need to do the following:
+
+\begin{equation}
+    \begin{split}
+        X_{1i}'=\sin(T)\sin(P)E_i+\cos(T)\sin(P)N_i+\cos(P)U_i \\
+        X_{2i}'=\cos(T)E_i-\sin(T)N_i  \hspace{60pt}
+    \end{split}
+\end{equation}
+
+and then plot $X_{2i}'$ against $X_{1i}'$ (Fig. 5.6) to draw the Down-Plunge projection of the fold.
+
+The Python function \textit{DownPlunge} below computes the Down-Plunge projection of a bed given the \textbf{ENU} coordinates of points on the bed, and the trend and plunge of the fold axis:
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+
+def DownPlunge(bedseg,trd,plg):
+   '''
+   DownPlunge constructs the down plunge projection of a bed
+
+   DownPlunge constructs the down plunge projection
+   of a bed
+
+   bedseg is a npoints x 3 array, which holds npoints 
+   on the digitized bed, each point defined by
+   3 coordinates: X1 = East, X2 = North, X3 = Up
+
+   trd and plg are the trend and plunge of the fold axis
+
+   NOTE: trd and plg should be entered in radians
+
+   Python function translated from the Matlab function 
+   DownPlunge in Allmendinger et al. (2012)
+   '''
+   # Number of points in bed
+   nvtex = bedseg.shape[0]
+
+   # Allocate some arrays
+   a=np.zeros((3,3))
+   dpbedseg = np.zeros((np.shape(bedseg)))
+   
+   # Calculate the transformation matrix a(i,j) Eq. 5.15
+   a[0,0] = np.sin(trd)*np.sin(plg)
+   a[0,1] = np.cos(trd)*np.sin(plg)
+   a[0,2] = np.cos(plg)
+   a[1,0] = np.cos(trd)
+   a[1,1] = -np.sin(trd)
+   a[2,0] = np.sin(trd)*np.cos(plg)
+   a[2,1] = np.cos(trd)*np.cos(plg)
+   a[2,2] = -np.sin(plg)
+    
+   # Perform transformation
+   for nv in range(0,nvtex,1):
+       for i in range(0,3,1):
+           dpbedseg[nv,i] = 0.0
+           for j in range(0,3,1):
+               dpbedseg[nv,i] = a[i,j]*bedseg[nv,j] + dpbedseg[nv,i]
+                
+   return dpbedseg
+\end{lstlisting}
+
+Let's use this function to draw the Down-Plunge projection of the Big Elk anticline in southeastern Idaho, USA (Fig. 5.7; Albee and Cullins, 1975). This is exercise 8 in chapter 3 of Allmendinger et al. (2012). Text files in our git repository contain the digitized contacts (\textbf{ENU}) of three tops along the fold: the Jurassic Twin Creek Limestone (\textit{jtc.txt}), the Jurassic Stump Sandstone (\textit{js.txt}), and the Cretaceous Peterson Limestone (\textit{kp.txt}). The trend and plunge of the folds axis is 125/126 (in the next chapter, we will see how to compute this axis). The notebook ch5-4.ipynb shows the solution of this problem:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+import matplotlib.pyplot as plt
+from DownPlunge import DownPlunge as DownPlunge
+
+# Trend and plunge of the fold axis in radians
+trend = 125 * np.pi/180;
+plunge = 26 * np.pi/180;
+
+# Read the tops from the text files
+jtc = np.loadtxt('jtc.txt');
+js = np.loadtxt('js.txt');
+kp = np.loadtxt('kp.txt');
+
+# Transform the points
+jtcdp = DownPlunge(jtc,trend,plunge);
+jsdp = DownPlunge (js,trend,plunge);
+kpdp = DownPlunge(kp,trend,plunge);
+
+# Plot the Down-plunge section
+plt.plot(jtcdp[:,1],jtcdp[:,0],'k-');
+plt.plot(jsdp[:,1],jsdp[:,0],'r-');
+plt.plot(kpdp[:,1],kpdp[:,0],'b-');
+
+# Display the section's orientation
+# Notice that the fold axis plunges SE
+# Therefore the left side of the section is NE
+# and the right side is SW
+plt.text(-2.1e4,11.5e3,'NE')
+plt.text(-0.6e4,11.5e3,'SW')
+
+# Make axes equal
+plt.axis('scaled')
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    \includegraphics[width=10cm]{Figures/ch5f9.png}
+}}
+\end{center}
+
+The thrust verges to the NE (the direction of transport is towards the NE), yet the fold verges in the opposite direction to the SW. Unit Jp, between Jtc and Js, contains evaporites (Fig. 5.7). Could this explain the observed fold geometry?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=14cm]{Figures/ch5f8.png}
+    \caption{Simplified geologic map of the Big Elk anticline in southeastern Idaho. Modified from Allmendinger et al. (2012).}
+\end{figure}
 
 \subsection{Rotations}
+
+Rotations are essential in geology. For example, when we take the orientation of current lineations on tilted beds, and we need to figure out the orientation of the current that deposited these beds, we need to rotate or unfold the beds back to their pre-tilting orientation. The stereonet is a convenient device to rotate data around a horizontal axis or a vertical axis, but it is rather difficult to rotate data around an axis of a different orientation (Marshak and Mitra, 1988). 
+
+Computationally speaking, a rotation is nothing more than a coordinate transformation from an old coordinate system $\mathbf{X_1}\mathbf{X_2}\mathbf{X_3}$ to a new coordinate system $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ (Fig. 5.8). The rotation axis is specified by its trend and plunge, and the magnitude of rotation is given as an angle $\omega$ that is positive if the rotation is clockwise about the given axis (Fig. 5.8). The difficult part is that the rotation axis may not coincide with the axes of either the old or the new coordinate system (unlike the Down-Plunge projection).
+
+The components of the transformation matrix \textbf{a} defining the rotation, which are the direction cosines of the new coordinate system $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ with regards to the old coordinate system $\mathbf{X_1}\mathbf{X_2}\mathbf{X_3}$, can be found using spherical trigonometry (Allmendinger et al., 2012) or linear algebra as we did in the two sections before. We give them without proof. If $\cos\alpha$, $\cos\beta$ and $\cos\gamma$ are the direction cosines of the rotation axis in the \textbf{NED} coordinate system (Table 4.1), and $\omega$ is the amount of rotation (positive is clockwise rotation), the elements of matrix \textbf{a} are:
+
+\begin{equation}
+    \begin{split}
+        a_{11}=\cos\omega+\cos^2\alpha(1-\cos\omega) \hspace{30pt} \\
+        a_{12}=-\cos\gamma\sin\omega+\cos\alpha\cos\beta(1-\cos\omega) \\
+        a_{13}=\cos\beta\sin\omega+\cos\alpha\cos\gamma(1-\cos\omega) \hspace{7pt} \\
+        a_{21}=\cos\gamma\sin\omega+\cos\beta\cos\alpha(1-\cos\omega) \hspace{7pt} \\
+        a_{22}=\cos\omega+\cos^2\beta(1-\cos\omega) \hspace{30pt} \\
+        a_{23}=-\cos\alpha\sin\omega+\cos\beta\cos\gamma(1-\cos\omega) \\
+        a_{31}=-\cos\beta\sin\omega+\cos\gamma\cos\alpha(1-\cos\omega) \\
+        a_{32}=\cos\alpha\sin\omega+\cos\gamma\cos\beta(1-\cos\omega) \hspace{7pt} \\
+        a_{33}=\cos\omega+\cos^2\gamma(1-\cos\omega) \hspace{30pt}
+    \end{split}
+\end{equation}
+
+The Python function \textit{Rotate} below rotates a line (\textit{trd} and \textit{plg}) about a rotation axis (\textit{rtrd} and \textit{rplg}), an amount $\omega$ (\textit{rot}):
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+from SphToCart import SphToCart as SphToCart
+from CartToSph import CartToSph as CartToSph
+
+def Rotate(rtrd,rplg,rot,trd,plg,ans0):
+    '''
+	Rotate rotates a line by performing a coordinate 
+	transformation. The algorithm was originally written 
+	by Randall A. Marrett
+
+	rtrd = trend of rotation axis
+	rplg = plunge of rotation axis
+	rot = magnitude of rotation
+	trd = trend of the vector to be rotated
+	plg = plunge of the vector to be rotated
+	ans0 = A character indicating whether the line to be rotated 
+	is an axis (ans0 = 'a') or a vector (ans0 = 'v')
+
+	NOTE: All angles are in radians
+	
+	Rotate uses functions SphToCart and CartToSph
+	
+	Python function translated from the Matlab function 
+	Rotate in Allmendinger et al. (2012)
+	'''
+    # Allocate some arrays
+    a = np.zeros((3,3)) #'Transformation matrix
+    pole = np.zeros(3) #'Direction cosines of rotation axis
+    plotr = np.zeros(3) #'Direction cosines of rotated vector
+    temp = np.zeros(3)  #'Direction cosines of unrotated vector
+    
+    # Convert rotation axis to direction cosines. Note that the 
+    # convention here is X1 = North, X2 = East, X3 = Down
+    pole[1] , pole[2], pole[3] = SphToCart(rtrd,rplg,0)
+    
+    # Calculate the transformation matrix a for the rotation
+    # Eq. 5.17
+    x = 1.0 - np.cos(rot)
+    sinRot = np.sin(rot)
+    cosRot = np.cos(rot)
+    a[1,1] = cosRot + pole[1]*pole[1]*x
+    a[1,2] = -pole[3]*sinRot + pole[1]*pole[2]*x
+    a[1,3] = pole[2]*sinRot + pole[1]*pole[3]*x
+    a[2,1] = pole[3]*sinRot + pole[2]*pole[1]*x
+    a[2,2] = cosRot + pole[2]*pole[2]*x
+    a[2,3] = -pole[1]*sinRot + pole[2]*pole[3]*x
+    a[3,1] = -pole[2]*sinRot + pole[3]*pole[1]*x
+    a[3,2] = pole[1]*sinRot + pole[3]*pole[2]*x
+    a[3,3] = cosRot + pole[3]*pole[3]*x
+    
+    
+    # Convert trend and plunge of vector to be rotated into 
+    # direction cosines
+    temp[1] , temp[2], temp[3] = SphToCart(trd,plg,0)
+    
+    # Perform the coordinate transformation
+    for i in range(0,3,1):
+        plotr[i] = 0.0
+        for j in range(0,3,1):
+            plotr[i] = a[i,j]*temp[j] + plotr[i]
+            
+    # Convert to lower hemisphere projection if data are
+    # axes (ans0 = 'a')
+    if plotr[3] < 0.0 and ans0 == 'a' :
+        plotr[1] = -plotr[1]
+        plotr[2] = -plotr[2]
+        plotr[3] = -plotr[3]
+        
+    # Convert from direction cosines back to trend and plunge
+    rtrd , rplg = CartToSph(plotr[1], plotr[2], plotr[3])
+    
+    return rtrd, rplg
+\end{lstlisting}
+
+
+
+
 
 
 

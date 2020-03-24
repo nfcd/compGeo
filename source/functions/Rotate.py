@@ -2,14 +2,14 @@ import numpy as np
 from SphToCart import SphToCart as SphToCart
 from CartToSph import CartToSph as CartToSph
 
-def Rotate(raz,rdip,rot,trd,plg,ans0):
+def Rotate(rtrd,rplg,rot,trd,plg,ans0):
     '''
 	Rotate rotates a line by performing a coordinate 
 	transformation. The algorithm was originally written 
 	by Randall A. Marrett
 
-	raz = trend of rotation axis
-	rdip = plunge of rotation axis
+	rtrd = trend of rotation axis
+	rplg = plunge of rotation axis
 	rot = magnitude of rotation
 	trd = trend of the vector to be rotated
 	plg = plunge of the vector to be rotated
@@ -31,7 +31,10 @@ def Rotate(raz,rdip,rot,trd,plg,ans0):
     
     # Convert rotation axis to direction cosines. Note that the 
     # convention here is X1 = North, X2 = East, X3 = Down
-    pole[1] , pole[2], pole[3] = SphToCart(raz,rdip,0)
+    pole[1] , pole[2], pole[3] = SphToCart(rtrd,rplg,0)
+    
+    # Calculate the transformation matrix a for the rotation
+    # Eq. 5.17
     x = 1.0 - np.cos(rot)
     sinRot = np.sin(rot)
     cosRot = np.cos(rot)
@@ -55,10 +58,15 @@ def Rotate(raz,rdip,rot,trd,plg,ans0):
         plotr[i] = 0.0
         for j in range(0,3,1):
             plotr[i] = a[i,j]*temp[j] + plotr[i]
+            
+    # Convert to lower hemisphere projection if data are
+    # axes (ans0 = 'a')
     if plotr[3] < 0.0 and ans0 == 'a' :
         plotr[1] = -plotr[1]
         plotr[2] = -plotr[2]
         plotr[3] = -plotr[3]
+        
+    # Convert from direction cosines back to trend and plunge
     rtrd , rplg = CartToSph(plotr[1], plotr[2], plotr[3])
     
     return rtrd, rplg

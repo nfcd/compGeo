@@ -31,27 +31,27 @@ def Rotate(rtrd,rplg,rot,trd,plg,ans0):
     
     # Convert rotation axis to direction cosines. Note that the 
     # convention here is X1 = North, X2 = East, X3 = Down
-    pole[1] , pole[2], pole[3] = SphToCart(rtrd,rplg,0)
+    pole[0] , pole[1], pole[2] = SphToCart(rtrd,rplg,0)
     
     # Calculate the transformation matrix a for the rotation
     # Eq. 5.17
     x = 1.0 - np.cos(rot)
     sinRot = np.sin(rot)
     cosRot = np.cos(rot)
+    a[0,0] = cosRot + pole[0]*pole[0]*x
+    a[0,1] = -pole[2]*sinRot + pole[0]*pole[1]*x
+    a[0,2] = pole[1]*sinRot + pole[0]*pole[2]*x
+    a[1,0] = pole[2]*sinRot + pole[1]*pole[0]*x
     a[1,1] = cosRot + pole[1]*pole[1]*x
-    a[1,2] = -pole[3]*sinRot + pole[1]*pole[2]*x
-    a[1,3] = pole[2]*sinRot + pole[1]*pole[3]*x
-    a[2,1] = pole[3]*sinRot + pole[2]*pole[1]*x
+    a[1,2] = -pole[0]*sinRot + pole[1]*pole[2]*x
+    a[2,0] = -pole[1]*sinRot + pole[2]*pole[0]*x
+    a[2,1] = pole[0]*sinRot + pole[2]*pole[1]*x
     a[2,2] = cosRot + pole[2]*pole[2]*x
-    a[2,3] = -pole[1]*sinRot + pole[2]*pole[3]*x
-    a[3,1] = -pole[2]*sinRot + pole[3]*pole[1]*x
-    a[3,2] = pole[1]*sinRot + pole[3]*pole[2]*x
-    a[3,3] = cosRot + pole[3]*pole[3]*x
     
     
     # Convert trend and plunge of vector to be rotated into 
     # direction cosines
-    temp[1] , temp[2], temp[3] = SphToCart(trd,plg,0)
+    temp[0] , temp[1], temp[2] = SphToCart(trd,plg,0)
     
     # Perform the coordinate transformation
     for i in range(0,3,1):
@@ -61,12 +61,12 @@ def Rotate(rtrd,rplg,rot,trd,plg,ans0):
             
     # Convert to lower hemisphere projection if data are
     # axes (ans0 = 'a')
-    if plotr[3] < 0.0 and ans0 == 'a' :
+    if plotr[2] < 0.0 and ans0 == 'a' :
+        plotr[0] = -plotr[0]
         plotr[1] = -plotr[1]
         plotr[2] = -plotr[2]
-        plotr[3] = -plotr[3]
         
     # Convert from direction cosines back to trend and plunge
-    rtrd , rplg = CartToSph(plotr[1], plotr[2], plotr[3])
+    trdr , plgr = CartToSph(plotr[0], plotr[1], plotr[2])
     
-    return rtrd, rplg
+    return trdr, plgr

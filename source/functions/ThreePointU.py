@@ -1,4 +1,3 @@
-import numpy as np
 from uncertainties import umath as umath
 from CartToSphU import CartToSphU as CartToSphU
 from Pole import Pole as Pole

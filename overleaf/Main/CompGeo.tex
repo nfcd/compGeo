@@ -2351,7 +2351,7 @@ Let's use this function to determine the thickness of the sedimentary units T to
  \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{Figures/ch5f4.png}
-    \caption{Geologic map of sedimentary units with an orientation 84.5/22.5 (RHR) (Bennison etal.,  2011). Points at the top and base of units T to Q are used to determine the thickness of the units.}
+    \caption{Geologic map of sedimentary units with an orientation 84.5/22.5 (RHR) (Bennison et al.,  2011). Points at the top and base of units T to Q are used to determine the thickness of the units.}
 \end{figure}
 
 point1 = [1147, 3329, 400]
@@ -2824,9 +2824,9 @@ def Rotate(rtrd,rplg,rot,trd,plg,ans0):
     return rtrd, rplg
 \end{lstlisting}
 
-The  notebook  ch4-5.ipynb  below  illustrates  the  use  of  the  function \textit{Rotate} to solve the following problem from Leyshon  and Lisle  (1996): An overturned bed oriented 305/60 (RHR) has sedimentary lineations which indicate the palaeocurrent direction. These pitch at 60NW, with the current flowing up the plunge. Calculate the original trend of the palaeocurrents. 
+The  notebook  ch5-5.ipynb  below  illustrates  the  use  of  the  function \textit{Rotate} to solve the following problem from Leyshon  and Lisle  (1996): An overturned bed oriented 305/60 (RHR) has sedimentary lineations which indicate the palaeocurrent direction. These pitch at 60NW, with the current flowing up the plunge. Calculate the original trend of the palaeocurrents. 
 
-Besides rotating the lineations back to their pre-tilted orientation, there is an additional challenge in this problem. We need to figure out the orientation of the lineations from their pitch on the bed. We will do this as well using a rotation:
+Besides rotating the lineations back to their pre-tilted orientation, there is an additional challenge in this problem. We need to figure out the orientation of the lineations from their pitch on the bed. We will do this as well using a rotation.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2883,14 +2883,359 @@ print('Original trend of the paleocurrents = {:.1f}'.format(trdl*180/pi))
 }}
 \end{center}
 
-\subsection{Plotting great and small circles on stereonets}
+\subsection{Plotting great and small circles using rotations}
 
+The transformation matrix \textbf{a} that describes the rotation (Eq. 5.17), provides a simple and elegant way to draw great and small circles on a stereonet. As you may suspect from the previous notebook, to draw a great circle, we just need to rotate the strike line of the plane in fixed increments (e.g. 1\degree) around the pole to the plane until completing 180\degree. This is the same as drawing lines on the plane of incrementally larger rake from 0 to 180\degree. To draw a small circle, we just need to incrementally rotate (e.g. 1\degree increments) a line around the axis of the conic section until completing 360\degree. Any line making an angle less than 90\degree with the axis of rotation will trace out a cone, which plots on the stereonet as a small circle. The Python functions \textit{GreatCircle} and \textit{SmallCircle} return the path of great and small circles on an equal angle or equal area stereonet:
 
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+from Pole import Pole as Pole
+from Rotate import Rotate as Rotate
+from StCoordLine import StCoordLine as StCoordLine
+
+def GreatCircle(strike,dip,sttype):
+    '''
+	GreatCircle computes the great circle path of a plane 
+	in an equal angle or equal area stereonet of unit radius
+	
+	strike = strike of plane
+	dip = dip of plane
+	sttype = type of stereonet: 0 = equal angle, 1 = equal area
+	path = x and y coordinates of points in great circle path
+	
+	NOTE: strike and dip should be entered in radians. 
+	
+	GreatCircle uses functions StCoordLine, Pole and Rotate
+	
+	Python function translated from the Matlab function
+	GreatCircle in Allmendinger et al. (2012)
+	'''
+    pi = np.pi
+	# Compute the pole to the plane. This will be the axis of 
+	# rotation to make the great circle
+    trda, plga = Pole(strike,dip,1)
+    
+	# Now pick the strike line at the intersection of the 
+    # great circle with the primitive of the stereonet
+    trd = strike
+    plg = 0.0
+    
+	# To make the great circle, rotate the line 180 degrees 
+	# in increments of 1 degree
+    rot = np.arange(0,181,1)*pi/180
+    path = np.zeros((rot.shape[0],2))
+    
+    for i in range(rot.shape[0]):
+	# Avoid joining ends of path
+        if rot[i] == pi:
+            rot[i] = rot[i]*0.9999
+		# Rotate line
+        rtrd, rplg = Rotate(trda,plga,rot[i],trd,plg,'a')
+		# Calculate stereonet coordinates of rotated line 
+		# and add to great circle path
+        path[i,0], path[i,1] = StCoordLine(rtrd,rplg,sttype)
+    
+    return path
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+from Rotate import Rotate as Rotate
+from StCoordLine import StCoordLine as StCoordLine
+from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+
+def SmallCircle(trda,plga,coneAngle,sttype):
+    '''
+	SmallCircle computes the paths of a small circle defined 
+	by its axis and cone angle, for an equal angle or equal 
+	area stereonet of unit radius
+	
+	trda = trend of axis
+	plga = plunge of axis
+	coneAngle = cone angle
+	sttype = type of stereonet. 0 = equal angle, 1 = equal area
+	path1 and path2 are vectors with the x and y coordinates of 
+       the points in the small circle paths
+       np1 and np2 = Number of points in path1 and path2
+       
+    NOTE: All angles should be in radians
+
+	SmallCircle uses functions ZeroTwoPi, StCoordLine and Rotate
+
+	Python function translated from the Matlab function 	
+	SmallCircle in Allmendinger et al. (2012)
+	'''
+    pi = np.pi
+	# Find where to start the small circle
+    if (plga - coneAngle) >= 0.0:
+        trd = trda
+        plg = plga - coneAngle
+    else:
+        if plga == pi/2.0:
+            plga = plga*0.9999
+        angle = np.arccos(np.cos(coneAngle)/np.cos(plga))
+        trd = ZeroTwoPi(trda+angle)
+        plg = 0.0
+    
+    
+	# To make the small circle, rotate the starting line 
+	# 360 degrees in increments of 1 degree
+    rot = np.arange(0,361,1)*pi/180
+    path1 = np.zeros((rot.shape[0],2))
+    path2 = np.zeros((rot.shape[0],2))
+    np1 = 0
+    np2 = 0
+    for i in range(rot.shape[0]):
+        # Rotate line: Notice that the line is considered as a vector
+        rtrd , rplg = Rotate(trda,plga,rot[i],trd,plg,'v')
+        # Add to the right path
+        # If plunge of rotated line is positive add to first path
+        if rplg >= 0.0:
+            # Calculate stereonet coordinates and add to path
+            path1[np1,0] , path1[np1,1] = StCoordLine(rtrd,rplg,sttype)
+            np1 = np1 +1
+        else:
+            path2[np2,0] , path2[np2,1] = StCoordLine(rtrd,rplg,sttype)
+            np2 = np2 +1
+    
+    return path1, path2, np1, np2
+\end{lstlisting}
+
+Normally, stereonets are displayed with the primitive equal to the horizontal (i.e. looking straight down). However, sometimes is convenient to look at the stereonet in another orientation. For example, one may want to plot data in the plane of a cross section (the view direction is perpendicular to the cross section), or in a down-plunge projection of a fold (the view direction is parallel to the fold axis). The Python function \textit{GeogrToView} enables to plot great and small circles on a stereonet of any view direction, by transforming the poles of rotation from \textbf{NED} coordinates to the view direction coordinates:
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+from SphToCart import SphToCart as SphToCart
+from CartToSph import CartToSph as CartToSph
+from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+
+def GeogrToView(trd,plg,trdv,plgv):
+    '''
+	GeogrToView transforms a line from NED to View Direction
+	coordinates
+	trd = trend of line
+   	plg = plunge of line 
+   	trdv = trend of view direction 
+   	plgv = plunge of view direction 
+   	rtrd and rplg are the new trend and plunge of the line 
+   	in the view direction.
+
+   	NOTE: Input/Output angles are in radians
+
+   	GeogrToView uses functions ZeroTwoPi, SphToCart and CartToSph
+
+   	Python function translated from the Matlab function 
+   	GeogrToView in Allmendinger et al. (2012)
+	'''
+    #some constants 
+    east = np.pi/2.0
+    
+    #Make transformation matrix between NED and View Direction
+    a = np.zeros((3,3))
+    a[2,0], a[2,1], a[2,2] = SphToCart(trdv,plgv,0)
+    temp1 = trdv + east
+    temp2 = 0.0
+    a[1,0], a[1,1], a[1,2] = SphToCart(temp1,temp2,0)
+    temp1 = trdv
+    temp2 = plgv - east
+    a[0,0], a[0,1], a[0,2] = SphToCart(temp1,temp2,0)
+     
+    #Direction cosines of line
+    dirCos = np.zeros(3)
+    dirCos[0], dirCos[1], dirCos[2] = SphToCart(trd,plg,0)
+      
+    # Transform line
+    nDirCos = np.zeros(3)
+    for i in range(0,3,1):
+        nDirCos[i] = a[i,0]*dirCos[0] + a[i,1]*dirCos[1]+ a[i,2]*dirCos[2]
+    
+    # Compute line from new direction cosines
+    rtrd, rplg = CartToSph(nDirCos[0],nDirCos[1],nDirCos[2])
+    
+    # Take care of negative plunges
+    if rplg < 0.0 :
+        rtrd = ZeroTwoPi(rtrd+np.pi)
+        rplg = -rplg
+    
+    return rtrd, rplg
+\end{lstlisting}
+
+We put these three functions together in a function called \textit{Stereonet}, that plots an equal angle or equal area stereonet in any view direction:
+
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+import matplotlib.pyplot as plt
+from Pole import Pole as Pole
+from GeogrToView import GeogrToView as GeogrToView
+from SmallCircle import SmallCircle as SmallCircle
+from GreatCircle import GreatCircle as GreatCircle
+
+def Stereonet(trdv,plgv,intrad,sttype):
+    '''
+	Stereonet plots an equal angle or equal area stereonet 
+	of unit radius in any view direction
+	
+	trdv = trend of view direction
+	plgv = plunge of view direction
+	intrad = interval in radians between great or small circles 
+	sttype = type of stereonet. 0 = equal angle, 1 = equal area
+	
+	NOTE: All angles should be entered in radians
+	
+	Stereonet uses functions Pole, GeogrToView, 
+	SmallCircle and GreatCircle
+	
+	Python function translated from the Matlab function
+	Stereonet in Allmendinger et al. (2012)
+	'''
+    pi = np.pi
+    # some constants
+    east = pi/2.0
+    west = 3.0*east
+    
+    # Plot stereonet reference circle
+    r = 1.0 # radius pf stereonet
+    TH = np.arange(0,360,1)*pi/180
+    X = r * np.cos(TH)
+    Y = r * np.sin(TH)
+    
+    # Make a larger figure
+    plt.rcParams['figure.figsize'] = [15, 7.5]
+    plt.plot(X,Y, 'k')
+    plt.axis ([-1, 1, -1, 1])
+    plt.axis ('equal')
+    plt.axis('off')
+    
+    # Number of small circles
+    nCircles = int(pi/(intrad*2.0))
+    
+    # small circles
+    # start at the North
+    trd = 0.0
+    plg = 0.0
+    
+    # If view direction is not the default (trdv=0,plgv=90)
+    # transform line to view direction
+    if trdv != 0.0 and plgv != east:
+        trd, plg = GeogrToView(trd,plg,trdv,plgv)
+    
+    # Plot small circles
+    for i in range(1,nCircles+1):
+        coneAngle = i*intrad
+        path1, path2, np1, np2 = SmallCircle(trd,plg,coneAngle,sttype)
+        plt.plot(path1[np.arange(0,np1),0], path1[np.arange(0,np1),1], color='gray',linewidth=0.5)
+        if np2 > 0:
+            plt.plot(path2[np.arange(0,np2),0], path2[np.arange(0,np2),1], color='gray', linewidth=0.5)
+    
+    # Great circles
+    for i in range(0,nCircles*2+1):
+        # Western half
+        if i <= nCircles:
+            # Pole of great circle
+            trd = west
+            plg = i*intrad
+            # Eastern half
+        else:
+            # Pole of great circle
+            trd = east
+            plg = (i-nCircles)*intrad
+        # If pole is vertical, shift it a little bit
+        if plg == east:
+            plg = plg * 0.9999
+        # If view direction is not the default (trdv=0,plgv=90)
+        # transform line to view direction
+        if trdv != 0.0 and plgv != east:
+            trd, plg = GeogrToView(trd,plg,trdv,plgv)
+        # Compute plane from pole
+        strike, dip = Pole(trd,plg,0)
+        # Plot great circle
+        path = GreatCircle(strike,dip,sttype)
+        plt.plot(path[:,0], path[:,1], color='gray', linewidth=0.5)
+\end{lstlisting}
+
+Now, let's use all these functions to plot the bedding data of the Big Elk anticline (Fig. 5.7) in an equal angle stereonet, looking down and also along the fold axis. The notebook ch5-6.ipynb below illustrates this. Notice that we read the strike and dips from the file \textit{beasd.txt}, which is also in our repository:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib  inline
+from Pole import Pole as Pole
+from GreatCircle import GreatCircle as GreatCircle
+from GeogrToView import GeogrToView as GeogrToView
+from Stereonet import Stereonet as Stereonet
+pi = np.pi
+
+# Draw a lower hemisphere equal angle stereonet
+trdv = 0
+plgv = 90 * pi/180
+intrad = 10 * pi/180
+Stereonet(trdv,plgv,intrad,0)
+
+# Read the strike-dip data from the Big Elk anticline
+beasd = np.loadtxt('beasd.txt')
+
+# Plot the great circles
+for i in range(beasd.shape[0]):
+    path = GreatCircle(beasd[i,0]*pi/180,beasd[i,1]*pi/180,0)
+    plt.plot(path[:,0], path[:,1], 'b', linewidth=0.5) 
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    \includegraphics[width=5cm]{Figures/ch5f11.png}
+}}
+\end{center}
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# Draw the same data in an equal angle stereonet,
+# but make the view direction = fold axis
+trdv = 125*pi/180
+plgv = 26*pi/180
+Stereonet(trdv,plgv,intrad,0)
+
+# Plot the great circles
+for i in range(beasd.shape[0]):
+    # pole to bed
+    trdp, plgp =  Pole(beasd[i,0]*pi/180,beasd[i,1]*pi/180,1)
+    # transform pole
+    trdpt, plgpt = GeogrToView(trdp,plgp,trdv,plgv)
+    # bed from transformed pole
+    striket, dipt = Pole(trdpt,plgpt,0)
+    # plot great circle
+    path = GreatCircle(striket,dipt,0)
+    plt.plot(path[:,0], path[:,1], 'b', linewidth=0.5)  
+\end{lstlisting}
+\fbox{
+    \parbox{\textwidth - 2 \fboxsep}{
+    Output: \\
+    \includegraphics[width=5cm]{Figures/ch5f12.png}
+}}
+\end{center}
+
+What do these plots tell you about the geometry of the fold?
 
 \section{Exercises}
 
 
 
 \section*{References}
+
+Albee, H.F. and Cullins, H.L. 1975. Geologic Map of the Poker Peak Quadrangle, Bonneville County, Idaho. U.S. Geological Survey, Geologic Quadrangle Map GQ 1260. 
+
+Allmendinger, R.W., Cardozo, N. and Fisher, D.W. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
+
+Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. Available at \href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{this site.}
+
+Bennison, G.M., Olver, P.A. and Moseley, K.A. 2011. An Introduction to Geological Structures and Maps, 8th edition. Hodder Education, 168 p.
+
+Leyshon, P.R. and Lisle, R.J. 1996. Stereographic Projection Techniques in Structural Geology. Butterworth Heinemann, 104 p.
+
+Marshak, S. and Mitra, G. 1988. Basic Methods of Structural Geology. Prentice Hall, 446 p.
+
+Ragan, D.M. 2009. Structural Geology: An Introduction to Geometrical Techniques. Cambridge University Press, 632 p.
+
+Suppe, J. 1985. Principles of Structural Geology. Prentice-Hall, 537 p.
 
 \end{document}

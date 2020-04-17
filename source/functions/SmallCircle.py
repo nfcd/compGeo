@@ -1,7 +1,7 @@
 import numpy as np
 from Rotate import Rotate as Rotate
 from StCoordLine import StCoordLine as StCoordLine
-from ZeroTwoPi import ZeroTwopi as ZeroTwoPi
+from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
 
 def SmallCircle(trda,plga,coneAngle,sttype):
     '''
@@ -32,30 +32,30 @@ def SmallCircle(trda,plga,coneAngle,sttype):
     else:
         if plga == pi/2.0:
             plga = plga*0.9999
-        angle = np.acos(np.cos(coneAngle)/np.cos(plga))
+        angle = np.arccos(np.cos(coneAngle)/np.cos(plga))
         trd = ZeroTwoPi(trda+angle)
         plg = 0.0
     
     
 	# To make the small circle, rotate the starting line 
 	# 360 degrees in increments of 1 degree
-    rot = np.arange(0,360,1)*pi/180
-    path1 = np.zeros((rot.np.shape[1],2))
-    path2 = np.zeros((rot.np.shape[1],2))
+    rot = np.arange(0,361,1)*pi/180
+    path1 = np.zeros((rot.shape[0],2))
+    path2 = np.zeros((rot.shape[0],2))
     np1 = 0
     np2 = 0
-    for i in range(rot.size):
+    for i in range(rot.shape[0]):
         # Rotate line: Notice that the line is considered as a vector
         rtrd , rplg = Rotate(trda,plga,rot[i],trd,plg,'v')
         # Add to the right path
         # If plunge of rotated line is positive add to first path
         if rplg >= 0.0:
-            np1 = np1 +1
             # Calculate stereonet coordinates and add to path
-            path1[np1,1] , path1[np1,2] = StCoordLine(rtrd,rplg,sttype)
+            path1[np1,0] , path1[np1,1] = StCoordLine(rtrd,rplg,sttype)
+            np1 = np1 +1
         else:
-            np2 = np1 +1
-            path2[np2,1] , path2[np2,2] = StCoordLine(rtrd,rplg,sttype)
+            path2[np2,0] , path2[np2,1] = StCoordLine(rtrd,rplg,sttype)
+            np2 = np2 +1
     
     return path1, path2, np1, np2
     

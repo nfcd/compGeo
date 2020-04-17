@@ -33,32 +33,37 @@ def Stereonet(trdv,plgv,intrad,sttype):
     TH = np.arange(0,360,1)*pi/180
     X = r * np.cos(TH)
     Y = r * np.sin(TH)
+    
+    # Make a larger figure
+    plt.rcParams['figure.figsize'] = [15, 7.5]
     plt.plot(X,Y, 'k')
     plt.axis ([-1, 1, -1, 1])
     plt.axis ('equal')
     plt.axis('off')
-    plt.hold(True)
     
     # Number of small circles
-    nCircles = pi/(intrad*2.0)
+    nCircles = int(pi/(intrad*2.0))
     
     # small circles
     # start at the North
     trd = 0.0
     plg = 0.0
+    
     # If view direction is not the default (trdv=0,plgv=90)
     # transform line to view direction
-    if trdv == 0.0 and plgv == east:
+    if trdv != 0.0 and plgv != east:
         trd, plg = GeogrToView(trd,plg,trdv,plgv)
-    for i in np.arange(1,nCircles):
+    
+    # Plot small circles
+    for i in range(1,nCircles+1):
         coneAngle = i*intrad
         path1, path2, np1, np2 = SmallCircle(trd,plg,coneAngle,sttype)
-        plt.plot(path1[np.arange(1,np1),1], path1[np.arange(1,np1),2], 'b')
+        plt.plot(path1[np.arange(0,np1),0], path1[np.arange(0,np1),1], color='gray',linewidth=0.5)
         if np2 > 0:
-            plt.plot(path2[np.arange(1,np2),1], path2[np.arange(1,np2),2], 'b')
+            plt.plot(path2[np.arange(0,np2),0], path2[np.arange(0,np2),1], color='gray', linewidth=0.5)
     
-    # Great Circle
-    for i in np.arange(0,nCircles*2):
+    # Great circles
+    for i in range(0,nCircles*2+1):
         # Western half
         if i <= nCircles:
             # Pole of great circle
@@ -74,13 +79,10 @@ def Stereonet(trdv,plgv,intrad,sttype):
             plg = plg * 0.9999
         # If view direction is not the default (trdv=0,plgv=90)
         # transform line to view direction
-        if trdv == 0.0 and plgv == east:
+        if trdv != 0.0 and plgv != east:
             trd, plg = GeogrToView(trd,plg,trdv,plgv)
         # Compute plane from pole
         strike, dip = Pole(trd,plg,0)
         # Plot great circle
         path = GreatCircle(strike,dip,sttype)
-        plt.plot(path[:,1], path[:,2], 'b')
-    plt.hold(False)
-            
-        
+        plt.plot(path[:,0], path[:,1], color='gray', linewidth=0.5)         

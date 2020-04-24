@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{gensymb}
 \usepackage{textcomp} % This fixes the problem with single quotes in Python
+\usepackage{sidecap} % caption to the side of figure
 \graphicspath{ {./images/} }
 
 \hypersetup{
@@ -2017,7 +2018,7 @@ Problems 1-3 are from Marshak and Mitra (1988). Solve these problems using the f
     \begin{figure}[ht]
     \centering
     \includegraphics[width=9cm]{Figures/ch4f8.png}
-    \caption{Map for exercise 2. This is map 10 of Bennison et al. (2011).}
+    \caption{Map for exercise 4. This is map 10 of Bennison et al. (2011).}
     \end{figure}
     
     point1 = [1580, 379, 400]
@@ -2053,7 +2054,7 @@ Problems 1-3 are from Marshak and Mitra (1988). Solve these problems using the f
      \begin{figure}[ht]
     \centering
     \includegraphics[width=12cm]{Figures/ch4f9.png}
-    \caption{Map for exercise 3}
+    \caption{Map for exercise 5}
     \end{figure}
     
     point1 = [862, 943, 500]
@@ -2727,7 +2728,7 @@ The thrust verges to the NE (the direction of transport is towards the NE), yet 
 
 \subsection{Rotations}
 
-Rotations are essential in geology. For example, when we take the orientation of current lineations on tilted beds, and we want to figure out the orientation of the paleo-current that deposited these beds, we need to rotate or unfold the beds (and the lineations) back to their pre-tilting orientation. The stereonet is a convenient device to rotate data around a horizontal axis or a vertical axis, but it is rather difficult to rotate data around an axis of a different orientation (Marshak and Mitra, 1988). 
+Rotations are essential in geology. For example, when we measure the orientation of current lineations on tilted beds, and we want to estimate the orientation of the paleo-current that deposited these beds, we need to rotate or unfold the beds (and the lineations) back to their pre-tilting orientation. The stereonet is a convenient device to rotate data around a horizontal axis or a vertical axis, but it is rather difficult to rotate data around an axis of a different orientation (Marshak and Mitra, 1988). 
 
 A rotation is also a coordinate transformation from an old coordinate system $\mathbf{X_1}\mathbf{X_2}\mathbf{X_3}$ to a new coordinate system $\mathbf{X_1\text{$'$}}\mathbf{X_2\text{$'$}}\mathbf{X_3\text{$'$}}$ (Fig. 5.8). The rotation axis is specified by its trend and plunge, and the magnitude of rotation is given as an angle $\omega$ that is positive if the rotation is clockwise about the given axis and vice versa (Fig. 5.8). The difficult part is that the rotation axis may not coincide with the axes of either the old or the new coordinate system (unlike the Down-Plunge projection).
 
@@ -3218,13 +3219,61 @@ What do these plots tell you about the geometry of the fold?
 
 \section{Exercises}
 
+\begin{enumerate}
 
+    \item Figure 5.8 is a satellite image of the Sheep Mountain anticline, Wyoming, USA (Rioux, 1994). At 75 localities along the anticline in the Jurassic Sundance Formation (gray-green sandstone, siltstone and shale; Rioux, 1994), the \textbf{ENU} coordinates of points on the base and top of the unit (Fig. 5.8a, green and red points), and three points on a bed inside the unit (Fig. 5.8b, blue points), were recorded in Google Earth. You can see these points in Google Earth using the file \textit{stdp.kml} in our git repository. 
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=14cm]{Figures/ch5f13.jpg}
+    \caption{\textbf{a.} Base (green) and top (red) locations of the Jurassic Sundance Formation along the Sheep Mountain anticline, Wyoming, for exercise 1. \textbf{b.} Closeup of one of the localities (red rectangle in a) showing as well the three points (blue) used to determine strike and dip.}
+    \end{figure}
+    
+    The file \textit{sdtp.txt} (also in our git repository) contains the \textbf{ENU} coordinates (UTM in meters) of the points. Each row is one locality, and it contains 15 columns corresponding to the \textbf{ENU} coordinates of points 1 to 5. Points 1 to 3 are on a bed inside the unit, and points 4 and 5 are on the base and top of the unit, respectively. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on. 
+    
+    \begin{enumerate}
+        \item Compute the thickness of the Sundance Formation at the 75 localities. Notice that at each locality you will need to compute the strike and dip using points 1-3 and the \textit{ThreePoint} function, and the thickness of the unit using points 4 and 5 and the \textit{TrueThickness} function.
+        \item Plot the bedding data along the anticline in and equal area, lower hemisphere stereonet. Plot these data as great circles.
+        \item Suppose that the error in horizontal (\textbf{EN}) coordinates is $\pm$ 3 m and in the vertical is $\pm$ 1.5 m. These are conservative error estimates for Google Earth. What are the errors in strike and dip and thickness in the 75 localities? \textit{Hint}: Use functions \textit{ThreePointU} and \textit{TrueThicknessU}.
+        \item Make a plot of computed thickness versus computed dip, and another plot of computed thickness versus north (\textbf{N}) for the 75 localities. Include the thickness and dip error bars. Do you see any correlation between thickness and bedding dip? Can you identify any systematic variation of thickness along the anticline? Please consider the errors (uncertainties) when answering these questions. 
+        \item The axis of the anticline is oriented 306/11. This is approximately the location where the bedding planes on the stereonet intersect (why?). In the next chapter we will see how to compute this. Make a Down-Plunge projection of the base and top of the Jurassic Sundance Formation. \textit{Hint}: Project the 75 base and top locations using the function \textit{DownPlunge}.
+    \end{enumerate}
+    
+    \item Allmendinger and Judge (2013) wrote an interesting article about the uncertainty in thickness measurements and its implication for estimating the shortening in fold and thrust belts. Figure 5.9 is a geologic map of the Canmore east half area in Alberta, Canada (Price, 1970). The yellow dots in the map are the points used to estimate the thickness of the Devonian Palliser (Dpa) and Mississippian Livingstone (Mlv) formations. These are in a homoclinal dip package in a thrust sheet. 
+    
+     \begin{SCfigure}
+        \caption{Geologic map of the Canmore east half area, Alberta, Canada (Price, 1970) for exercise 2. The yellow dots are points used to determine the thickness of the Devonian Palliser (Dpa) and Mississippian Livingstone (Mlv) formations.}
+        \includegraphics[width=0.5\textwidth]{Figures/ch5f14.jpg}
+    \end{SCfigure}
+    
+    The files \textit{dpa.txt} and \textit{mlv.txt} in our git repository contain the \textbf{ENU} coordinates (UTM in meters) of the points in the Palliser (Dpa) and Livingstone (Mlv) formations, respectively. Each row in the files is one locality, and it contains 12 columns corresponding to the \textbf{ENU} coordinates of points 1 to 4. Points 1-3 are either on the top or the base of the unit, and point 4 is on the other contact. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on.
+    
+    \begin{enumerate}
+        \item Compute the thickness of the Palliser and Livingstone formations at the localities shown in Figure 5.9. What is the mean value of thickness of these two units? What is the standard deviation (this is also called the 1-sigma error)? \textit{Hint}: Use the functions \textit{ThreePoint} and \textit{TrueThickness}. The NumPy functions \textit{mean} and \textit{std} compute the mean and standard deviation of an array.
+        \item Consider that the uncertainty in horizontal and vertical coordinates is $\pm$15.24 m. Compute again the mean value and standard deviation of the thickness of the units. This time these values will have uncertainties. \textit{Hint}: Use the functions \textit{ThreePointU} and \textit{TrueThicknessU}. Notice that you can use the NumPy functions \textit{mean} and \textit{std} on arrays made of numbers with uncertainties (\textit{uFloat}).
+        \item How do your results compare to those of Allmendinger and Judge (2013, their Table 1)?
+    \end{enumerate}{}
+    
+    \item This exercise is from Marshak and Mitra (1988). It's probably one of the hardest exercices to solve using rotations on a stereonet. Here, you will use the function \textit{Rotate} to solve this problem:
+    
+    In eastern New York, there is an important unconformity called the Taconic unconformity. It separates Mid-Ordovician flysch from Devonian limestone. At a locality near the town of Catskill, the limestone (and the unconformity) is oriented 195/44 (RHR). An anticline occurs in the underlying flysch. One limb is presently oriented 240/73 (limb 1), and the other limb is presently oriented 020/41 (limb 2) (RHR). Flute casts occur in the Ordovician strata on limb 1 (NW dipping limb) and they have an orientation of 037/52.
+    
+    \begin{enumerate}
+        \item What was the orientation of each of the two fold limbs before tilting of the unconformity? \textit{Hint}: Rotate the pole of the unconformity about the strike line of the unconformity to make the pole vertical (and the unconformity horizontal). Apply the same rotation to the poles of the limbs and the flute casts. Find the orientation of the limbs from their rotated poles.
+        \item What was the orientation of the fold axis prior to tilting? \textit{Hint}: The fold axis is the intersection of the limbs before tilting of the unconformity. Use the function \textit{Angles} to solve this. 
+        \item What was the trend of the current direction responsible for the formation of the flute casts in Ordovician time? Starting from the orientation of limb 1 and the flute casts before tilting of the unconformity, rotate the pole of limb 1 about the strike line of the limb to make the pole vertical (and the limb horizontal). Apply the same rotation to the flute casts. If the rotation is correct, the flute casts should be horizontal and their trend is the orientation of the paleocurrent in the Ordovician.
+        \item What is the present orientation of the flute casts on limb 2 (SE dipping limb)? Starting from the orientation of limb 2 before tilting of the unconformity, rotate the pole of limb 2 about the strike line of the limb to make the pole vertical (and the limb horizontal). On this horizontal limb, the flute casts orientation is the trend you got in c minus 180\degree. The plunge of the flute casts is of course zero. Apply to the flute casts on limb 2 the inverse of the rotations you applied to limb 2, i.e. Bring limb 2 and its flute casts back to their orientation before tilting of the unconformity, and then to their present orientation after tilting of the unconformity.
+    \end{enumerate}{}
+    
+\end{enumerate}
 
 \section*{References}
 
 Albee, H.F. and Cullins, H.L. 1975. Geologic Map of the Poker Peak Quadrangle, Bonneville County, Idaho. U.S. Geological Survey, Geologic Quadrangle Map GQ 1260. 
 
 Allmendinger, R.W., Cardozo, N. and Fisher, D.W. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
+
+Ammendinger, R.W. and Judge, P. 2013. Stratigraphic uncertainty and errors in shortening from balanced sections in the North American Cordillera. GSA Bulletin 125, 1569-1579.
 
 Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. Available at \href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{this site.}
 
@@ -3234,7 +3283,11 @@ Leyshon, P.R. and Lisle, R.J. 1996. Stereographic Projection Techniques in Struc
 
 Marshak, S. and Mitra, G. 1988. Basic Methods of Structural Geology. Prentice Hall, 446 p.
 
+Price, R.A. 1970. Geology, Canmore (east half), west of Fifth Meridian, Alberta: Geological Survey of Canada “A” Series Map 1265A, scale 1:50,000.
+
 Ragan, D.M. 2009. Structural Geology: An Introduction to Geometrical Techniques. Cambridge University Press, 632 p.
+
+Rioux, R. L. 1994. Geologic Map of the Sheep Mountain‐Little Sheep Mountain Area, Big Horn County, Wyoming, U.S. Geol. Surv. Open File Rep., 94‐191.
 
 Suppe, J. 1985. Principles of Structural Geology. Prentice-Hall, 537 p.
 

@@ -3254,6 +3254,26 @@ What do these plots tell you about the geometry of the fold?
         \item How do your results compare to those of Allmendinger and Judge (2013, their Table 1)?
     \end{enumerate}{}
     
+    \item The following exercise is from Ragan (2009): With the following information and the topographic map of Fig. 5.10, construct a geological map. The base of a 100 m thick sandstone unit of lower Triassic age is exposed at point A; its attitude is 110/25 (RHR). Point B is on the east boundary of a 50 m thick, vertical diabase dike of Jurassic age; its trend is 020. At point C, the base of a horizontal Cretaceous sequence is exposed and at point D the base of a conformable sequence of Tertiary rocks is present.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{Figures/ch5f15.jpg}
+    \caption{Topographic map for exercise 3. Notice that the origin is at the lower left corner of the map. This is exercise 2 in chapter 4 of Ragan (2009).}
+    \end{figure}
+    
+    In introductory mapping courses, this exercise is solved graphically (Fig. 3.9). This time, you are going to use computation. The files \textit{XGE.txt}, \textit{YGE.txt}, and \textit{ZGE.txt} in our git repository are the \textbf{ENU} coordinates of the points of the DEM grid (these arrays follow the format of the NumPy \textit{meshgrid} function). Points A, B, C and D have the following coordinates \textbf{ENU} coordinates:
+    
+    A = [232, 428, 370]
+    
+    B = [612, 322, 355]
+    
+    C = [281.5, 239, 395]
+    
+    D = [537, 183, 410]
+    
+    \textit{Hint}: Use the function \textit{OutcropTrace} to compute the contacts. Follow a similar procedure to the one in notebook ch5-3.ipynb to draw the topographic contours and the contacts. In this case though, some contacts will intersect. At contacts intersections, you will need to use the principle of superposition to determine which contact cross-cuts the other one: e.g. the Jurassic dyke will cross-cut the Triassic sequence, but it will be covered by the Cretaceous and Tertiary sequences.
+    
     \item This exercise is from Marshak and Mitra (1988). It's probably one of the hardest exercices to solve using rotations on a stereonet. Here, you will use the function \textit{Rotate} to solve this problem:
     
     In eastern New York, there is an important unconformity called the Taconic unconformity. It separates Mid-Ordovician flysch from Devonian limestone. At a locality near the town of Catskill, the limestone (and the unconformity) is oriented 195/44 (RHR). An anticline occurs in the underlying flysch. One limb is presently oriented 240/73 (limb 1), and the other limb is presently oriented 020/41 (limb 2) (RHR). Flute casts occur in the Ordovician strata on limb 1 (NW dipping limb) and they have an orientation of 037/52.

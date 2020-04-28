@@ -80,7 +80,7 @@ You can download or subscribe to changes in the resource using our git repositor
 \section*{References}
 Allmendinger, R.W., Cardozo, N. and Fisher, D.M. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
 
-Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. Available at \href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{this site.}
+Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. [\href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{Online}]. [Accessed January, 2020].
 
 Vacher, H.L. 2000. A Course in Geological-Mathematical Problem Solving. Journal of Geoscience Education 48, 478-481.
 
@@ -558,20 +558,626 @@ Ragan, D.M. 2009. Structural Geology: An Introduction to Geometrical Techniques.
 % SECTION: LOCATIONS: HOW DO WE KNOW WHERE WE ARE?
 \section{Locations}
 
+Understanding where we are located or where an object of interest is located is extremely important in geosciences. Geographic information science is the study of geographic information; it includes theory and concepts and provides methods to combine and analyze spatial data (Watson, 2017). Geographic information systems is the software and technology that supports the application of geographic information theory (Watson, 2017). GIS is an acronym used for either geographic information systems or geographic information science. 
+
+Geosciences are Earth-based and so location-based. The geographic aspect is highly applicable for the geosciences. The basic usage of GIS is cartographic – making maps. In this chapter, you will become familiar with some of the basic concepts in defining locations on the Earth. These concepts are also used for defining locations on other planets as well.
+
 % SECTION: GEODESY BASICS
 \section{Geodesy basics}
+
+Geodesy is “the branch of mathematics dealing with the shape and area of the Earth or large portions of it” (Lexico, 2019); however, the discipline is expanding to include other planets. We need geodesy to model the Earth and make calculations because the Earth is not a perfect sphere nor flat.
+
+\subsection{Scales}
+
+In cartography, we use scales to describe how the real world length has been reduced to fit on a page or screen. Usually, map scales are described as ratios, such as 1:50,000. When we describe the scale, we say it is either small or large. The description of small or large refers to the scale, not the size of the area. Therefore, if we describe a scale as small, it means the fraction described by the scale ratio is small; this in turn means the map covers a large area. The inverse is true for large scales; the fraction described by the scale is large and in turn covers a small area (Kraak and Ormeling, 2003, Lisle et al., 2011). There is not an official categorical differentiation between small and large scales. Generally speaking, small scale maps cover regions, countries, and continents, while large scale maps cover neighborhoods, towns, or counties. The following example illustrates this.
+
+\subsection*{Example 1: Understanding Map Scales}
+
+A map has a scale of 1:1,000,000. Would you refer to this as a small or large scale?
+
+\begin{enumerate}
+    \item First, rewrite this as a fraction: 1/1,000,000
+    \item Is this a small fraction or a large fraction? This is a relatively small fraction, so it is a small scale. 
+\end{enumerate}
+
+Figure 2.1 is an example of a map with a scale of 1:1,000,000.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=10cm]{Figures/ch2f1.jpg}
+    \caption{A historical map of northern Scotland at the scale of 1:1,000,000 (Geographic Section - General Staff, 1941).}
+\end{figure}
+
+A map has a scale of 1:10,000. Would you refer to this as a small or large scale?
+
+\begin{enumerate}
+    \item First, rewrite this as a fraction: 1/10,000
+    \item Is this a small fraction or a large fraction? This is a relatively large fraction, so it is a large scale. 
+\end{enumerate}
+
+Figure 2.2 is an example of a map with a scale of 1:10,000.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{Figures/ch2f2.jpg}
+    \caption{A historical map of Rome, Italy at the scale of 1:10,000 (C.I.U. and War Office, 1944).}
+\end{figure}
+
+\subsection{Authalic Sphere}
+
+The authalic sphere is a sphere used for the basic surface for mapping (Fig. 2.3); its surface area is the same as the ellipsoid (Robinson et al., 1995). Based on the WGS-84 ellipsoid, the Earth has a radius of 6371 km and a circumference of 40,030.2 km. The radius is an often-used constant in geodesy (Robinson et al., 1995). The authalic sphere is used in small scale mapping (small scale covers a large area) because the difference between the authalic sphere and the ellipsoid is minimum over large areas (Robinson et al., 1995).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=9cm]{Figures/ch2f3.png}
+    \caption{Highly stylized comparison of sphere, ellipse, and geoid.}
+\end{figure}
+
+\subsection{Ellipsoidal Earth}
+
+Due to gravity, the Earth flattens at the poles. In a cross-section, the Earth looks like an oblate ellipsoid (Fig. 2.3) (Robinson et al., 1995). Oblateness refers to flatness. When mapping over small areas (large scale mapping), the oblateness of the ellipsoid must be taken into account. The GPS network uses the WGS-84 ellipsoid (Robinson et al., 1995).
+
+There are varying ellipsoidal measurements on different continents and times. These continental differences are due to gravity. Temporal differences are due to technological accuracy. The WGS-84 ellipsoid is based on satellite observations and is accepted as being highly accurate (Robinson et al., 1995).
+
+\subsection{Geoid}
+
+Geoid means Earth-like and is in 3D. It is based on the equipotential gravity surface. The geoid follows the mean sea level in oceans and hypothetical sea-level canals on the continents (Robinson et al., 1995). Due to geology (rock density) and topography, the geoid deviates from the ellipsoid (Fig. 2.3). The geoid is a “reference surface for ground surveyed horizontal and vertical positions” (Robinson et al., 1995).
 
 % SECTION: PROJECTIONS
 \section{Projections} \label{projections}
 
+A projection is a mathematical equation to transfer a region, of whatever size, of the round Earth onto a flat surface. Projections are used because distance and surface area calculations are more difficult on a sphere. A flat map can show greater detail than a sphere and is more transportable. Imagine how large a globe you would need to sufficiently show the streets in your neighborhood! We need projections to transform our 3D ellipsoidal Earth onto a flat map. Projections may be based on the authalic sphere, ellipsoid, or geoid.
+
+Before proceeding, take a moment to look over an informational \href{https://pubs.usgs.gov/gip/70047422/report.pdf}{pictographic} by the U.S. Geological Survey describing different types of projection.
+
+\subsection{Distortions}
+
+All projections have distortions that vary by projection type (i.e. transverse Mercator vs. Miller cylindrical – see pictograph mentioned in previous section). Selecting a projection depends on discipline, size of area, orientation of area, regional standards, map purpose, and map scale. There are many resources for determining which projection you should use. Large-scale mapping uses conformal projection because angles measured on the ground are the same as those in the map (Iliffe and Lott, 2008). Four types of distortion are: area, shape, direction, and distance. The Tissot’s Indicatrix is a graphic device to show the distortion at a point (Robinson et al., 1995). We will investigate this phenomenon using the Python library \href{https://scitools.org.uk/cartopy/docs/latest/#}{Cartopy}. To install this library, follow the steps below:
+
+\subsection*{Installing Cartopy}
+
+We will use the Cartopy library to visualize projection distortions using the Tissot’s Indicatrix. We will make a special Cartopy Environment in Anaconda. This is because Cartopy dependencies are lower than some other libraries we’ll be using. This happens from time to time when we use open-source libraries.
+
+\begin{enumerate}
+    \item Open Anaconda Navigator.
+    \item In the left panel, click on “Environments”.
+    \item In the middle panel, click "Create" to create a new environment
+    \item Name this environment: ch2cartopy
+    \item Select Python version 3.7
+    \item Click "Create". This will take a few minutes.
+    \item We need to install Cartopy. In the right panel in the search field, type: cartopy
+    \item You will get the message "0 packages available matching cartopy" since Cartopy is not installed.
+    \item In the right panel, change "Installed" to "Not installed"
+    \item Cartopy now shows up\footnote{If cartopy does not show up, you may need to press "Update index" in the right panel.}. Click the check box next to "cartopy".
+    \item In the screen lower right corner, click "Apply"
+    \item Please wait while Cartopy is collected and then click "Apply"
+    \item The Cartopy library and any dependencies will be installed or updated. This may take a few minutes.
+    \item Click on "Home"
+    \item Install the console of your choice for the new environment. Click on "Install" under Jupyter Notebook, for example.
+    \item Click on "Launch"
+\end{enumerate}
+
+\subsection*{Example 2: Tissot's Indicatrix}
+
+This example will introduce you to understanding distortions in projections. As you change the projection name, a different mathematical equation will be used to portray the round Earth in a flat presentation. Pay particular attention to the size, shape, and spacing of the ellipses describing the distortion. The Tissot’s Indicatrix quickly and easily visualizes the changes in area and spatial relationships between different projections.
+
+The notebook ch2-1.ipynb contains this example. If you just finished installing the Cartopy library and launching Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
+
+\begin{enumerate}
+    \item Open Anaconda Navigator
+    \item Click on "Environments"
+    \item Choose "ch2cartopy"
+    \item Click "Home"
+    \item Launch Jupyter Notebook
+    \item Open the notebook ch2-1.ipynb
+\end{enumerate}{}
+
+This example starts with the Plate Carree projection (\href{https://scitools.org.uk/cartopy/docs/latest/gallery/tissot.html}{Cartopy, 2018b}). Run the code below:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
+
+# Hide warnings
+import warnings
+warnings.simplefilter('ignore')
+
+# Figure
+fig = plt.figure(figsize=(10, 5))
+
+# Plate Carree projection
+ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
+
+# Make the map global rather than have it zoom in to
+# the extents of any plotted data
+ax.set_global()
+
+# Earth image
+ax.stock_img()
+# Coastlines
+ax.coastlines()
+
+# Tissot's indicatrix: Orange ellipses
+ax.tissot(facecolor='orange', alpha=0.4)
+
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics{Figures/ch2f4.png}
+}}   
+\end{center}
+
+The Tissot’s Indicatrix is symbolized by the orange ellipses. Closer to the poles, the ellipses become more oblate; while closer to the Equator, they are more circular. The Plate Carrée projection is a specific form of the Equidistant Cylindrical projection. Plate Carrée has the latitude of origin at the Equator.
+
+Change the code to use the Mollweide projection:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# Figure
+fig = plt.figure(figsize=(10, 5))
+
+# Mollweide projection
+ax = fig.add_subplot(1, 1, 1, projection=ccrs.Mollweide())
+
+# Make the map global rather than have it zoom in to
+# the extents of any plotted data
+ax.set_global()
+
+ax.stock_img()
+ax.coastlines()
+
+ax.tissot(facecolor='orange', alpha=0.4)
+
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics{Figures/ch2f5.png}
+}}   
+\end{center}
+
+Notice how the sizes of the ellipses are very similar throughout the map. All of the ellipses are more rounded and circular regardless of their position, as compared to the Plate Carrée projection. Mollweide is often used for world maps.
+
+Cartopy has a list of projections that are included in the library  (\href{https://scitools.org.uk/cartopy/docs/latest/crs/projections.html}{Cartopy, 2018a}). Change the code above to project the map in Azimuthal Equidistant. 
+
 % SECTION: COORDINATE REFERENCE SYSTEMS AND DATUMS
 \section{Reference systems and datums}
 
+A coordinate reference system is a coordinate system that has been referenced to a datum. A datum is the location used for a reference point from which spatial measurements are made. There are geographic and Cartesian coordinate systems. Coordinates are for specific locations on the Earth. They can be expressed as geographic using latitude and longitude. Latitude are parallels that are evenly spaced and longitude are meridians that converge at the poles. These are measured in degrees. Cartesian coordinates are expressed in x and y and may have units that are meters, feet, or kilometers, for example. Coordinates only have meaning when the coordinate system and datum are known (Iliffe and Lott, 2008, Robinson et al., 1995). 
+
+\subsection*{Example 3: Defining the coordinate reference system}
+
+In any GIS program, including spatial libraries and code, the user must ensure that the coordinate reference system is defined for the spatial data. The GIS software will make assumptions, sometimes erroneous, if the coordinate reference system is not properly defined. In this example, we will see a demonstration of these assumptions and how to prevent them. This example is from the SciTools tutorials to understand Cartopy (\href{https://scitools.org.uk/cartopy/docs/latest/tutorials/understanding_transform.html}{Cartopy, 2018c}).
+
+In Cartopy, there are two keywords that you must understand in order to properly display your data. The “projection” argument is used for display of your data. This only affects the map or plot. It does not define the coordinate reference system of the data itself. The “transform” argument, on the other hand, defines the coordinate reference system. The best practice is to define both of these. We will investigate the error that occurs when the best practice is not followed and compare this to when the best practice is followed. The notebook ch2-2.ipynb contains this example.
+
+First we will create some dummy data on a regular latitude/longitude grid:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import numpy as np
+
+lon = np.linspace(-80, 80, 25)
+lat = np.linspace(30, 70, 25)
+lon2d, lat2d = np.meshgrid(lon, lat)
+
+data = np.cos(np.deg2rad(lat2d) * 4) + np.sin(np.deg2rad(lon2d) * 4)
+\end{lstlisting}
+\end{center}
+
+In order to demonstrate the error before "best practice", we will create a map using the Plate Carree projection but only specify the "projection" argument. Remember that the best practice requires both projection and transform arguments to be defined.
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
+
+# The projection keyword determines how the plot will look
+plt.figure(figsize=(6, 3))
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_global()
+ax.coastlines()
+
+# didn't use transform, but looks ok...
+ax.contourf(lon, lat, data)  
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics[width=10cm]{Figures/ch2f6.png}
+}}   
+\end{center}
+
+In this case, the data just happen to fall in the correct location. Now, we will define the data coordinate reference system (first line of code below) and add the transform argument to the plot (second last line of code below).
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# The data are defined in lat/lon coordinate system, 
+# so PlateCarree() is the appropriate choice:
+data_crs = ccrs.PlateCarree()
+
+# The projection keyword determines how the plot will look
+plt.figure(figsize=(6, 3))
+ax = plt.axes(projection=ccrs.PlateCarree())
+ax.set_global()
+ax.coastlines()
+
+# use transform
+ax.contourf(lon, lat, data, transform=data_crs) 
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics[width=10cm]{Figures/ch2f6.png}
+}}   
+\end{center}
+
+You will notice that our plot remains unchanged. The assumption, as stated previously, is that if the coordinate reference system of the data is undefined, it is the same as the map (or plot) projection. In the example above, this has been the case. Let us now investigate what happens when changing the projection of the map without defining the coordinate reference system of the data. We now define the projection to "RotatedPole" and omit the transform argument to see what happens:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# Now we plot a rotated pole projection
+projection = ccrs.RotatedPole(pole_longitude=-177.5, pole_latitude=37.5)
+plt.figure(figsize=(6, 3))
+ax = plt.axes(projection=projection)
+ax.set_global()
+ax.coastlines()
+
+ax.contourf(lon, lat, data)  # didn't use transform, uh oh!
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics[width=10cm]{Figures/ch2f7.png}
+}}   
+\end{center}
+
+In this case, we see that the country boundaries have rotated and changed shape, however, the data did not move with the the country boundaries. We made a wrong assumption in the data definition. Therefore we need to define the transform argument:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# A rotated pole projection again...
+projection = ccrs.RotatedPole(pole_longitude=-177.5, pole_latitude=37.5)
+plt.figure(figsize=(6, 3))
+ax = plt.axes(projection=projection)
+ax.set_global()
+ax.coastlines()
+
+# ...but now using the transform argument
+ax.contourf(lon, lat, data, transform=data_crs)
+plt.show()
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output: \\
+    \includegraphics[width=10cm]{Figures/ch2f8.png}
+}}   
+\end{center}
+
+Now the data are correctly projected. Get in the habit of always defining the coordinate reference system and the map plot projection. It will save headaches and misunderstandings of the data.
+
+Here is another script using an entirely different projection and additional plotting parameters. Can you figure out what the script will produce before running the cell? Notice the presence of the Matplotlib function \textit{subplot}. What do you think this function does?
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# We can choose any projection we like...
+projection = ccrs.InterruptedGoodeHomolosine()
+plt.figure(figsize=(6, 7))
+ax1 = plt.subplot(211, projection=projection)
+ax1.set_global()
+ax1.coastlines()
+ax2 = plt.subplot(212, projection=ccrs.NorthPolarStereo())
+ax2.set_extent([-180, 180, 20, 90], crs=ccrs.PlateCarree())
+ax2.coastlines()
+
+# ...as long as we provide the correct transform, 
+# the plot will be correct
+ax1.contourf(lon, lat, data, transform=data_crs)
+ax2.contourf(lon, lat, data, transform=data_crs)
+plt.show()
+\end{lstlisting}
+\end{center}
+
+Now that you have worked through the exercise, you should have an understanding of why it is important to fully define the coordinate reference system and the projection when creating a map.
+
 % SECTION: COORDINATE CONVERSION AND TRANSFORMATION
-\section{Coordinate conversion and transformation}
+\section{Conversion vs. transformation}
+
+When working with data collected from several sources or in different coordinate reference systems, the data must be redefined to have the same coordinate reference system and datum. Consistent coordinate reference systems for data in a map is important because there may be spatial differences between the coordinate reference systems creating locational errors. A coordinate conversion is when the coordinate reference systems have the same datum. A coordinate transformation is when the coordinate reference systems have different datums.
+
+When making a map, all of the data in the map should have the same coordinate reference system definition. Software include many definitions and transformations but refer to Snyder (1987) and International Association of Oil and Gas Producers (2018) for projection formulae (Iliffe and Lott, 2008). In Example 2, the Tissot’s Indicatrix ellipses did not change coordinate reference systems. The method used to plot the ellipses changed. In Example 3, we also only changed the projection of the map, not the coordinate reference system. In the following examples, we will make coordinate conversions and transformations. For this purpose, we will use the \href{https://pypi.org/project/pyproj/}{pyproj} Python library and examples from the pyproj documentation (\href{https://pyproj4.github.io/pyproj/stable/api/transformer.html?highlight=transformer}{Whitaker, 2019}).
+
+\subsection*{Installing pyproj}
+
+A version of pyproj was installed with Cartopy, but you need the latest version which has different dependencies than Cartopy. You will create a new environment.
+
+\begin{enumerate}
+    \item Open Anaconda Navigator.
+    \item In the left panel, click on "Environments"
+    \item In the middle panel, click "Create" to create a new environment
+    \item Name this environment: ch2pyproj
+    \item Select Python version 3.7
+    \item Click "Create". This will take a few minutes
+    \item We need to install pyproj. In the right panel in the search field, type: pyproj
+    \item You will get the message "0 packages available matching pyproj" since pyproj is not installed. 
+    \item In the right panel, change "Installed" to "Not installed"
+    \item pyproj now shows up. Click the check box next to "pyproj".
+    \item In the screen lower right corner, click "Apply"
+    \item Please wait while pyproj is collected and then click "Apply"
+    \item The pyproj library and any dependencies will be installed or updated. This may take a few minutes.
+    \item Click on "Home"
+    \item Install the console of your choice for the new environment. Click on "Install" under Jupyter Notebook, for example.
+    \item Click on "Launch"
+\end{enumerate}
+
+\subsection*{Example 4: Coordinate conversion}
+
+The notebook ch2-3.ipynb contains this example. If you just finished installing the pyproj library and launching Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
+
+\begin{enumerate}
+    \item Open Anaconda Navigator
+    \item Click on "Environments"
+    \item Choose "ch2pyproj"
+    \item Click "Home"
+    \item Launch Jupyter Notebook
+    \item Open the notebook ch2-3.ipynb
+\end{enumerate}{}
+
+We have a coordinate pair defined in decimal degrees of latitude and longitude. The longitude is -120.108\degree and latitude is 34.3611666\degree. We want to make a coordinate conversion from latitude and longitude to Universal Transverse Mercator, where the point is defined by east and north coordinates in meters. To learn more about Universal Transverse Mercator (UTM), refer to (Snyder, 1987). In the code, we use the pyproj \textit{Proj} function. We can only use \textit{Proj} when making a coordinate conversion (i.e. the same datum):
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+from pyproj import Proj
+
+# Construct the projection matrix
+p = Proj(proj='utm',zone=10,ellps='WGS84', preserve_units=False)
+
+# Apply the projection to the lat-long point
+x,y = p(-120.108, 34.36116666)
+
+print(f'x={x:9.3f}, y={y:11.3f}')
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+x=765975.641, y=3805993.134
+}}   
+\end{center}
+
+This is the same location but only expressed in meters (east and north) using the UTM coordinate reference system. The datum used is WGS84. We can convert the UTM coordinates back to latitute and longitude by adding two lines of code:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# Apply the inverse of the projection matrix
+# to the point in UTM
+lon,lat = p(x,y,inverse=True)
+print(f'lon={lon:8.3f}, lat={lat:5.3f}')
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+lon=-120.108, lat=34.361
+}}   
+\end{center}
+
+In the two cells of code above, we’ve truncated the output to only three decimal places, but we can confirm that the inverse conversion arrives at the original pair. Let's now try converting several points of different latitude and longitude using a collection of objects in Python, or tuples. Add the following code:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# three points in lat-long
+lons = (-119.72,-118.40,-122.38)
+lats = (36.77, 33.93, 37.62 )
+# Apply the projection to the points
+x1,y1 = p(lons, lats)
+print(x1,y1)
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+(792763.8631257227, 925321.5373562573, 554714.3009414743)\\ 
+(4074377.6167697194, 3763936.9410883673, 4163835.3033114495)
+}}   
+\end{center}
+
+Now, let's do a more advanced exercise: In the cartographic community, an easy way to communicate the coordinate reference system is to use the EPSG Geodetic Parameter Data set. Every coordinate reference system is given a code. This ensures that if someone uses UTM zone 10 North with datum WGS-84 and tells you UTM zone 10, that you do not accidentally use UTM zone 10 North with datum GRS80, for example.
+
+Earlier in this exercise, we defined the UTM zone in the \textit{Proj} function. Here, we will refer to the EPSG code. First, we will take a coordinate pair in longitude and latitude with datum WGS84 and convert it to EPSG:32667. Before proceeding, conduct a quick internet search on what EPSG:32667 means. This is important to understand what we will do next. The first part of the code is:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# silence warnings
+import warnings
+warnings.simplefilter('ignore')
+
+# initial coordinate conversion
+p = Proj(init='EPSG:32667', preserve_units=True)
+# Apply the conversion to the lat-long point
+x,y = p(-114.057222, 51.045)
+print(f'x={x:9.3f}, y={y:11.3f} (feet)')
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+x=-5851386.754, y=20320914.191 (feet)
+}}   
+\end{center}
+
+Let’s dissect this as the pyproj code looks quite a bit different. The first part of the function Proj calls EPSG:32667. If you looked up EPSG:32667 online, you found that it is for UTM zone 17 North, but the units are in feet. The default mode for Proj is “preserve\textunderscore units=False”, which forces any unit to meters. However, we want to see the units in US Survey Feet as the projection defines; therefore, we change the argument to True.
+
+Now, suppose we want to see the output in meters. How will you amend the code? Here is what you should add:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+# Print the coordinate pair in meters
+p1 = Proj(init='EPSG:32667', preserve_units=False)
+x1,y1 = p1(-114.057222, 51.045)
+print(f'x={x1:9.3f}, y={y1:11.3f} (meters)')
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+x=-1783506.250, y=6193827.033 (meters)
+}}   
+\end{center}
+
+As discussed, you should change “preserve\textunderscore units=False” and change the unit to be printed from “feet” to “meters”. Congratulations! You now have a good understanding of coordinate conversion.
+
+\subsection*{Example 5: Coordinate transformation}
+
+We learned earlier that we have a coordinate conversion where a coordinate pair is converted between coordinate reference systems with the same datum. In many instances, the coordinate reference system will also undergo a datum shift – this is a coordinate transformation.
+
+This example is included in the notebook ch2-4.ipynb. We will use the pyproj \textit{CRS} and \textit{transform} functions. The \textit{CRS} function defines the coordinate reference system while the \textit{transform} function specifies which coordinate reference system is the original and which is the output. \textit{CRS} has the same ability to refer directly to an EPSG code.
+
+The input coordinates are in EPSG:4327, which is a commonly used code. It is the geographic coordinate system with datum WGS84. The output coordinates are EPSG:31984, which is for UTM zone 24 S with datum SIRGAS2000.
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+from pyproj import transform
+from pyproj import CRS
+
+# input coordinates
+c1 = CRS('EPSG:4327')
+# coordinate pair
+y1=-10.754283
+x1=-39.866132
+# output coordinates
+c2 = CRS('EPSG:31984')
+# Coordinate transformation
+x2, y2 = transform(c1, c2, x1, y1)
+print(f'x={x2:9.3f}, y={y2:11.3f}')
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+x=2930179.850, y=5185231.716
+}}   
+\end{center}
+
+\subsection*{Example 6: Transforming several points at once}
+
+We have focused our examples on one coordinate pair at a time. The reality is that you will more often have several coordinates to transform at one time. The notebook ch2-5.ipynb explains how to do this.
+
+We have a csv file with two columns: longitude and latitude. Each coordinate pair is the center of a volcano around the world. There are 1,509 volcanoes in our dataset. The original coordinate reference system is geographic coordinates with datum WGS84. We want to make a coordinate transformation of these data points to World Mercator. It will take much too long to manually transform these coordinates as we have done in the notebooks before. Therefore, our new code will read the csv file and create a new csv file.
+
+Check that the pathway of \textit{in\textunderscore path} and \textit{out\textunderscore path} matches the directory where the csv file is. In this example, the volcanoes file (\textit{volc\textunderscore longlat.csv}) is in the directory ch2-5 in the user's Desktop. Run the code, you will know the process is finished when the message "process completed" and the time of execution are returned:
+
+\begin{center}
+\begin{lstlisting}[language=Python, frame=single]
+import csv
+import pyproj
+from functools import partial
+from os import listdir, path
+
+# time the execution of the code
+import time
+start_time = time.time()
+
+
+# Remove warnings
+import warnings
+warnings.simplefilter('ignore')
+
+#Define some constants at the top
+
+lon = 'LONGITUDE' #name of longitude field in original files
+lat = 'LATITUDE' #name of latitude field in original files
+f_x = 'x' #name of new x value field in new projected files
+f_y = 'y' #name of new y value field in new projected files
+in_path = u'/Users/nestor/Desktop/ch2-5' #input directory
+out_path = u'/Users/nestor/Desktop/ch2-5' #output directory
+input_projection = 'EPSG:4326' #WGS84
+output_projection = 'EPSG:3395' #World Mercator
+
+#Get CSVs to reproject from input path
+files= [f for f in listdir(in_path) if f.endswith('.csv')]
+
+#Define partial function for use later when reprojecting
+project = partial(
+    pyproj.transform,
+    pyproj.Proj(init=input_projection),
+    pyproj.Proj(init=output_projection))
+
+for csvfile in files:
+    #open a writer, appending '_project' onto the base name
+    with open(path.join(out_path, csvfile.replace('.csv','_project.csv')), 'w') as w:
+        #open the reader
+        with open(path.join( in_path, csvfile), 'r') as r:
+            reader = csv.DictReader(r, dialect='excel')
+            #Create new fieldnames list from reader
+            # replacing lon and lat fields with 
+            # x and y fields
+            fn = [x for x in reader.fieldnames]
+            fn[fn.index(lon)] = f_x
+            fn[fn.index(lat)] = f_y
+            writer = csv.DictWriter(w, fieldnames=fn)
+            #Write the output
+            writer.writeheader()
+            for row in reader:
+                x,y = (float(row[lon]), float(row[lat]))
+                try:
+                    #Add x,y keys and remove lon, lat keys
+                    row[f_x], row[f_y] = project(x, y) # project point
+                    row.pop(lon, None)
+                    row.pop(lat, None)
+                    writer.writerow(row)
+                except Exception as e:
+                    #If coordinates are out of bounds, 
+                    #skip row and print the error
+                    print (e)
+print('process completed')
+end_time = time.time()
+print("it took {} seconds to run the code".format(end_time-start_time))
+\end{lstlisting}
+\fbox{
+\parbox{\textwidth - 2 \fboxsep}{
+Output:\\
+process completed \\
+it took 55.04537224769592 seconds to run the code
+}}   
+\end{center}
+
+It takes about 55 seconds to run this code in a standard computer. Check the newly created csv file and notice that you now have a listing of coordinates in meters. The EPSG definition of the output coordinate reference system is listed under \textit{output\textunderscore projection}. You can easily change this variable to another EPSG and rerun the script. Notice that the code is written so that every csv file in the directory will undergo a coordinate transformation. 
 
 % SECTION: EXERCISES
 \section{Exercises}
+
+\addcontentsline{toc}{section}{References}
+\section*{References}
+
+C.I.U. AND WAR OFFICE. 1944. Town Plan of Roma (Rome) (North Sheet), 1:10,000. Washington, D. C.: War Office.
+
+Cartopy. 2018a. Projections [\href{https://scitools.org.uk/cartopy/docs/latest/crs/projections.html}{Online}]. UK: SciTools. [Accessed 19 November 2019, 2019]
+
+Cartopy. 2018b. Tissot’s Indicatrix [\href{https://scitools.org.uk/cartopy/docs/latest/gallery/tissot.html}{Online}]. UK: SciTools. [Accessed 19 November, 2019].
+
+Cartopy. 2018c. Understanding the Transform and Projection Keywords [\href{https://scitools.org.uk/cartopy/docs/latest/tutorials/understanding_transform.html}{Online}]. UK: SciTools. [Accessed 19 November 2019, 2019].
+
+Geographic Section - General Staff. 1941. Aberdeen, 1:1,000,000. Great Britain: War Office.
+
+Iliffe, J. and Lott, R. 2008. Datums and Map Projections: For Remote Sensing, GIS, and Surveying, Dunbeath, Scotland, Whittles.
+
+International Association of Oil and Gas Producers. 2018. Geomatics Guidance Note 7, Part 2 Coordinate conversions and Transformations including Formulas.
+
+Kraak, M.J. and Ormeling, F.J. 2003. Cartography: visualization of geospatial data. Addison Wesley.
+
+Lexico. 2019. Geodesy [\href{https://www.lexico.com/en/definition/geodesy}{Online}]. Oxford. [Accessed August, 2019].
+
+Lisle, R. J., Brabham, P. and Barnes, J. W. 2011. Basic Geological Mapping, Chicester, UK, Wiley-Blackwell.
+
+Robinson, A. H., Morrison, J. L., Muehrcke, P. C., Kimerling, A. J. and Guptill, S. C. 1995. Elements of Cartography, New York, Wiley.
+
+Snyder, J. P. 1987. Map Projections: a working manual. Geological Survey Professional Paper. Washington, D. C., U.S.A.: United States Government Printing Office.
+
+Watson, L. 2017. Spatial-based assessment at continental to global scale: case studies in petroleum exploration and ecosystem services. PhD, Utrecht University.
+
+Whitaker, J. 2019. pyproj Transformer Documentation [\href{https://pyproj4.github.io/pyproj/stable/api/transformer.html?highlight=transformer}{Online}].  [Accessed 7 January, 2020].
 
 % CHAPTER 3: GEOLOGIC FEATURES
 \chapter{Geologic features}
@@ -594,7 +1200,7 @@ A plane orientation can be defined by the angle a horizontal line on the plane m
 \begin{figure}[ht]
     \centering
     \includegraphics[width=13cm]{Figures/ch3f1.png}
-    \caption{\textbf{a.} Strike and dip of a plane, \textbf{b.} Apparent dip of a plane. Modified from Allmendinger et al. (2012)}
+    \caption{\textbf{a.} Strike and dip of a plane, \textbf{b.} Apparent dip of a plane. Modified from Allmendinger et al. (2012).}
     \label{fig:strikedip}
 \end{figure}
 
@@ -1030,7 +1636,7 @@ plt.plot(eqArea[:,0],eqArea[:,1],'r*')
 
 Allmendinger, R.W., Cardozo, N. and Fisher, D.W. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
 
-Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. Available at \href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{this site.}
+Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. [\href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{Online}]. [Accessed January, 2020].
 
 Coe, A. 2010. Geological Field Techniques. Wiley-Blackwell, 323 p.
 
@@ -2092,6 +2698,7 @@ Problems 1-3 are from Marshak and Mitra (1988). Solve these problems using the f
 
 \end{enumerate}
 
+\addcontentsline{toc}{section}{References}
 \section*{References}
 
 Allmendinger, R.W., Cardozo, N. and Fisher, D.W. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
@@ -3287,6 +3894,7 @@ What do these plots tell you about the geometry of the fold?
     
 \end{enumerate}
 
+\addcontentsline{toc}{section}{References}
 \section*{References}
 
 Albee, H.F. and Cullins, H.L. 1975. Geologic Map of the Poker Peak Quadrangle, Bonneville County, Idaho. U.S. Geological Survey, Geologic Quadrangle Map GQ 1260. 
@@ -3295,7 +3903,7 @@ Allmendinger, R.W., Cardozo, N. and Fisher, D.W. 2012. Structural Geology Algori
 
 Ammendinger, R.W. and Judge, P. 2013. Stratigraphic uncertainty and errors in shortening from balanced sections in the North American Cordillera. GSA Bulletin 125, 1569-1579.
 
-Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. Available at \href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{this site.}
+Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. [\href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{Online}]. [Accessed January, 2020].
 
 Bennison, G.M., Olver, P.A. and Moseley, K.A. 2011. An Introduction to Geological Structures and Maps, 8th edition. Hodder Education, 168 p.
 

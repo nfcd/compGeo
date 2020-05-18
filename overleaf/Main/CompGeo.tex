@@ -75,11 +75,7 @@ Python is the programming language of choice. The resource consists of ten chapt
 
 Much of the material is based on the book Structural Geology Algorithms: Vectors and Tensors (Allmendinger et al., 2012), and the lab manual: Modern Structural Practice (Allmendinger, 2019). However, we have also included additional GIS and Geophysics topics. The resource is focused on our areas of expertise, but we hope you can use and further develop the material for other geosciences areas.
 
-You can download or subscribe to changes in the resource using its \href{http://github.com}{git repository}. We hope you enjoy this resource and learn from it, as well as use it for teaching. This will be the measure of our success. We also hope to spark enough interest for users to contribute to the resource with additional material and more chapters in the future. Finally, we are grateful to the Faculty of Science and Technology at the University of Stavanger for sponsoring this project.
-
-\section*{Accessing and running the code}
-
-The Python functions, Jupyter notebooks, and related data for the resource are in the folders \href{http://github.com}{\textit{functions}}, \href{http://github.com}{\textit{notebooks}}, and \href{http://github.com}{\textit{data}} in the resource git repository. However, since the notebooks make calls to the different functions and data, we have also made a folder called \href{http://github.com}{\textit{all}} containing all these elements. We recommend downloading this folder and running the notebooks from this directory in your computer.
+You can download or subscribe to changes in the resource using its \href{https://github.com/nfcd/compGeo}{git repository}. We hope you enjoy this resource and learn from it, as well as use it for teaching. This will be the measure of our success. We also hope to spark enough interest for users to contribute to the resource with additional material and more chapters in the future. Finally, we are grateful to the Faculty of Science and Technology at the University of Stavanger for sponsoring this project.
 
 \section*{References}
 Allmendinger, R.W., Cardozo, N. and Fisher, D.M. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
@@ -127,7 +123,7 @@ The installation process is quite straightforward. From the \href {https://www.a
 % SECTION: A FIRST INTRODUCTION TO PYTHON
 \section{A first introduction to Python}
 
-In this section, we use our first Jupyter notebook to learn the basics of Python. Download the notebook \href{http://github.com}{ch1.ipynb} from the resource git repository\footnote{At this stage, we recommend downloading the folder \href{http://github.com}{\textit{all}} from the repository. This folder contains all the resource functions, notebooks and data, so you can run all the notebooks from this directory in your computer}. Open Anaconda and then launch Jupyter notebook. This will open a browser with a list of files and folders in your home directory. Navigate to the notebook ch1.ipynb and open it. Alternatively, follow the notebook in the sections below. Surprisingly, few lines of code are required to introduce key topics such as conditionals, loops, functions, array mathematics, and plotting. This shows the power of Python.
+In this section, we use our first Jupyter notebook to learn the basics of Python. Download the notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch1.ipynb}{ch1.ipynb} from the resource git repository\footnote{At this stage, we recommend downloading the folder \href{https://github.com/nfcd/compGeo/blob/master/source}{\textit{source}} from the git repository. This folder contains the resource functions, notebooks and data.}. Open Anaconda and then launch Jupyter notebook. This will open a browser with a list of files and folders in your home directory. Navigate to the notebook ch1.ipynb and open it. Alternatively, follow the notebook in the sections below. Surprisingly, few lines of code are required to introduce key topics such as conditionals, loops, functions, array mathematics, and plotting. This shows the power of Python.
 
 \subsection{Basics}
 
@@ -247,7 +243,7 @@ Radians 0.785398
 }}   
 \end{center}
 
-We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. We will implement and use functions that solve common problems in geosciences. Using a text editor, create a file called \textit{mylib.py} and put it in the same folder as your notebook. In the file, write a function to convert from radians to degrees:
+We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. We will implement and use functions that solve common problems in geosciences. Using a text editor, create a file called \textit{mylib.py} and put it in a folder of your choice\footnote{We have placed this file in the \textit{functions} folder}. In the file, write a function to convert from radians to degrees:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -261,6 +257,11 @@ We can then import in the notebook the code from the file and use it like this:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
+# Import folder where the function is
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
+
 try:
     import mylib
     angle_radians = 0.785398
@@ -449,11 +450,11 @@ C = matrix_multiply(A,B)
 \fbox{
 \parbox{\textwidth - 2 \fboxsep}{
 Output: \\
-428 ms $\pm$  3.02 ms per loop (mean $\pm$ std. dev. of 7 runs, 1 loop each)
+625 ms ± 3.11 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 }}    
 \end{center}
 
-Change the multiplication function from \textit{matrix\_multiply} to \textit{np.dot} and note the difference in runtime. On a standard computer, our \textit{matrix\_multiply} function uses $\approx$ 500 milliseconds, while NumPy \textit{dot} function uses $\approx$ 200 microseconds. The NumPy \textit{dot} function is a staggering 2500 times faster!
+Change the multiplication function from \textit{matrix\_multiply} to \textit{np.dot} and note the difference in runtime. On a standard computer, our \textit{matrix\_multiply} function uses $\approx$ 600 milliseconds, while NumPy \textit{dot} function uses $\approx$ 200 microseconds. The NumPy \textit{dot} function is a staggering 3000 times faster!
 
 % SUBSECTION: PLOTTING
 \subsection{Plotting}
@@ -537,7 +538,7 @@ plt.legend(['Cosine', 'Quadratic'])
     
     The graph should look like the figure below:
     
-    \begin{figure}[ht]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=12cm]{Figures/ch1f3.png}
         \caption{Apparent dip $\alpha$ as function of section bearing $\beta$ and true dip $\delta$}
@@ -665,7 +666,7 @@ We will use the Cartopy library to visualize projection distortions using the Ti
 
 This example will introduce you to understanding distortions in projections. As you change the projection name, a different mathematical equation will be used to portray the round Earth in a flat presentation. Pay particular attention to the size, shape, and spacing of the ellipses describing the distortion. The Tissot’s Indicatrix quickly and easily visualizes the changes in area and spatial relationships between different projections.
 
-The notebook \href{http://github.com}{ch2-1.ipynb} contains this example. If you just launched Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
+The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch2-1.ipynb}{ch2-1} contains this example. If you just launched Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
 
 \begin{enumerate}
     \item Open Anaconda Navigator
@@ -673,7 +674,7 @@ The notebook \href{http://github.com}{ch2-1.ipynb} contains this example. If you
     \item Choose "ch2cartopy"
     \item Click "Home"
     \item Launch Jupyter Notebook
-    \item Open the notebook ch2-1.ipynb
+    \item Open the notebook ch2-1
 \end{enumerate}{}
 
 This example starts with the Plate Carree projection (\href{https://scitools.org.uk/cartopy/docs/latest/gallery/tissot.html}{Cartopy, 2018b}). Run the code below:
@@ -757,7 +758,7 @@ A coordinate reference system is a coordinate system that has been referenced to
 
 In any GIS program, including spatial libraries and code, the user must ensure that the coordinate reference system is defined for the spatial data. The GIS software will make assumptions, sometimes erroneous, if the coordinate reference system is not properly defined. In this example, we will see a demonstration of these assumptions and how to prevent them. This example is from the SciTools tutorials to understand Cartopy (\href{https://scitools.org.uk/cartopy/docs/latest/tutorials/understanding_transform.html}{Cartopy, 2018c}).
 
-In Cartopy, there are two keywords that you must understand in order to properly display your data. The “projection” argument is used for display of your data. This only affects the map or plot. It does not define the coordinate reference system of the data itself. The “transform” argument, on the other hand, defines the coordinate reference system. The best practice is to define both of these. We will investigate the error that occurs when the best practice is not followed and compare this to when the best practice is followed. The notebook \href{http://github.com}{ch2-2.ipynb} contains this example.
+In Cartopy, there are two keywords that you must understand in order to properly display your data. The “projection” argument is used for display of your data. This only affects the map or plot. It does not define the coordinate reference system of the data itself. The “transform” argument, on the other hand, defines the coordinate reference system. The best practice is to define both of these. We will investigate the error that occurs when the best practice is not followed and compare this to when the best practice is followed. The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch2-2.ipynb}{ch2-2} contains this example.
 
 First we will create some dummy data on a regular latitude/longitude grid:\\
 
@@ -923,7 +924,7 @@ A version of pyproj was installed with Cartopy, but you need the latest version 
 
 \subsection*{Example 4: Coordinate conversion}
 
-The notebook \href{http://github.com}{ch2-3.ipynb} contains this example. If you just launched Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
+The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch2-3.ipynb}{ch2-3} contains this example. If you just launched Jupyter Notebook as indicated above, open the notebook. If you closed Anaconda, follow these steps:
 
 \begin{enumerate}
     \item Open Anaconda Navigator
@@ -931,7 +932,7 @@ The notebook \href{http://github.com}{ch2-3.ipynb} contains this example. If you
     \item Choose "ch2pyproj"
     \item Click "Home"
     \item Launch Jupyter Notebook
-    \item Open the notebook ch2-3.ipynb
+    \item Open the notebook ch2-3
 \end{enumerate}{}
 
 We have a coordinate pair defined in decimal degrees of latitude and longitude. The longitude is -120.108\degree and latitude is 34.3611666\degree. We want to make a coordinate conversion from latitude and longitude to Universal Transverse Mercator, where the point is defined by east and north coordinates in meters. To learn more about Universal Transverse Mercator (UTM), refer to (Snyder, 1987). In the code, we use the pyproj \textit{Proj} function. We can only use \textit{Proj} when making a coordinate conversion (i.e. the same datum):
@@ -1037,7 +1038,7 @@ As discussed, you should change “preserve\textunderscore units=False” and ch
 
 We learned earlier that we have a coordinate conversion where a coordinate pair is converted between coordinate reference systems with the same datum. In many instances, the coordinate reference system will also undergo a datum shift – this is a coordinate transformation.
 
-This example is included in the notebook \href{http://github.com}{ch2-4.ipynb}. We will use the pyproj \textit{CRS} and \textit{transform} functions. The \textit{CRS} function defines the coordinate reference system while the \textit{transform} function specifies which coordinate reference system is the original and which is the output. \textit{CRS} has the same ability to refer directly to an EPSG code.
+This example is included in the notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch2-4.ipynb}{ch2-4}. We will use the pyproj \textit{CRS} and \textit{transform} functions. The \textit{CRS} function defines the coordinate reference system while the \textit{transform} function specifies which coordinate reference system is the original and which is the output. \textit{CRS} has the same ability to refer directly to an EPSG code.
 
 The input coordinates are in EPSG:4327, which is a commonly used code. It is the geographic coordinate system with datum WGS84. The output coordinates are EPSG:31984, which is for UTM zone 24 S with datum SIRGAS2000.
 
@@ -1066,11 +1067,11 @@ x=2930179.850, y=5185231.716
 
 \subsection*{Example 6: Transforming several points at once}
 
-We have focused our examples on one coordinate pair at a time. The reality is that you will more often have several coordinates to transform at one time. The notebook \href{http://github.com}{ch2-5.ipynb} explains how to do this.
+We have focused our examples on one coordinate pair at a time. The reality is that you will more often have several coordinates to transform at one time. The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch2-5.ipynb}{ch2-5} explains how to do this.
 
 We have a csv file with two columns: longitude and latitude. Each coordinate pair is the center of a volcano around the world. There are 1,509 volcanoes in our dataset. The original coordinate reference system is geographic coordinates with datum WGS84. We want to make a coordinate transformation of these data points to World Mercator. It will take much too long to manually transform these coordinates as we have done in the notebooks before. Therefore, our new code will read the csv file and create a new csv file.
 
-Check that the pathway of \textit{in\textunderscore path} and \textit{out\textunderscore path} matches the directory where the csv file is. In this example, the volcanoes file (\href{http://github.com}{\textit{volc\textunderscore longlat.csv}}) is in the directory \textit{all} in the user's Desktop. Run the code, you will know the process is finished when the message "process completed" and the time of execution are returned:
+Check that the pathway of \textit{in\textunderscore path} and \textit{out\textunderscore path} matches the directory where the csv file is. In this example, the volcanoes file (\href{https://github.com/nfcd/compGeo/blob/master/source/data/ch2-5/volc_longlat.csv}{\textit{volc\textunderscore longlat.csv}}) is in the directory \textit{data/ch2-5}. Run the code, you will know the process is finished when the message "process completed" and the time of execution are returned:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1094,8 +1095,8 @@ lon = 'LONGITUDE' #name of longitude field in original files
 lat = 'LATITUDE' #name of latitude field in original files
 f_x = 'x' #name of new x value field in new projected files
 f_y = 'y' #name of new y value field in new projected files
-in_path = u'/Users/nestor/Desktop/all' #input directory
-out_path = u'/Users/nestor/Desktop/all' #output directory
+in_path = path.abspath('../data/ch2-5') #input directory
+out_path = path.abspath('../data/ch2-5') #output directory
 input_projection = 'EPSG:4326' #WGS84
 output_projection = 'EPSG:3395' #World Mercator
 
@@ -1239,7 +1240,7 @@ Any plane can be uniquely represented by its downward normal. This line is known
     \end{split}
 \end{equation}
 
-The pole facilitates analyzing planes graphically and by computation. Our first Python function \href{http://github.com}{\textit{Pole}} computes the pole to a plane (\textit{k} = 1) or the plane from its pole (\textit{k} = 0). It is followed by the helper function \href{http://github.com}{\textit{ZeroTwoPi}} which makes sure azimuths are always between 0 and 360\degree. Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians, and the plane must follow the RHR format.
+The pole facilitates analyzing planes graphically and by computation. Our first function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/Pole.py}{\textit{Pole}} computes the pole to a plane (\textit{k} = 1) or the plane from its pole (\textit{k} = 0). It is followed by the helper function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/ZeroTwoPi.py}{\textit{ZeroTwoPi}} which makes sure azimuths are always between 0 and 360\degree. Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians, and the plane must follow the RHR format.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1352,7 +1353,7 @@ where $\delta$ is the dip angle of the plane. This equation is plotted in Figure
 \begin{figure}[ht]
     \centering
     {\includegraphics[width=13cm]{Figures/ch3f6.png}}
-    \caption{Strike error $\varepsilon_s$ as a function of dip $\delta$ for values of operator error $\varepsilon_o$  of 1-5\degree. The \href{http://github.com}{notebook} that produced this graph is available from the resource git repository.}
+    \caption{Strike error $\varepsilon_s$ as a function of dip $\delta$ for values of operator error $\varepsilon_o$  of 1-5\degree. The \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch3fig6.ipynb}{notebook} that produced this graph is available from the resource git repository.}
 \end{figure}
 
 For line measurements, the situation is not better. When measuring the orientation of a line, it is common practice to align the compass in the direction of the horizontal projection of the line, which, as anyone who has tried this in the field knows, it is quite difficult. There will be an operator error and the measured trend $\beta\text{$'$}$ will differ from the true trend $\beta$ (Fig. 3.7a). The trend error $\varepsilon_t$ ($|\beta\text{$'$}- \beta|$)in terms of the angle on the plane $\varepsilon_o$ which the measured line makes with the true line, is given by the following equations (Woodcock, 1976): 
@@ -1360,7 +1361,7 @@ For line measurements, the situation is not better. When measuring the orientati
 \begin{figure}[ht]
     \centering
     \includegraphics[width=13cm]{Figures/ch3f7.png}
-    \caption{\textbf{a.} Geometrical relations for estimating the trend error $\varepsilon_t$ from the rake \textit{r} of the line, the dip $\delta$  of the plane, and the angle on the plane $\varepsilon_o$ between the measured and the true lines. Trend error as function of dip for \textbf{b.} a measured line on the down-dip side of the line, and \textbf{c.} a measured line on the up-dip side of the line. In b and c, $\varepsilon_o$ is 3\degree. The notebooks that produced graphs \href{http://github.com}{b} and \href{http://github.com}{c} are available from the resource git repository.}
+    \caption{\textbf{a.} Geometrical relations for estimating the trend error $\varepsilon_t$ from the rake \textit{r} of the line, the dip $\delta$  of the plane, and the angle on the plane $\varepsilon_o$ between the measured and the true lines. Trend error as function of dip for \textbf{b.} a measured line on the down-dip side of the line, and \textbf{c.} a measured line on the up-dip side of the line. In b and c, $\varepsilon_o$ is 3\degree. The notebooks that produced graphs \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch3fig7b.ipynb}{b} and \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch3fig7c.ipynb}{c} are available from the resource git repository.}
 \end{figure}
 
 \begin{equation}
@@ -1458,7 +1459,7 @@ The equal area or Schmidt net (Fig. 3.12) overcomes this problem. Strictly speak
 
 The tradeoff is that angles are no longer preserved, and small circles are no longer true circles (Fig. 3.12b). The equal angle or Wulff net is used in problems where visualizing correctly angles on the net is important such as in crystallography and geography, while the equal area or Schmidt net is used in cases where analyzing the concentration of points on the net is important such as in structural analysis.
 
-The Python function \href{http://github.com}{\textit{StCoordLine}} computes the coordinates of a line in an equal angle or an equal area net (equations 3.7 and 3.8).  Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians.
+The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/StCoordLine.py}{\textit{StCoordLine}} computes the coordinates of a line in an equal angle or an equal area net (equations 3.7 and 3.8).  Notice that angles (\textit{trd} and \textit{plg}) should be entered in radians.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1508,7 +1509,7 @@ def StCoordLine(trd,plg,sttype):
 
 % SUBSECTION: PLOTTING LINES AND POLES IN THE STEREONETS
 \subsection{Plotting lines and poles in a stereonet}
-The notebook \href{http://github.com}{ch3.ipynb} illustrates the use of the \textit{StCoordLine} and \textit{Pole} functions to plot lines and poles to planes on an equal angle or an equal area stereonet. You will get the chance to practice more with these functions in section \ref{exercises3}.
+The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch3.ipynb}{ch3} illustrates the use of the \textit{StCoordLine} and \textit{Pole} functions to plot lines and poles to planes on an equal angle or an equal area stereonet. You will get the chance to practice more with these functions in section \ref{exercises3}.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1516,6 +1517,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
 
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from Pole import Pole as Pole
 from StCoordLine import StCoordLine as StCoordLine
 
@@ -1709,7 +1713,7 @@ We use a hat to indicate unit vectors. There is a very interesting property of u
 
 these are called the \textit{direction cosines} of the vector. By convention, $\cos\alpha$ is the direction cosine of the vector with respect to $\mathbf{X_1}$, $\cos\beta$ is the direction cosine of the vector with respect to $\mathbf{X_2}$, and $\cos\gamma$ is the direction cosine of the vector with respect to $\mathbf{X_3}$ (Fig. 4.2b).
 
-In Python, we can use the NumPy \textit{linalg.norm} function to compute the magnitude of a vector and convert it to a unit vector as illustrated in the following notebook \href{http://github.com}{ch4-1.ipynb}:
+In Python, we can use the NumPy \textit{linalg.norm} function to compute the magnitude of a vector and convert it to a unit vector as illustrated in the following notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-1.ipynb}{ch4-1}:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1790,7 +1794,7 @@ The result of the cross product is another vector. This vector is perpendicular 
 
 The cross product is not commutative. If the vectors are unit vectors, the length of the resulting vector is equal to the sine of the angle between the vectors (Fig. 4.3b). The new vector obeys a right-hand rule; for $\mathbf u\times\mathbf v$, the fingers curl from $\mathbf u$ towards $\mathbf v$ and the thumb points in the direction of the resulting vector, and vice versa (Fig. 4.3b).
 
-In Python, these operations are easy to perform using the NumPy library as shown in the following notebook \href{http://github.com}{ch4-2.ipynb}:
+In Python, these operations are easy to perform using the NumPy library as shown in the following notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-2.ipynb}{ch4-2}:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1895,7 +1899,7 @@ These equations are summarized in Table 4.1.
 \label{table4.1}
 \end{table}
 
-The following Python function \href{http://github.com}{\textit{SphToCart}} converts a line (\textit{k} = 0) or a plane (\textit{k} = 1) from spherical to Cartesian coordinates. Notice that the angles (\textit{trd} and \textit{plg}) should be entered in radians:
+The following function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/SphToCart.py}{\textit{SphToCart}} converts a line (\textit{k} = 0) or a plane (\textit{k} = 1) from spherical to Cartesian coordinates. Notice that the angles (\textit{trd} and \textit{plg}) should be entered in radians:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -1975,7 +1979,7 @@ One should also check for the special case of $\cos\alpha=0$:
     trend = 270\degree\,\,if\,(\cos\alpha = 0\,\,and\,\cos(\beta)< 0) \tag{4.14d}
 \end{equation}
 
-The following Python function \href{http://github.com}{\textit{CartToSph}} converts a line from Cartesian to spherical coordinates. Notice that the trend and plunge are returned in radians:
+The following function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/CartToSph.py}{\textit{CartToSph}} converts a line from Cartesian to spherical coordinates. Notice that the trend and plunge are returned in radians:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2051,7 +2055,7 @@ These direction cosines define the orientation of the mean vector. A measure of 
     \overline{r}=\frac{r}{N}\qquad where\qquad 0\leq\overline{r}\leq 1 \tag{4.15d}
 \end{equation}
 
-The closer this value is to 1, the better the concentration. The Python function \href{http://github.com}{\textit{CalcMV}} calculates the mean vector for a series of lines. It also calculates the Fisher statistics for the mean vector (Fisher et al., 1987), which is the standard way to represent uncertainties in this analysis. Notice that \textit{CalcMV} uses our two previous functions \textit{SphToCart} and \textit{CartToSph} to convert from spherical to Cartesian coordinates, and vice versa.
+The closer this value is to 1, the better the concentration. The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/CalcMV.py}{\textit{CalcMV}} calculates the mean vector for a series of lines. It also calculates the Fisher statistics for the mean vector (Fisher et al., 1987), which is the standard way to represent uncertainties in this analysis. Notice that \textit{CalcMV} uses our two previous functions \textit{SphToCart} and \textit{CartToSph} to convert from spherical to Cartesian coordinates, and vice versa.
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2134,7 +2138,7 @@ def CalcMV(T, P):
 \end{lstlisting}    
 \end{center}
 
-The notebook \href{http://github.com}{ch4-3.ipynb} shows the solution to the mean vector problem in Ragan (2009, pp. 147-148), which involves finding the mean orientation of 10 poles to bedding:
+The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-3.ipynb}{ch4-3} shows the solution to the mean vector problem in Ragan (2009, pp. 147-148), which involves finding the mean orientation of 10 poles to bedding:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2142,6 +2146,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
 
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from StCoordLine import StCoordLine as StCoordLine
 from CalcMV import CalcMV as CalcMV 
 
@@ -2225,7 +2232,7 @@ Many interesting problems can be solved using the dot and cross product operatio
 \label{table4.2}
 \end{table}
 
-The Python function \href{http://github.com}{\textit{Angles}} computes the angle between two lines (\textit{ans0} = \textit{'l'}), the angle between two planes (\textit{ans0} = \textit{'p'}), the plane from two lines (\textit{ans0} = \textit{'a'}), or the intersection of two planes (\textit{ans0} = \textit{'i'}).
+The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/Angles.py}{\textit{Angles}} computes the angle between two lines (\textit{ans0} = \textit{'l'}), the angle between two planes (\textit{ans0} = \textit{'p'}), the plane from two lines (\textit{ans0} = \textit{'a'}), or the intersection of two planes (\textit{ans0} = \textit{'i'}).
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -2319,13 +2326,16 @@ def Angles(trd1,plg1,trd2,plg2,ans0):
 \end{lstlisting}    
 \end{center}
 
-The notebook \href{http://github.com}{ch4-4.ipynb} illustrates the use of the function \textit{Angles} to solve several interesting problems. Let's start with the following problem from Leyshon and Lisle (1996): Two limbs of a chevron fold (A and B) have orientations (RHR) as follows: Limb A = 120/40, Limb B = 250/60. Determine: (a) the trend and plunge of the hinge line of the fold, (b) the rake of the hinge line in limb A, (c) the rake of the hinge line in limb B. 
+The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-4.ipynb}{ch4-4} illustrates the use of the function \textit{Angles} to solve several interesting problems. Let's start with the following problem from Leyshon and Lisle (1996): Two limbs of a chevron fold (A and B) have orientations (RHR) as follows: Limb A = 120/40, Limb B = 250/60. Determine: (a) the trend and plunge of the hinge line of the fold, (b) the rake of the hinge line in limb A, (c) the rake of the hinge line in limb B. 
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
 import math
 pi = math.pi
 
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from Angles import Angles as Angles
 
 # Strike and dip of the limbs in radians
@@ -2420,7 +2430,7 @@ There are many interesting problems you can solve using the function \textit{Ang
 
 The three point problem is a fundamental problem in geology. It derives from the fact that three non-collinear points on a plane define the orientation of the plane. The graphical solution to this problem is introduced early in the Geosciences Bachelor. It involves finding the strike line (a line connecting two points of equal elevation) on the plane, and the dip from two strike lines (two structure contours) on the plane. 
 
-There is however an easier and more accurate solution to this problem using linear algebra: The three points on the plane define two lines, and the cross product between these lines is parallel to the pole to the plane, from which the orientation of the plane can be estimated. The Python function \href{http://github.com}{\textit{ThreePoint}} computes the strike and dip of plane from the east (\textbf{E}), north (\textbf{N}), and up (\textbf{U}) coordinates of three points on the plane:
+There is however an easier and more accurate solution to this problem using linear algebra: The three points on the plane define two lines, and the cross product between these lines is parallel to the pole to the plane, from which the orientation of the plane can be estimated. The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/ThreePoint.py}{\textit{ThreePoint}} computes the strike and dip of plane from the east (\textbf{E}), north (\textbf{N}), and up (\textbf{U}) coordinates of three points on the plane:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -2480,18 +2490,22 @@ point2 = [1323, 2362, 500]
 
 point3 = [2003, 2913, 700] 
 
-Calculate the strike and dip of the plane. The Python notebook \href{http://github.com}{ch4-5.ipynb} shows the solution to this problem:\\ 
+Calculate the strike and dip of the plane. The Python notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-5.ipynb}{ch4-5} shows the solution to this problem:\\ 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=9cm]{Figures/ch4f7.png}
-    \caption{Geologic map of sedimentary units dipping south (Bennison et al., 2011). Points 1 to 3 on the base of unit S are used to estimate the orientation of bedding. Notice that the origin is at the lower left corner of the map.}
+    \caption{Geologic map of sedimentary units dipping south (Bennison et al., 2011). Points 1 to 3 on the base of unit S are used to estimate the orientation of bedding. Notice that the origin is at the lower left corner.}
 \end{figure}
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
-import math
-pi = math.pi
+import numpy as np
+pi = np.pi
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from ThreePoint import ThreePoint as ThreePoint
 
 # ENU coordinates of the three points
@@ -2529,7 +2543,7 @@ pip install --upgrade uncertainties
 \end{lstlisting}
 \end{center}
 
-After this, you can use the uncertainties package in your functions. The Python functions \href{http://github.com}{\textit{AnglesU}} and \href{http://github.com}{\textit{ThreePointU}} in the resource git repository, are the corresponding \textit{Angles} and \textit{ThreePoint} functions with uncertainties. We don't list these functions here, but rather illustrate their use in the following notebook \href{http://github.com}{ch4-6.ipynb}.
+After this, you can use the uncertainties package in your functions. The functions \href{https://github.com/nfcd/compGeo/blob/master/source/functions/AnglesU.py}{\textit{AnglesU}} and \href{https://github.com/nfcd/compGeo/blob/master/source/functions/ThreePointU.py}{\textit{ThreePointU}} in the resource git repository, are the corresponding \textit{Angles} and \textit{ThreePoint} functions with uncertainties. We don't list these functions here, but rather illustrate their use in the following notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch4-6.ipynb}{ch4-6}.
 
 In the first problem on page 64, the uncertainty in strike is 4\degree and in dip is 2\degree. What is the uncertainty in the hinge orientation and its rake on the limbs? This problem can be solved as follows:
 
@@ -2538,6 +2552,10 @@ In the first problem on page 64, the uncertainty in strike is 4\degree and in di
 import numpy as np
 pi = np.pi
 import uncertainties as unc
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from AnglesU import AnglesU as AnglesU
 
 # Strike and dip of the limbs in radians
@@ -2915,7 +2933,7 @@ and the thickness of the unit is:
     t = P_2-P_1
 \end{equation}{}
 
-The Python function \href{http://github.com}{\textit{TrueThickness}} calculates the thickness of a unit given the strike and dip of the unit, and the \textbf{ENU} coordinates of two points at the top and base of the unit:
+The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/TrueThickness.py}{\textit{TrueThickness}} calculates the thickness of a unit given the strike and dip of the unit, and the \textbf{ENU} coordinates of two points at the top and base of the unit:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -2976,12 +2994,16 @@ point4 = [1768, 940, 300]
 
 point5 = [1842, 191, 200]
 
-The Python notebook \href{http://github.com}{ch5-1.ipynb} shows the solution to this problem:
+The Python notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-1.ipynb}{ch5-1} shows the solution to this problem:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 pi = np.pi
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from TrueThickness import TrueThickness as TrueThickness
 
 # Strike and dip of the unit in radians
@@ -3015,13 +3037,17 @@ print('Thickness of unit Q = {:.1f} m'.format(thickQ))
 }}
 \end{center}
 
-What about if there are uncertainties in the strike and dip of the unit, and in the top and base points? The function \href{http://github.com}{\textit{TrueThicknessU}} in the resource git repository handles this case. Suppose that in the problem above, the uncertainties in strike and dip are 4\degree and 2\degree respectively, the uncertainty in east and north coordinates is 10 m, and in elevation is 5 m. The Python notebook \href{http://github.com}{ch5-2.ipynb} shows the solution to this problem:
+What about if there are uncertainties in the strike and dip of the unit, and in the top and base points? The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/TrueThicknessU.py}{\textit{TrueThicknessU}} in the resource git repository handles this case. Suppose that in the problem above, the uncertainties in strike and dip are 4\degree and 2\degree respectively, the uncertainty in east and north coordinates is 10 m, and in elevation is 5 m. The Python notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-2.ipynb}{ch5-2} shows the solution to this problem:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 pi = np.pi
 import uncertainties as unc
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from TrueThicknessU import TrueThicknessU as TrueThicknessU
 
 # Strike and dip of the unit in radians
@@ -3076,7 +3102,7 @@ Let's call the \textbf{P} coordinate of the plane's outcrop location $P_1$, and 
     D=P_1-P_{gp}
 \end{equation}
 
-At each point in the DEM grid, we can calculate and store this difference. The plane will outcrop wherever $D$ is zero. Therefore, to draw the outcrop trace, we just need to contour the $D$ value of zero on the grid. The Python function \href{http://github.com}{\textit{OutcropTrace}} computes the value of $D$ on a DEM grid of regularly spaced points defined by \textbf{E} ($\mathbf{XG}$), \textbf{N} ($\mathbf{YG}$) and \textbf{U} ($\mathbf{ZG}$) coordinates. Notice that these arrays must follow the format given by the NumPy \textit{meshgrid} function:
+At each point in the DEM grid, we can calculate and store this difference. The plane will outcrop wherever $D$ is zero. Therefore, to draw the outcrop trace, we just need to contour the $D$ value of zero on the grid. The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/OutcropTrace.py}{\textit{OutcropTrace}} computes the value of $D$ on a DEM grid of regularly spaced points defined by \textbf{E} ($\mathbf{XG}$), \textbf{N} ($\mathbf{YG}$) and \textbf{U} ($\mathbf{ZG}$) coordinates. Notice that these arrays must follow the format given by the NumPy \textit{meshgrid} function:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3122,7 +3148,7 @@ def OutcropTrace(strike,dip,p1,XG,YG,ZG):
     return DG  
 \end{lstlisting}
 
-Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). The notebook \href{http://github.com}{ch5-3.ipynb} draws the outcrop trace of the contact. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are input from text files (\href{http://github.com}{\textit{XG.txt}}, \href{http://github.com}{\textit{YG.txt}}, and \href{http://github.com}{\textit{ZG.txt}}).
+Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-3.ipynb}{ch5-3.ipynb} draws the outcrop trace of the contact. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are input from the text files \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/XG.txt}{\textit{XG}}, \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/YG.txt}{\textit{YG}}, and \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/ZG.txt}{\textit{ZG}}.
 
  \begin{figure}[ht]
     \centering
@@ -3134,12 +3160,16 @@ Let's apply this function to the map of Fig. 5.5. On the western half of this ma
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 import matplotlib.pyplot as plt
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from OutcropTrace import OutcropTrace as OutcropTrace
 
 # Read the DEM grid
-XG = np.loadtxt('XG.txt')
-YG = np.loadtxt('YG.txt')
-ZG = np.loadtxt('ZG.txt')
+XG = np.loadtxt(os.path.abspath('../data/ch5-3/XG.txt'))
+YG = np.loadtxt(os.path.abspath('../data/ch5-3/YG.txt'))
+ZG = np.loadtxt(os.path.abspath('../data/ch5-3/ZG.txt'))
 
 # Contour the terrain
 cval = np.linspace(200,700,6)
@@ -3235,7 +3265,7 @@ This is the transformation matrix \textbf{a} for the Down-Plunge projection. To 
 
 and then plot $X_{2i}'$ against $X_{1i}'$ (Fig. 5.6) to draw the Down-Plunge projection of the fold.
 
-The Python function \href{http://github.com}{\textit{DownPlunge}} computes the Down-Plunge projection of a bed given the \textbf{ENU} coordinates of points on the bed, and the trend and plunge of the fold axis:
+The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/DownPlunge.py}{\textit{DownPlunge}} computes the Down-Plunge projection of a bed given the \textbf{ENU} coordinates of points on the bed, and the trend and plunge of the fold axis:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3285,32 +3315,35 @@ def DownPlunge(bedseg,trd,plg):
    return dpbedseg
 \end{lstlisting}
 
-Let's use this function to draw the Down-Plunge projection of the Big Elk anticline in southeastern Idaho, USA (Fig. 5.7; Albee and Cullins, 1975; Allmendinger et al., 2012). Text files contain the digitized contacts (\textbf{ENU}) of three tops along the fold: the Jurassic Twin Creek Limestone (\href{http://github.com}{\textit{jtc.txt}}), the Jurassic Stump Sandstone (\href{http://github.com}{\textit{js.txt}}), and the Cretaceous Peterson Limestone (\href{http://github.com}{\textit{kp.txt}}). The trend and plunge of the folds axis is 125/126 (in the next chapter we will see how to compute this axis). The notebook \href{http://github.com}{ch5-4.ipynb} shows the solution to this problem:
+Let's use this function to draw the Down-Plunge projection of the Big Elk anticline in southeastern Idaho, USA (Fig. 5.7; Albee and Cullins, 1975; Allmendinger et al., 2012). Text files contain the digitized contacts (\textbf{ENU}) of three tops along the fold: the Jurassic Twin Creek Limestone (\href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-4/jtc.txt}{\textit{jtc.txt}}), the Jurassic Stump Sandstone (\href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-4/js.txt}{\textit{js.txt}}), and the Cretaceous Peterson Limestone (\href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-4/kp.txt}{\textit{kp.txt}}). The trend and plunge of the folds axis is 125/126 (in the next chapter we will see how to compute this axis). The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-4.ipynb}{ch5-4} shows the solution to this problem:
 
-\begin{center}
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 import matplotlib.pyplot as plt
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from DownPlunge import DownPlunge as DownPlunge
 
 # Trend and plunge of the fold axis in radians
-trend = 125 * np.pi/180;
-plunge = 26 * np.pi/180;
+trend = 125 * np.pi/180
+plunge = 26 * np.pi/180
 
 # Read the tops from the text files
-jtc = np.loadtxt('jtc.txt');
-js = np.loadtxt('js.txt');
-kp = np.loadtxt('kp.txt');
+jtc = np.loadtxt(os.path.abspath('../data/ch5-4/jtc.txt'))
+js = np.loadtxt(os.path.abspath('../data/ch5-4/js.txt'))
+kp = np.loadtxt(os.path.abspath('../data/ch5-4/kp.txt'))
 
 # Transform the points
-jtcdp = DownPlunge(jtc,trend,plunge);
-jsdp = DownPlunge (js,trend,plunge);
-kpdp = DownPlunge(kp,trend,plunge);
+jtcdp = DownPlunge(jtc,trend,plunge)
+jsdp = DownPlunge (js,trend,plunge)
+kpdp = DownPlunge(kp,trend,plunge)
 
-# Plot the Down-plunge section
-plt.plot(jtcdp[:,1],jtcdp[:,0],'k-');
-plt.plot(jsdp[:,1],jsdp[:,0],'r-');
-plt.plot(kpdp[:,1],kpdp[:,0],'b-');
+# Plot the down plunge section
+plt.plot(jtcdp[:,1],jtcdp[:,0],'k-')
+plt.plot(jsdp[:,1],jsdp[:,0],'r-')
+plt.plot(kpdp[:,1],kpdp[:,0],'b-')
 
 # Display the section's orientation
 # Notice that the fold axis plunges SE
@@ -3322,6 +3355,14 @@ plt.text(-0.6e4,11.5e3,'SW')
 # Make axes equal
 plt.axis('scaled')
 \end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=14cm]{Figures/ch5f8.png}
+    \caption{Simplified geologic map of the Big Elk anticline in southeastern Idaho. Modified from Allmendinger et al. (2012).}
+\end{figure}
+
+\begin{center}
 \fbox{
     \parbox{\textwidth - 2 \fboxsep}{
     Output: \\
@@ -3330,12 +3371,6 @@ plt.axis('scaled')
 \end{center}
 
 The thrust verges to the NE (the direction of transport is towards the NE), yet the fold verges to the SW in the opposite direction. Unit Jp, between Jtc and Js, contains evaporites (Fig. 5.7). Could this explain the observed fold geometry?
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=14cm]{Figures/ch5f8.png}
-    \caption{Simplified geologic map of the Big Elk anticline in southeastern Idaho. Modified from Allmendinger et al. (2012).}
-\end{figure}
 
 \subsection{Rotations}
 
@@ -3359,7 +3394,7 @@ The components of the transformation matrix \textbf{a} defining the rotation, wh
     \end{split}
 \end{equation}
 
-The Python function \href{http://github.com}{\textit{Rotate}} rotates a line (\textit{trd} and \textit{plg}) about a rotation axis (\textit{rtrd} and \textit{rplg}), an amount $\omega$ (\textit{rot}):
+The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/Rotate.py}{\textit{Rotate}} rotates a line (\textit{trd} and \textit{plg}) about a rotation axis (\textit{rtrd} and \textit{rplg}), an amount $\omega$ (\textit{rot}):
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3436,7 +3471,7 @@ def Rotate(rtrd,rplg,rot,trd,plg,ans0):
     return rtrd, rplg
 \end{lstlisting}
 
-The  notebook  \href{http://github.com}{ch5-5.ipynb} illustrates  the  use  of  the  function \textit{Rotate} to solve the following problem from Leyshon  and Lisle  (1996): An overturned bed oriented 305/60 (RHR) has sedimentary lineations which indicate the palaeocurrent direction. These pitch at 60NW, with the current flowing up the plunge. Calculate the original trend of the palaeocurrents. 
+The  notebook  \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-5.ipynb}{ch5-5} illustrates  the  use  of  the  function \textit{Rotate} to solve the following problem from Leyshon  and Lisle  (1996): An overturned bed oriented 305/60 (RHR) has sedimentary lineations which indicate the palaeocurrent direction. These pitch at 60NW, with the current flowing up the plunge. Calculate the original trend of the palaeocurrents. 
 
 Besides rotating the lineations back to their pre-tilted orientation, there is an additional challenge in this problem. We need to figure out the orientation of the lineations from their pitch on the bed. We will do this as well using a rotation.
 
@@ -3445,6 +3480,9 @@ Besides rotating the lineations back to their pre-tilted orientation, there is a
 import math
 pi = math.pi
 
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from Pole import Pole as Pole
 from Rotate import Rotate as Rotate
 from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
@@ -3497,7 +3535,7 @@ print('Original trend of the paleocurrents = {:.1f}'.format(trdl*180/pi))
 
 \subsection{Plotting great and small circles using rotations}
 
-The transformation matrix \textbf{a} that describes the rotation (Eq. 5.17), provides a simple and elegant way to draw great and small circles on a stereonet. As you may suspect from the previous notebook, to draw a great circle, we just need to rotate the strike line of the plane in fixed increments (e.g. 1\degree) around the pole to the plane until completing 180\degree. This is the same as drawing lines on the plane of incrementally larger rake from 0 to 180\degree. To draw a small circle, we just need to incrementally rotate (e.g. 1\degree increments) a line around the axis of the conic section until completing 360\degree. Any line making an angle less than 90\degree with the axis of rotation will trace out a cone, which plots on the stereonet as a small circle. The Python functions \href{http://github.com}{\textit{GreatCircle}} and \href{http://github.com}{\textit{SmallCircle}} return the path of great and small circles on an equal angle or equal area stereonet:
+The transformation matrix \textbf{a} that describes the rotation (Eq. 5.17), provides a simple and elegant way to draw great and small circles on a stereonet. As you may suspect from the previous notebook, to draw a great circle, we just need to rotate the strike line of the plane in fixed increments (e.g. 1\degree) around the pole to the plane until completing 180\degree. This is the same as drawing lines on the plane of incrementally larger rake from 0 to 180\degree. To draw a small circle, we just need to incrementally rotate (e.g. 1\degree increments) a line around the axis of the conic section until completing 360\degree. Any line making an angle less than 90\degree with the axis of rotation will trace out a cone, which plots on the stereonet as a small circle. The functions \href{https://github.com/nfcd/compGeo/blob/master/source/functions/GreatCircle.py}{\textit{GreatCircle}} and \href{https://github.com/nfcd/compGeo/blob/master/source/functions/SmallCircle.py}{\textit{SmallCircle}} return the path of great and small circles on an equal angle or equal area stereonet:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3613,7 +3651,7 @@ def SmallCircle(trda,plga,coneAngle,sttype):
     return path1, path2, np1, np2
 \end{lstlisting}
 
-Normally, stereonets are displayed with the primitive equal to the horizontal (i.e. looking straight down). However, sometimes is convenient to look at the stereonet in another orientation. For example, one may want to plot data in the plane of a cross section (the view direction is perpendicular to the cross section), or in a down-plunge projection of a fold (the view direction is parallel to the fold axis). The Python function \href{http://github.com}{\textit{GeogrToView}} enables to plot great and small circles on a stereonet of any view direction, by transforming the poles of rotation from \textbf{NED} coordinates to the view direction coordinates:
+Normally, stereonets are displayed with the primitive equal to the horizontal (i.e. looking straight down). However, sometimes is convenient to look at the stereonet in another orientation. For example, one may want to plot data in the plane of a cross section (the view direction is perpendicular to the cross section), or in a down-plunge projection of a fold (the view direction is parallel to the fold axis). The function \href{https://github.com/nfcd/compGeo/blob/master/source/functions/GeogrToView.py}{\textit{GeogrToView}} enables to plot great and small circles on a stereonet of any view direction, by transforming the poles of rotation from \textbf{NED} coordinates to the view direction coordinates:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3672,7 +3710,7 @@ def GeogrToView(trd,plg,trdv,plgv):
     return rtrd, rplg
 \end{lstlisting}
 
-We put these three functions together in a function called \href{http://github.com}{\textit{Stereonet}}, that plots an equal angle or equal area stereonet in any view direction:
+We put these three functions together in a function called \href{https://github.com/nfcd/compGeo/blob/master/source/functions/Stereonet.py}{\textit{Stereonet}}, that plots an equal angle or equal area stereonet in any view direction:
 
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
@@ -3765,18 +3803,22 @@ def Stereonet(trdv,plgv,intrad,sttype):
         plt.plot(path[:,0], path[:,1], color='gray', linewidth=0.5)
 \end{lstlisting}
 
-Now, let's use all these functions to plot the bedding data of the Big Elk anticline (Fig. 5.7) in an equal angle stereonet, looking down and also along the fold axis. The notebook \href{http://github.com}{ch5-6.ipynb} illustrates this. Notice that we read the strike and dips from the file \href{http://github.com}{\textit{beasd.txt}}:
+Now, let's use all these functions to plot the bedding data of the Big Elk anticline (Fig. 5.7) in an equal angle stereonet, looking down and also along the fold axis. The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-6.ipynb}{ch5-6.ipynb} illustrates this. Notice that we read the strike and dips from the file \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-6/beasd.txt}{\textit{beasd.txt}}:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib  inline
+pi = np.pi
+
+import sys
+import os
+sys.path.append(os.path.abspath('../functions'))
 from Pole import Pole as Pole
 from GreatCircle import GreatCircle as GreatCircle
 from GeogrToView import GeogrToView as GeogrToView
 from Stereonet import Stereonet as Stereonet
-pi = np.pi
 
 # Draw a lower hemisphere equal angle stereonet
 trdv = 0
@@ -3832,15 +3874,15 @@ What do these plots tell you about the geometry of the fold?
 
 \begin{enumerate}
 
-    \item Figure 5.8 is a satellite image of the Sheep Mountain anticline, Wyoming, USA (Rioux, 1994). At 75 localities along the anticline in the Jurassic Sundance Formation (gray-green sandstone, siltstone and shale; Rioux, 1994), the \textbf{ENU} coordinates of points on the base and top of the unit (Fig. 5.8a, green and red points), and three points on a bed inside the unit (Fig. 5.8b, blue points), were recorded in Google Earth. You can see these points in Google Earth using the file \href{http://github.com}{\textit{stdp.kml}}. 
+    \item Figure 5.8 is a satellite image of the Sheep Mountain anticline, Wyoming, USA (Rioux, 1994). At 75 localities along the anticline in the Jurassic Sundance Formation (gray-green sandstone, siltstone and shale; Rioux, 1994), the \textbf{ENU} coordinates of points on the base and top of the unit (Fig. 5.8a, green and red points), and three points on a bed inside the unit (Fig. 5.8b, blue points), were recorded in Google Earth. You can see these points in Google Earth using the file \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise1/sdtp.kml}{\textit{sdtp.kml}}. 
     
-    \begin{figure}[H]
+    \begin{figure}[ht]
     \centering
     \includegraphics[width=14cm]{Figures/ch5f13.jpg}
     \caption{\textbf{a.} Base (green) and top (red) locations of the Jurassic Sundance Formation along the Sheep Mountain anticline, Wyoming, for exercise 1. \textbf{b.} Closeup of one of the localities (red rectangle in a) showing as well the three points (blue) used to determine strike and dip.}
     \end{figure}
     
-    The file \href{http://github.com}{\textit{sdtp.txt}} contains the \textbf{ENU} coordinates (UTM in meters) of the points. Each row is one locality, and it contains 15 columns corresponding to the \textbf{ENU} coordinates of points 1 to 5. Points 1 to 3 are on a bed inside the unit, and points 4 and 5 are on the base and top of the unit, respectively. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on. 
+    The file \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise1/sdtp.txt}{\textit{sdtp.txt}} contains the \textbf{ENU} coordinates (UTM in meters) of the points. Each row is one locality, and it contains 15 columns corresponding to the \textbf{ENU} coordinates of points 1 to 5. Points 1 to 3 are on a bed inside the unit, and points 4 and 5 are on the base and top of the unit, respectively. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on. 
     
     \begin{enumerate}
         \item Compute the thickness of the Sundance Formation at the 75 localities. Notice that at each locality you will need to compute the strike and dip using points 1-3 and the \textit{ThreePoint} function, and the thickness of the unit using points 4 and 5 and the \textit{TrueThickness} function.
@@ -3857,7 +3899,7 @@ What do these plots tell you about the geometry of the fold?
         \includegraphics[width=0.5\textwidth]{Figures/ch5f14.jpg}
     \end{SCfigure}
     
-    The files \href{http://github.com}{\textit{dpa.txt}} and \href{http://github.com}{\textit{mlv.txt}} contain the \textbf{ENU} coordinates (UTM in meters) of the points in the Palliser (Dpa) and Livingstone (Mlv) formations, respectively. Each row in the files is one locality, and it contains 12 columns corresponding to the \textbf{ENU} coordinates of points 1 to 4. Points 1-3 are either on the top or the base of the unit, and point 4 is on the other contact. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on.
+    The files \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise2/dpa.txt}{\textit{dpa.txt}} and \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise2/mlv.txt}{\textit{mlv.txt}} contain the \textbf{ENU} coordinates (UTM in meters) of the points in the Palliser (Dpa) and Livingstone (Mlv) formations, respectively. Each row in the files is one locality, and it contains 12 columns corresponding to the \textbf{ENU} coordinates of points 1 to 4. Points 1-3 are either on the top or the base of the unit, and point 4 is on the other contact. Columns 1 to 3 are the \textbf{ENU} coordinates of point 1, columns 4 to 6 those of point 2, and so on.
     
     \begin{enumerate}
         \item Compute the thickness of the Palliser and Livingstone formations at the localities shown in Figure 5.9. What is the mean value of thickness of these two units? What is the standard deviation (this is also called the 1-sigma error)? \textit{Hint}: Use the functions \textit{ThreePoint} and \textit{TrueThickness}. The NumPy functions \textit{mean} and \textit{std} compute the mean and standard deviation of an array.
@@ -3867,13 +3909,13 @@ What do these plots tell you about the geometry of the fold?
     
     \item The following exercise is from Ragan (2009): With the following information and the topographic map of Fig. 5.10, construct a geological map. The base of a 100 m thick sandstone unit of lower Triassic age is exposed at point A; its attitude is 110/25 (RHR). Point B is on the east boundary of a 50 m thick, vertical diabase dike of Jurassic age; its trend is 020. At point C, the base of a horizontal Cretaceous sequence is exposed and at point D the base of a conformable sequence of Tertiary rocks is present.
     
-    \begin{figure}[H]
+    \begin{figure}[ht]
     \centering
     \includegraphics[width=13cm]{Figures/ch5f15.jpg}
     \caption{Topographic map for exercise 3. Notice that the origin is at the lower left corner of the map. This is exercise 2 in chapter 4 of Ragan (2009).}
     \end{figure}
     
-    In introductory mapping courses, this exercise is solved graphically (Fig. 3.9). This time, you are going to use computation. The files \href{http://github.com}{\textit{XGE.txt}}, \href{http://github.com}{\textit{YGE.txt}}, and \href{http://github.com}{\textit{ZGE.txt}} are the \textbf{ENU} coordinates of the points of the DEM grid (these arrays follow the format of the NumPy \textit{meshgrid} function). Points A, B, C and D have the following coordinates \textbf{ENU} coordinates:
+    In introductory mapping courses, this exercise is solved graphically (Fig. 3.9). This time, you are going to use computation. The files \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise3/XGE.txt}{\textit{XGE.txt}}, \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise3/YGE.txt}{\textit{YGE.txt}}, and \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-exercise3/ZGE.txt}{\textit{ZGE.txt}} are the \textbf{ENU} coordinates of the points of the DEM grid (these arrays follow the format of the NumPy \textit{meshgrid} function). Points A, B, C and D have the following coordinates \textbf{ENU} coordinates:
     
     A = [232, 428, 370]
     
@@ -3924,5 +3966,22 @@ Ragan, D.M. 2009. Structural Geology: An Introduction to Geometrical Techniques.
 Rioux, R. L. 1994. Geologic Map of the Sheep Mountain‐Little Sheep Mountain Area, Big Horn County, Wyoming, U.S. Geol. Surv. Open File Rep., 94‐191.
 
 Suppe, J. 1985. Principles of Structural Geology. Prentice-Hall, 537 p.
+
+% CHAPTER 6: 
+\chapter{Tensors}
+
+\section{Tensors as vector operators}
+
+\section{Principal axes of a tensor}
+
+\section{The Mohr Circle}
+
+\section{The orientation tensor}
+
+\subsection{Best fit fold axis}
+
+\subsection{Best fit plane}
+
+\section{Exercises}
 
 \end{document}

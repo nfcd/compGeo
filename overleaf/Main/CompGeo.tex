@@ -77,7 +77,12 @@ Much of the material is based on the book Structural Geology Algorithms: Vectors
 
 You can download or subscribe to changes in the resource using its \href{https://github.com/nfcd/compGeo}{git repository}. We hope you enjoy this resource and learn from it, as well as use it for teaching. This will be the measure of our success. We also hope to spark enough interest for users to contribute to the resource with additional material and more chapters in the future. Finally, we are grateful to the Faculty of Science and Technology at the University of Stavanger for sponsoring this project.
 
+\section*{Accessing the resource material}
+
+The best way to access the resource material is by cloning or downloading the resource \href{https://github.com/nfcd/compGeo}{git repository}. The folder \href{https://github.com/nfcd/compGeo/blob/master/source}{\textit{source}} in the git repository contains the notebooks, functions and data in three different folders. The notebooks follow this directory structure. We recommend you use the same structure when running the notebooks.
+
 \section*{References}
+
 Allmendinger, R.W., Cardozo, N. and Fisher, D.M. 2012. Structural Geology Algorithms: Vectors and Tensors. Cambridge University Press, 302 p.
 
 Allmendinger, R.W. 2019. Modern Structural Practice: A structural geology laboratory manual for the 21st century. [\href{http://www.geo.cornell.edu/geology/faculty/RWA/structure-lab-manual}{Online}]. [Accessed January, 2020].
@@ -123,7 +128,7 @@ The installation process is quite straightforward. From the \href {https://www.a
 % SECTION: A FIRST INTRODUCTION TO PYTHON
 \section{A first introduction to Python}
 
-In this section, we use our first Jupyter notebook to learn the basics of Python. Download the notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch1.ipynb}{ch1.ipynb} from the resource git repository\footnote{At this stage, we recommend downloading the folder \href{https://github.com/nfcd/compGeo/blob/master/source}{\textit{source}} from the git repository. This folder contains the resource functions, notebooks and data.}. Open Anaconda and then launch Jupyter notebook. This will open a browser with a list of files and folders in your home directory. Navigate to the notebook ch1.ipynb and open it. Alternatively, follow the notebook in the sections below. Surprisingly, few lines of code are required to introduce key topics such as conditionals, loops, functions, array mathematics, and plotting. This shows the power of Python.
+In this section, we use our first Jupyter notebook to learn the basics of Python. Clone or download the resource \href{https://github.com/nfcd/compGeo}{git repository}. Open Anaconda and then launch Jupyter Notebook. This will open a browser with a list of files and folders in your home directory. Navigate to the folder source/notebooks and open the notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch1.ipynb}{ch1}. Alternatively, follow the notebook in the sections below. Surprisingly, few lines of code are required to introduce key topics such as conditionals, loops, functions, array mathematics, and plotting. This shows the power of Python.
 
 \subsection{Basics}
 
@@ -243,7 +248,7 @@ Radians 0.785398
 }}   
 \end{center}
 
-We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. We will implement and use functions that solve common problems in geosciences. Using a text editor, create a file called \textit{mylib.py} and put it in a folder of your choice\footnote{We have placed this file in the \textit{functions} folder}. In the file, write a function to convert from radians to degrees:
+We can also include code from other places. This is useful to make your own library of functions that you can then use in many different notebooks. This is basically the modus operandi of this resource. We will implement and use functions that solve common problems in geosciences. Using a text editor, create a file called \textit{mylib.py} and put it in the same folder the notebook is. In the file, write a function to convert from radians to degrees:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -257,11 +262,6 @@ We can then import in the notebook the code from the file and use it like this:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
-# Import folder where the function is
-import sys
-import os
-sys.path.append(os.path.abspath('../functions'))
-
 try:
     import mylib
     angle_radians = 0.785398
@@ -3148,7 +3148,7 @@ def OutcropTrace(strike,dip,p1,XG,YG,ZG):
     return DG  
 \end{lstlisting}
 
-Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-3.ipynb}{ch5-3.ipynb} draws the outcrop trace of the contact. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are input from the text files \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/XG.txt}{\textit{XG}}, \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/YG.txt}{\textit{YG}}, and \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/ZG.txt}{\textit{ZG}}.
+Let's apply this function to the map of Fig. 5.5. On the western half of this map, the contact between units B and C outcrops at point 2 and has an orientation 020/22 (RHR). On the eastern half of the map, the same contact outcrops at point y and has an orientation 160/22 (RHR). The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-3.ipynb}{ch5-3} draws the outcrop trace of the contact. Notice that the \textbf{ENU} coordinates of the points of the DEM grid are input from the text files \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/XG.txt}{\textit{XG}}, \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/YG.txt}{\textit{YG}}, and \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-3/ZG.txt}{\textit{ZG}}.
 
  \begin{figure}[ht]
     \centering
@@ -3803,7 +3803,7 @@ def Stereonet(trdv,plgv,intrad,sttype):
         plt.plot(path[:,0], path[:,1], color='gray', linewidth=0.5)
 \end{lstlisting}
 
-Now, let's use all these functions to plot the bedding data of the Big Elk anticline (Fig. 5.7) in an equal angle stereonet, looking down and also along the fold axis. The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-6.ipynb}{ch5-6.ipynb} illustrates this. Notice that we read the strike and dips from the file \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-6/beasd.txt}{\textit{beasd.txt}}:
+Now, let's use all these functions to plot the bedding data of the Big Elk anticline (Fig. 5.7) in an equal angle stereonet, looking down and also along the fold axis. The notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-6.ipynb}{ch5-6} illustrates this. Notice that we read the strike and dips from the file \href{https://github.com/nfcd/compGeo/blob/master/source/data/ch5-6/beasd.txt}{\textit{beasd.txt}}:
 
 \begin{center}
 \begin{lstlisting}[language=Python, frame=single]
@@ -3892,7 +3892,7 @@ What do these plots tell you about the geometry of the fold?
         \item The axis of the anticline is oriented 306/11. This is approximately the location where the bedding planes on the stereonet intersect (why?). In the next chapter we will see how to compute this. Make a Down-Plunge projection of the base and top of the Jurassic Sundance Formation. \textit{Hint}: Project the 75 base and top locations using the function \textit{DownPlunge}.
     \end{enumerate}
     
-    \item Allmendinger and Judge (2013) wrote an interesting article about the uncertainty in thickness measurements and its implication for estimating the shortening in fold and thrust belts. Figure 5.9 is a geologic map of the Canmore east half area in Alberta, Canada (Price, 1970). The yellow dots in the map are the points used to estimate the thickness of the Devonian Palliser (Dpa) and Mississippian Livingstone (Mlv) formations. These are in a homoclinal dip package in a thrust sheet. 
+    \item Allmendinger and Judge (2013) wrote an interesting article about the uncertainty in thickness measurements and its implication for estimating the shortening in fold and thrust belts. Figure 5.9 is a geologic map of the Canmore east half area in Alberta, Canada (Price, 1970). The yellow dots in the map are the points used by them to estimate the thickness of the Devonian Palliser (Dpa) and Mississippian Livingstone (Mlv) formations. These are in a homoclinal dip package in a thrust sheet. 
     
      \begin{SCfigure}
         \caption{Geologic map of the Canmore east half area, Alberta, Canada (Price, 1970) for exercise 2. The yellow dots are points used to determine the thickness of the Devonian Palliser (Dpa) and Mississippian Livingstone (Mlv) formations.}
@@ -3925,7 +3925,7 @@ What do these plots tell you about the geometry of the fold?
     
     D = [537, 183, 410]
     
-    \textit{Hint}: Use the function \textit{OutcropTrace} to compute the contacts. Follow a procedure similar to notebook ch5-3.ipynb to draw the topographic contours and the contacts. In this case though, some contacts will intersect. At contacts intersections, you will need to use the principle of superposition to determine which contact cuts the other one: e.g. the Jurassic dyke will cut the Triassic sequence, but it will be covered by the Cretaceous and Tertiary sequences.
+    \textit{Hint}: Use the function \textit{OutcropTrace} to compute the contacts. Follow a procedure similar to notebook \href{https://github.com/nfcd/compGeo/blob/master/source/notebooks/ch5-3.ipynb}{ch5-3} to draw the topographic contours and the contacts. In this case though, some contacts will intersect. At contacts intersections, you will need to use the principle of superposition to determine which contact cuts the other one: e.g. the Jurassic dyke will cut the Triassic sequence, but it will be covered by the Cretaceous and Tertiary sequences.
     
     \item This exercise is from Marshak and Mitra (1988). It's probably one of the hardest exercises to solve using rotations on a stereonet. Here, you will use the function \textit{Rotate} to solve this problem:
     

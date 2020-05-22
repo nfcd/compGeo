@@ -1,5 +1,4 @@
 import numpy as np
-from numpy import linalg
 import matplotlib.pyplot as plt
 
 from SphToCart import SphToCart as SphToCart
@@ -100,7 +99,7 @@ def Bingham(T,P):
     eigVec[1,1], eigVec[1,2] = CartToSph(V[0,1], V[1,1], V[2,1])
     # Trend and plunge of minimum eigenvalue: column 1 of V
     eigVec[2,1], eigVec[2,2] = CartToSph(V[0,0], V[1,0], V[2,0])
-
+    
     # Initialize confCone
     confCone = np.zeros((2,2))
     # If there are more than 25 lines, calculate confidence cones at the 95%
@@ -125,8 +124,8 @@ def Bingham(T,P):
             vec[i,2] = np.sin(eigVec[i,2] + east)
         for i in range(nlines):
             c1 = np.sin(P[i]+east)*np.cos(twopi-T[i])
-            c2 = sin(P[i]+east)*sin(twopi-T[i])
-            c3 = cos(P[i]+east)
+            c2 = np.sin(P[i]+east)*np.sin(twopi-T[i])
+            c3 = np.cos(P[i]+east)
             u1x = vec[2,0]*c1 + vec[2,1]*c2 + vec[2,2]*c3
             u2x = vec[1,0]*c1 + vec[1,1]*c2 + vec[1,2]*c3
             u3x = vec[0,0]*c1 + vec[0,1]*c2 + vec[0,2]*c3
@@ -153,11 +152,11 @@ def Bingham(T,P):
             # Calculate the eigenvalues and eigenvectors of the matrix f using
             # Python function np.linaln.eig. The next lines follow steps 1-4 outlined on 
             # pp. 34-35 of Fisher et al. (1987)
-            DD = np.linalg.eig(f)
+            DD, _ = np.linalg.eig(f)
             if DD[0] > 0 and DD[1] > 0:
                 if d/DD[0] <= 1 and d/DD[1] <= 1:
-                    confCone[0,1] = np.asin(np.sqrt(d/DD[1]))
-                    confCone[0,0] = np.asin(np.sqrt(d/DD[0]))
+                    confCone[0,1] = np.arcsin(np.sqrt(d/DD[1]))
+                    confCone[0,0] = np.arcsin(np.sqrt(d/DD[0]))
         # Repeat the process for the eigenvector corresponding to the smallest
         # eigenvalue
         if abs(d11*d22-d12*d12) >= 0.000001:
@@ -165,18 +164,16 @@ def Bingham(T,P):
             f[1,1] = (1/(d11*d22-d12*d12)) * d11
             f[0,1] = -(1/(d11*d22-d12*d12)) * d12
             f[1,0] = f[0,1]
-            DD = np.linalg.eig(f)
+            DD, _ = np.linalg.eig(f)
             if DD[0] > 0.0 and DD[1] > 0.0:
                 if d/DD[0] <= 1 and d/DD[1] <= 1:
-                    confCone[1,1] = np.asin(np.sqrt(d/DD[1]))
-                    confCone[1,0] = np.asin(np.sqrt(d/DD[0]))
+                    confCone[1,1] = np.arcsin(np.sqrt(d/DD[1]))
+                    confCone[1,0] = np.arcsin(np.sqrt(d/DD[0]))
 
     # Calculate the best fit great circle to the distribution of points
     bestFit = np.zeros(2)
     bestFit[0] = ZeroTwoPi(eigVec[2,1] + east)
     bestFit[1] = east - eigVec[2,2]
-    
-
 
     # Plot stereonet
     Stereonet(0, 90*pi/180, 10*pi/180, 1)
@@ -198,16 +195,4 @@ def Bingham(T,P):
     # release plot
     plt.show()
 
-
     return eigVec, confCone, bestFit
-
-
-
-
-T = [1,2,3,4]
-P = [2,3,4,5]
-
-eigVec, confCone, bestFit = Bingham(T,P)
-print(eigVec)
-print(confCone)
-print(bestFit)

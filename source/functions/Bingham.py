@@ -16,7 +16,7 @@ def Bingham(T,P):
     plane from lines on it. The statistical routine is based on algorithms in
     Fisher et al. (1988)
 
-        USE: eigVec,confCone,bestFit = Bingham(T,P)
+        USE: eigVec, confCone, bestFit = Bingham(T,P)
         
         T and P = Vectors of lines trends and plunges respectively
         

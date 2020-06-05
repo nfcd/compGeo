@@ -16,9 +16,6 @@ def FitPlane(pts):
     strike and dip are returned in radians
 
     FitPlane uses functions Pole and CartToSph 
-    
-    Python function translated from the Matlab function 
-    FitPlane in Allmendinger et al. (2012)
     '''
     
     # Compute the centroid of the selected points
@@ -52,7 +49,7 @@ def FitPlane(pts):
     
     # calculate the eigenvalues and eigenvectors of the orientation matrix
     # use Matlab function eig
-    _,V = np.linalg.eigh(a)
+    _,V = np.linalg.eig(a)
     
     # Calculate pole to best-fit plane = lowest eigenvalue vector
     # in E, N, D coordinates

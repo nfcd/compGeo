@@ -8,15 +8,21 @@ def FitPlane(pts):
     Fitplane computes the best fit plane for a group of points (position
     vectors) on the plane
 
-    USE: strike, dip = FitPlane(pts)
+    USE: strike, dip, stdev = FitPlane(pts)
 
     pts is a n x 3 matrix containing the East (column 1), North (column 2),
     and Up (column 3) coordinates of n points on the plane
 
     strike and dip are returned in radians
+    
+    stdev is the standard deviation of the distance of each point from the
+    best-fitting plane
 
     FitPlane uses functions Pole and CartToSph 
     '''
+    
+    # Number of points
+    npoints = len(pts)
     
     # Compute the centroid of the selected points
     avge = np.mean(pts[:,0])
@@ -49,7 +55,7 @@ def FitPlane(pts):
     
     # calculate the eigenvalues and eigenvectors of the orientation matrix
     # use Matlab function eig
-    _,V = np.linalg.eig(a)
+    D, V = np.linalg.eigh(a)
     
     # Calculate pole to best-fit plane = lowest eigenvalue vector
     # in E, N, D coordinates
@@ -63,4 +69,7 @@ def FitPlane(pts):
     # Find Best fit plane
     strike, dip = Pole(trd,plg,0)
     
-    return strike, dip
+    # Calculate standard deviation = square root of minimum eigenvalue
+    stdev = np.sqrt(D[0]/npoints)
+    
+    return strike, dip, stdev

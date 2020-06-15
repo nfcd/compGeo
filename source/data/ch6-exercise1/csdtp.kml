@@ -1,0 +1,2590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+	<Document>
+	<name>/Users/nestor/Desktop/strikeAndDips.kml</name>
+	<Style id="statN">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal4/icon57.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="statH">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal4/icon49.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="statM">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#statN</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#statH</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="no_icon">
+		<IconStyle><Icon></Icon></IconStyle>
+		<LabelStyle>
+			<scale>1.0</scale>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>strikeAndDips</name>
+		<open>0</open>
+		<Placemark>
+			<name>25</name>
+			<description>Strike = 139; Dip = 25</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.156937 </longitude>
+					<latitude> 44.598846 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 139 </heading>
+					<tilt> 0 </tilt>
+					<roll> -25 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.157163,44.598649</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<description>Strike = 135; Dip = 25</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.157333 </longitude>
+					<latitude> 44.599216 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 135 </heading>
+					<tilt> 0 </tilt>
+					<roll> -25 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.157545,44.599004</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<description>Strike = 144; Dip = 24</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.158043 </longitude>
+					<latitude> 44.599880 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 144 </heading>
+					<tilt> 0 </tilt>
+					<roll> -24 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.158284,44.599702</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<description>Strike = 138; Dip = 24</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.158951 </longitude>
+					<latitude> 44.600784 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 138 </heading>
+					<tilt> 0 </tilt>
+					<roll> -24 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>24</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.159176,44.600585</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<description>Strike = 142; Dip = 27</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.159866 </longitude>
+					<latitude> 44.601685 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 142 </heading>
+					<tilt> 0 </tilt>
+					<roll> -27 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.160102,44.601500</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<description>Strike = 143; Dip = 27</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.161179 </longitude>
+					<latitude> 44.603149 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 143 </heading>
+					<tilt> 0 </tilt>
+					<roll> -27 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.161420,44.602970</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 145; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.161934 </longitude>
+					<latitude> 44.603912 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 145 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.162181,44.603742</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Strike = 143; Dip = 32</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.162544 </longitude>
+					<latitude> 44.604591 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 143 </heading>
+					<tilt> 0 </tilt>
+					<roll> -32 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.162784,44.604410</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<description>Strike = 147; Dip = 33</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.163506 </longitude>
+					<latitude> 44.605656 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 147 </heading>
+					<tilt> 0 </tilt>
+					<roll> -33 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.163758,44.605494</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 144; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.164223 </longitude>
+					<latitude> 44.606419 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 144 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.164466,44.606244</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>37</name>
+			<description>Strike = 152; Dip = 37</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.164879 </longitude>
+					<latitude> 44.607349 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 152 </heading>
+					<tilt> 0 </tilt>
+					<roll> -37 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>37</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.165144,44.607209</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 155; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.166031 </longitude>
+					<latitude> 44.608845 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 155 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.166303,44.608718</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<description>Strike = 153; Dip = 31</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.166626 </longitude>
+					<latitude> 44.609665 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 153 </heading>
+					<tilt> 0 </tilt>
+					<roll> -31 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.166894,44.609529</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 153; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.167282 </longitude>
+					<latitude> 44.610611 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 153 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.167549,44.610474</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 154; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.167961 </longitude>
+					<latitude> 44.611572 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 154 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.168231,44.611442</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Strike = 153; Dip = 26</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.169647 </longitude>
+					<latitude> 44.614250 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 153 </heading>
+					<tilt> 0 </tilt>
+					<roll> -26 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.169914,44.614113</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 150; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.170258 </longitude>
+					<latitude> 44.615463 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 150 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.170518,44.615313</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>36</name>
+			<description>Strike = 158; Dip = 36</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.171265 </longitude>
+					<latitude> 44.617165 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 158 </heading>
+					<tilt> 0 </tilt>
+					<roll> -36 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>36</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.171544,44.617055</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Strike = 155; Dip = 32</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.172653 </longitude>
+					<latitude> 44.619896 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 155 </heading>
+					<tilt> 0 </tilt>
+					<roll> -32 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.172925,44.619770</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>35</name>
+			<description>Strike = 148; Dip = 35</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.173386 </longitude>
+					<latitude> 44.620918 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 148 </heading>
+					<tilt> 0 </tilt>
+					<roll> -35 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>35</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.173640,44.620758</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<description>Strike = 150; Dip = 31</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.174591 </longitude>
+					<latitude> 44.622726 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 150 </heading>
+					<tilt> 0 </tilt>
+					<roll> -31 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.174850,44.622574</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>36</name>
+			<description>Strike = 145; Dip = 36</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.175575 </longitude>
+					<latitude> 44.624027 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 145 </heading>
+					<tilt> 0 </tilt>
+					<roll> -36 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>36</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.175821,44.623855</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 145; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.176788 </longitude>
+					<latitude> 44.625393 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 145 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.177033,44.625219</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>39</name>
+			<description>Strike = 142; Dip = 39</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.177383 </longitude>
+					<latitude> 44.626102 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 142 </heading>
+					<tilt> 0 </tilt>
+					<roll> -39 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>39</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.177619,44.625916</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<description>Strike = 137; Dip = 33</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.178383 </longitude>
+					<latitude> 44.627056 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 137 </heading>
+					<tilt> 0 </tilt>
+					<roll> -33 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.178601,44.626850</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 135; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.179565 </longitude>
+					<latitude> 44.627945 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 135 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.179776,44.627731</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Strike = 135; Dip = 32</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.180725 </longitude>
+					<latitude> 44.628784 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 135 </heading>
+					<tilt> 0 </tilt>
+					<roll> -32 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.180936,44.628571</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<description>Strike = 131; Dip = 33</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.181732 </longitude>
+					<latitude> 44.629559 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 131 </heading>
+					<tilt> 0 </tilt>
+					<roll> -33 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.181930,44.629333</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 136; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.182899 </longitude>
+					<latitude> 44.630627 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 136 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.183114,44.630418</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 135; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.183800 </longitude>
+					<latitude> 44.631290 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 135 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.184012,44.631078</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 133; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.184944 </longitude>
+					<latitude> 44.632187 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 133 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.185149,44.631968</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Strike = 134; Dip = 32</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.186005 </longitude>
+					<latitude> 44.632992 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 134 </heading>
+					<tilt> 0 </tilt>
+					<roll> -32 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.186212,44.632774</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<description>Strike = 133; Dip = 33</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.187057 </longitude>
+					<latitude> 44.633793 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 133 </heading>
+					<tilt> 0 </tilt>
+					<roll> -33 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>33</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.187261,44.633573</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 133; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.188560 </longitude>
+					<latitude> 44.634899 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 133 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.188765,44.634680</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 132; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.190063 </longitude>
+					<latitude> 44.635944 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 132 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.190262,44.635719</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 136; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.190903 </longitude>
+					<latitude> 44.636612 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 136 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.191120,44.636405</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 136; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.191887 </longitude>
+					<latitude> 44.637424 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 136 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.192101,44.637214</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>41</name>
+			<description>Strike = 135; Dip = 41</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.192696 </longitude>
+					<latitude> 44.638042 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 135 </heading>
+					<tilt> 0 </tilt>
+					<roll> -41 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>41</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.192908,44.637829</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 128; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.193680 </longitude>
+					<latitude> 44.638496 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 128 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.193866,44.638261</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 141; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.194771 </longitude>
+					<latitude> 44.639286 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 141 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.195003,44.639096</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<description>Strike = 140; Dip = 25</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.195984 </longitude>
+					<latitude> 44.640656 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 140 </heading>
+					<tilt> 0 </tilt>
+					<roll> -25 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>25</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.196215,44.640465</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 149; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.197151 </longitude>
+					<latitude> 44.641689 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 149 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.197408,44.641534</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<description>Strike = 145; Dip = 22</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.198013 </longitude>
+					<latitude> 44.642990 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 145 </heading>
+					<tilt> 0 </tilt>
+					<roll> -22 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.198258,44.642817</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 149; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.199295 </longitude>
+					<latitude> 44.644512 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 149 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.199551,44.644356</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 150; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.200905 </longitude>
+					<latitude> 44.645866 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 150 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.201164,44.645715</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Strike = 149; Dip = 26</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.202118 </longitude>
+					<latitude> 44.647903 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 149 </heading>
+					<tilt> 0 </tilt>
+					<roll> -26 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.202376,44.647749</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 154; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.203514 </longitude>
+					<latitude> 44.649796 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 154 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.203783,44.649664</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<description>Strike = 150; Dip = 28</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.205048 </longitude>
+					<latitude> 44.651291 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 150 </heading>
+					<tilt> 0 </tilt>
+					<roll> -28 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>28</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.205306,44.651139</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<description>Strike = 149; Dip = 32</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.205711 </longitude>
+					<latitude> 44.652008 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 149 </heading>
+					<tilt> 0 </tilt>
+					<roll> -32 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>32</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.205969,44.651854</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Strike = 156; Dip = 26</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.206039 </longitude>
+					<latitude> 44.652458 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 156 </heading>
+					<tilt> 0 </tilt>
+					<roll> -26 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.206313,44.652336</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<description>Strike = 159; Dip = 26</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.206383 </longitude>
+					<latitude> 44.652908 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 159 </heading>
+					<tilt> 0 </tilt>
+					<roll> -26 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>26</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.206663,44.652801</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 153; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.206848 </longitude>
+					<latitude> 44.653549 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 153 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207116,44.653415</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<description>Strike = 157; Dip = 34</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.206978 </longitude>
+					<latitude> 44.653915 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 157 </heading>
+					<tilt> 0 </tilt>
+					<roll> -34 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>34</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207255,44.653799</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<description>Strike = 170; Dip = 31</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.207443 </longitude>
+					<latitude> 44.654858 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 170 </heading>
+					<tilt> 0 </tilt>
+					<roll> -31 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>31</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207738,44.654804</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>21</name>
+			<description>Strike = 224; Dip = 21</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.207558 </longitude>
+					<latitude> 44.655560 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 224 </heading>
+					<tilt> 0 </tilt>
+					<roll> -21 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>21</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207772,44.655770</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>20</name>
+			<description>Strike = 248; Dip = 20</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.207497 </longitude>
+					<latitude> 44.655788 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 248 </heading>
+					<tilt> 0 </tilt>
+					<roll> -20 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>20</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207608,44.656067</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<description>Strike = 267; Dip = 22</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.207062 </longitude>
+					<latitude> 44.656120 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 267 </heading>
+					<tilt> 0 </tilt>
+					<roll> -22 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>22</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.207077,44.656420</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<description>Strike = 275; Dip = 27</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.206528 </longitude>
+					<latitude> 44.655804 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 275 </heading>
+					<tilt> 0 </tilt>
+					<roll> -27 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>27</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.206504,44.656103</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<description>Strike = 287; Dip = 29</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.205132 </longitude>
+					<latitude> 44.655552 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 287 </heading>
+					<tilt> 0 </tilt>
+					<roll> -29 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>29</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.205046,44.655839</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>35</name>
+			<description>Strike = 285; Dip = 35</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.204254 </longitude>
+					<latitude> 44.655239 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 285 </heading>
+					<tilt> 0 </tilt>
+					<roll> -35 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>35</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.204176,44.655529</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<description>Strike = 288; Dip = 30</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.202393 </longitude>
+					<latitude> 44.654652 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 288 </heading>
+					<tilt> 0 </tilt>
+					<roll> -30 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>30</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.202298,44.654937</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>59</name>
+			<description>Strike = 289; Dip = 59</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.199776 </longitude>
+					<latitude> 44.653870 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 289 </heading>
+					<tilt> 0 </tilt>
+					<roll> -59 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>59</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.199677,44.654153</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>52</name>
+			<description>Strike = 298; Dip = 52</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.198227 </longitude>
+					<latitude> 44.653442 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 298 </heading>
+					<tilt> 0 </tilt>
+					<roll> -52 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>52</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.198087,44.653707</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>64</name>
+			<description>Strike = 296; Dip = 64</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.193497 </longitude>
+					<latitude> 44.651413 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 296 </heading>
+					<tilt> 0 </tilt>
+					<roll> -64 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>64</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.193366,44.651683</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>68</name>
+			<description>Strike = 288; Dip = 68</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.192871 </longitude>
+					<latitude> 44.648006 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 288 </heading>
+					<tilt> 0 </tilt>
+					<roll> -68 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>68</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.192780,44.648292</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>61</name>
+			<description>Strike = 306; Dip = 61</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.190094 </longitude>
+					<latitude> 44.647305 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 306 </heading>
+					<tilt> 0 </tilt>
+					<roll> -61 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>61</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.189920,44.647549</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>74</name>
+			<description>Strike = 308; Dip = 74</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.189125 </longitude>
+					<latitude> 44.646423 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 308 </heading>
+					<tilt> 0 </tilt>
+					<roll> -74 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>74</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.188940,44.646659</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>66</name>
+			<description>Strike = 299; Dip = 66</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.183884 </longitude>
+					<latitude> 44.643898 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 299 </heading>
+					<tilt> 0 </tilt>
+					<roll> -66 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>66</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.183740,44.644161</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>76</name>
+			<description>Strike = 300; Dip = 76</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.177528 </longitude>
+					<latitude> 44.644039 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 300 </heading>
+					<tilt> 0 </tilt>
+					<roll> -76 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>76</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.177377,44.644298</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>68</name>
+			<description>Strike = 303; Dip = 68</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.173027 </longitude>
+					<latitude> 44.641899 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 303 </heading>
+					<tilt> 0 </tilt>
+					<roll> -68 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>68</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.172862,44.642149</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>71</name>
+			<description>Strike = 306; Dip = 71</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.173157 </longitude>
+					<latitude> 44.638680 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 306 </heading>
+					<tilt> 0 </tilt>
+					<roll> -71 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>71</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.172982,44.638923</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>71</name>
+			<description>Strike = 310; Dip = 71</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.167931 </longitude>
+					<latitude> 44.638889 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 310 </heading>
+					<tilt> 0 </tilt>
+					<roll> -71 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>71</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.167739,44.639119</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>65</name>
+			<description>Strike = 311; Dip = 65</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.165962 </longitude>
+					<latitude> 44.637424 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 311 </heading>
+					<tilt> 0 </tilt>
+					<roll> -65 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>65</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.165764,44.637649</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>73</name>
+			<description>Strike = 310; Dip = 73</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.163368 </longitude>
+					<latitude> 44.635727 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 310 </heading>
+					<tilt> 0 </tilt>
+					<roll> -73 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>73</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.163174,44.635955</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>65</name>
+			<description>Strike = 308; Dip = 65</description>
+			<Style id="; Default; ">
+			</Style>
+			<Model>
+				<altitudeMode>relativeToGround</altitudeMode>
+				<Location>
+					<longitude> -108.161613 </longitude>
+					<latitude> 44.634735 </latitude>
+					<altitude> 20 </altitude>
+				</Location>
+				<Orientation>
+					<heading> 308 </heading>
+					<tilt> 0 </tilt>
+					<roll> -65 </roll>
+				</Orientation>
+				<Scale>
+					<x> 10 </x>
+					<y> 10 </y>
+					<z> 10 </z>
+				</Scale>
+				<Link>
+				<href>http://www.geo.cornell.edu/geology/faculty/RWA/programs/Symbols/MaraschinoTick.dae</href>
+				</Link>
+			</Model>
+		</Placemark>
+		<Placemark>
+			<name>65</name>
+			<styleUrl>#no_icon</styleUrl>
+			<Point>
+				<coordinates>-108.161430,44.634972</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	</Document>
+</kml>

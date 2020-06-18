@@ -14,8 +14,8 @@ The programming language of choice is Python, and our approach is as follows: We
 This saves the repository to your local machine. It behaves almost like a copy.
 1. Open a terminal.
 2. Navigate to the folder where you would like to store the local copy of the repository. (`cd <foldername>`)
-3. Press the green button 'Clone or download' on the right hand side and copy the repository path.
-4. Execute the terminal command `git clone <fill in repository path here>`.
+3. Press the green button 'Clone or download' on the right hand side and copy the path.
+4. Execute the terminal command `git clone <fill in path here>`.
 5. Now you can start working with the resource files. They are saved in the folder you chose in the 2. step.
 
 ### Updating the repository

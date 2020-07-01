@@ -5,21 +5,25 @@ from CartToSph import CartToSph as CartToSph
 
 def FitPlane(pts):
     '''
-    Fitplane computes the best fit plane for a group of points (position
-    vectors) on the plane
+    Fitplane computes the best-fit plane for a group of 
+    points (position vectors) on the plane
 
-    USE: strike, dip = FitPlane(pts)
+    USE: strike, dip, stdev = FitPlane(pts)
 
-    pts is a n x 3 matrix containing the East (column 1), North (column 2),
-    and Up (column 3) coordinates of n points on the plane
+    pts is a n x 3 matrix containing the East (column 1), 
+    North (column 2), and Up (column 3) coordinates 
+    of n points on the plane
 
     strike and dip are returned in radians
+    
+    stdev is the standard deviation of the distance of 
+    each point from the best-fit plane
 
     FitPlane uses functions Pole and CartToSph 
-    
-    Python function translated from the Matlab function 
-    FitPlane in Allmendinger et al. (2012)
     '''
+    
+    # Number of points
+    npoints = len(pts)
     
     # Compute the centroid of the selected points
     avge = np.mean(pts[:,0])
@@ -44,20 +48,20 @@ def FitPlane(pts):
         a[1,1] = a[1,1] + cn*cn
         a[1,2] = a[1,2] + cn*cu
         a[2,2] = a[2,2] + cu*cu
-    # The orientation matrix is symmetric so the off-diagonal components can
-    # be equated
+    # The orientation matrix is symmetric so the off-diagonal 
+    # components can be equated
     a[1,0] = a[0,1]
     a[2,0] = a[0,2]
     a[2,1] = a[1,2]
     
-    # calculate the eigenvalues and eigenvectors of the orientation matrix
-    # use Matlab function eig
-    _,V = np.linalg.eigh(a)
+    # calculate the eigenvalues and eigenvectors of the 
+    # orientation matrix: use function eigh
+    D, V = np.linalg.eigh(a)
     
-    # Calculate pole to best-fit plane = lowest eigenvalue vector
-    # in E, N, D coordinates
-    ce = V[0,0]
+    # Calculate pole to best-fit plane = lowest eigenvalue 
+    # vector in N, E, D coordinates
     cn = V[1,0]
+    ce = V[0,0]
     cd = -V[2,0]
     
     # Find trend and plunge of pole to best fit plane
@@ -66,4 +70,8 @@ def FitPlane(pts):
     # Find Best fit plane
     strike, dip = Pole(trd,plg,0)
     
-    return strike, dip
+    # Calculate standard deviation = square root of 
+    # minimum eigenvalue
+    stdev = np.sqrt(D[0])
+    
+    return strike, dip, stdev

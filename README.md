@@ -19,7 +19,7 @@ This saves the repository to your local machine. It behaves almost like a copy.
 5. Now you can start working with the resource files. They are saved in the folder you chose in the 2. step.
 
 ### Updating your local files
-Once in a while you should update your local files. This is important since we will be including new chapters along.
+Once in a while you should update your local files to the latest changes in the repository. This is important since we will be including new chapters along.
 1. Open a terminal.
 2. Navigate inside the folder of the repository on your machine. (`cd <foldername>`)
 3. Execute the terminal command `git pull`

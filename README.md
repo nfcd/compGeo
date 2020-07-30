@@ -32,4 +32,4 @@ The notebooks follow the directory structure of the resource, which is based on 
 `import matplotlib.pyplot as plt`
 
 ## Current state
-Currently, six chapters are published. Upcoming chapters are: stress (Ch. 7), strain (Ch. 8), elasticity (Ch. 9), and the inversion problem (Ch. 10).
+Currently, seven chapters are published. Upcoming chapters are: strain (Ch. 8), elasticity (Ch. 9), and the inversion problem (Ch. 10).

@@ -24,12 +24,14 @@ Once in a while you should update your local files to the latest changes in the 
 2. Navigate inside the folder of the repository on your machine. (`cd <foldername>`)
 3. Execute the terminal command `git pull`
 
-## Working with the notebooks
+## Background information
 The notebooks follow the directory structure of the resource, which is based on separate data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. When necessary, we have imported the Numpy and Matplotlib libraries in our functions and notebooks as:
 
 `import numpy as np`
 
 `import matplotlib.pyplot as plt`
+
+To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
 Currently, seven chapters are published. Upcoming chapters are: strain (Ch. 8), elasticity (Ch. 9), and the inversion problem (Ch. 10).

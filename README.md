@@ -34,4 +34,4 @@ The notebooks follow the directory structure of the resource, which is based on 
 To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
-Currently, seven chapters are published. Upcoming chapters are: strain (Ch. 8), elasticity (Ch. 9), and the inversion problem (Ch. 10).
+Currently, eight chapters are published. Upcoming chapters are: elasticity (Ch. 9), and the inversion problem (Ch. 10).

@@ -31,7 +31,9 @@ The notebooks follow the directory structure of the resource, which is based on 
 
 `import matplotlib.pyplot as plt`
 
-We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
+We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. 
+
+To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
 Currently, eight chapters are published. Upcoming chapters are: elasticity (Ch. 9), and the inversion problem (Ch. 10).

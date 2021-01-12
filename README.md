@@ -5,10 +5,10 @@ Students: Angela Hoch (IER), Adham Amer (IMBM), Vania Mansoor and Linda Olsen (I
 
 Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut Giljarhus (IMBM). 
 
-Please feel free to use this material for teaching purposes. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
+Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
 
 ## Manual: Working with the resource
-The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate their use in Jupyter notebooks. The best way to work with the resource is to clone this repository.
+The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. The best way to work with the resource is to clone this repository.
 
 ### Clone the repository
 This saves the repository to your local machine. It behaves almost like a copy.
@@ -31,7 +31,7 @@ The notebooks follow the directory structure of the resource, which is based on 
 
 `import matplotlib.pyplot as plt`
 
-To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
+We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
 Currently, eight chapters are published. Upcoming chapters are: elasticity (Ch. 9), and the inversion problem (Ch. 10).

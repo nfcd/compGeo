@@ -8,7 +8,7 @@ Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut
 Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
 
 ## Manual: Working with the resource
-The resource consists of a book in pdf format (compGeo.pdf), and a source folder where the data, functions and notebooks related to the resource are included.
+The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included.
 
 The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. The best way to work with the resource is to clone this repository.
 

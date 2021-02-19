@@ -1,6 +1,6 @@
 import numpy as np
 
-from CartToSph import CartToSph as CartToSph
+from CartToSph import CartToSph
 
 def FinStrain(e,frame):
 	'''
@@ -36,10 +36,10 @@ def FinStrain(e,frame):
 	maxsh = np.zeros(2)
 
 	# Compute strain tensor
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			eps[i,j] = 0.5*(e[i][j]+e[j][i])
-			for k in range(3):
+			for k in range(0,3):
 				# If undeformed reference frame: 
 				# Lagrangian strain tensor, Eq. 8.29
 				if frame == 0:
@@ -53,7 +53,7 @@ def FinStrain(e,frame):
 	D, V = np.linalg.eigh(eps)
 
 	# Principal elongations
-	for i in range(3):
+	for i in range(0,3):
 		ind = 2-i
 		# Magnitude
 		# If undeformed reference frame: 

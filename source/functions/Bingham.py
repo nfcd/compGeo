@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
-from Stereonet import Stereonet as Stereonet
-from GreatCircle import GreatCircle as GreatCircle
-from StCoordLine import StCoordLine as StCoordLine
+from SphToCart import SphToCart
+from CartToSph import CartToSph
+from ZeroTwoPi import ZeroTwoPi
+from Stereonet import Stereonet
+from GreatCircle import GreatCircle
+from StCoordLine import StCoordLine
 
 
 def Bingham(T,P):
@@ -61,7 +61,7 @@ def Bingham(T,P):
 	# squares (for the principal diagonal) and the products
 	# of the direction cosines of each line. cn, ce and cd
 	# are the north, east and down direction cosines
-	for i in range(nlines): 
+	for i in range(0,nlines): 
 		cn,ce,cd = SphToCart(T[i],P[i],0)
 		a[0,0] = a[0,0] + cn*cn
 		a[0,1] = a[0,1] + cn*ce
@@ -85,7 +85,7 @@ def Bingham(T,P):
 	# Normalize the eigenvalues by the number of lines and
 	# convert the corresponding eigenvectors to the lower
 	# hemisphere
-	for i in range(3): 
+	for i in range(0,3): 
 		D[i] = D[i]/nlines
 		if V[2,i] < 0:
 			V[0,i] = -V[0,i]
@@ -111,12 +111,7 @@ def Bingham(T,P):
 	# cones at the 95% confidence level. The algorithm is
 	# explained in Fisher et al. (1987)
 	if nlines >= 25:
-		e11 = 0
-		e22 = 0
-		e12 = 0
-		d11 = 0
-		d22 = 0
-		d12 = 0
+		e11, e22, e12, d11, d22, d12 = 0, 0, 0, 0, 0, 0
 		en11 = 1/(nlines*(eigVec[2,0] - eigVec[0,0])**2)
 		en22 = 1/(nlines*(eigVec[1,0] - eigVec[0,0])**2)
 		en12 = 1/(nlines*(eigVec[2,0] - eigVec[0,0])*(eigVec[1,0] - eigVec[0,0]))
@@ -124,11 +119,11 @@ def Bingham(T,P):
 		dn22 = 1/(nlines*(eigVec[2,0] - eigVec[1,0])**2)
 		dn12 = 1/(nlines*(eigVec[2,0] - eigVec[1,0])*(eigVec[2,0] - eigVec[0,0]))
 		vec = np.zeros((3,3))
-		for i in range(3):
+		for i in range(0,3):
 			vec[i,0] = np.sin(eigVec[i,2] + east)*np.cos(twopi - eigVec[i,1])
 			vec[i,1] = np.sin(eigVec[i,2] + east)*np.sin(twopi - eigVec[i,1])
 			vec[i,2] = np.cos(eigVec[i,2] + east)
-		for i in range(nlines):
+		for i in range(0,nlines):
 			c1 = np.sin(P[i]+east)*np.cos(twopi-T[i])
 			c2 = np.sin(P[i]+east)*np.sin(twopi-T[i])
 			c3 = np.cos(P[i]+east)
@@ -187,12 +182,12 @@ def Bingham(T,P):
 	Stereonet(0, 90*pi/180, 10*pi/180, 1)
 	
 	# Plot lines
-	for i in range(nlines):
+	for i in range(0,nlines):
 		xp,yp = StCoordLine(T[i],P[i],1)
 		plt.plot(xp,yp,'k.')
 	
 	# Plot eigenvectors
-	for i in range(3):
+	for i in range(0,3):
 		xp,yp = StCoordLine(eigVec[i,1],eigVec[i,2],1)
 		plt.plot(xp,yp,'rs')
 	

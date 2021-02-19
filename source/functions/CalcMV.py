@@ -1,6 +1,6 @@
 import math
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
+from SphToCart import SphToCart
+from CartToSph import CartToSph
 
 def CalcMV(T,P):
 	'''
@@ -60,6 +60,7 @@ def CalcMV(T,P):
 		trd, plg = CartToSph(CNsum,CEsum,CDsum)
 		# If there are enough measurements calculate the
 		# Fisher statistics (Fisher et al., 1987)
+		conc = d99 = d95 = 0.0
 		if R < nlines:
 			if nlines < 16:
 				afact = 1.0-(1.0/nlines)

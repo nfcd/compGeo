@@ -1,4 +1,4 @@
-from uncertainties import umath as umath
+from uncertainties import umath
 import numpy as np
 import uncertainties as unc
 
@@ -34,8 +34,8 @@ def TrueThicknessU(strike,dip,top,base):
 	# from ENU to SDP coordinates. Eq. 5.4
 	topn = np.array([unc.ufloat(0,0), unc.ufloat(0,0), unc.ufloat(0,0)])
 	basen = np.array([unc.ufloat(0,0), unc.ufloat(0,0), unc.ufloat(0,0)])
-	for i in range(0,3,1):
-		for j in range(0,3,1):
+	for i in range(0,3):
+		for j in range(0,3):
 			topn[i] = a[i,j]*top[j] + topn[i]
 			basen[i] = a[i,j]*base[j] + basen[i]
 	

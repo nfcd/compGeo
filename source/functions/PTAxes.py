@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from CartToSph import CartToSph as CartToSph
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
-from SphToCart import SphToCart as SphToCart
-from Stereonet import Stereonet as Stereonet
-from GreatCircle import GreatCircle as GreatCircle
-from StCoordLine import StCoordLine as StCoordLine
+from CartToSph import CartToSph
+from ZeroTwoPi import ZeroTwoPi
+from SphToCart import SphToCart
+from Stereonet import Stereonet
+from GreatCircle import GreatCircle
+from StCoordLine import StCoordLine
 
 def PTAxes(fault,slip,sense, fpsv):
 	'''
@@ -45,13 +45,13 @@ def PTAxes(fault,slip,sense, fpsv):
 	senseC = sense
 
 	# For all faults
-	for i in range(np.size(fault,0)):
+	for i in range(0,np.size(fault,0)):
 		# Direction cosines of pole to fault and slip vector
 		n[0],n[1],n[2] = SphToCart(fault[i,0],fault[i,1],1)
 		u[0],u[1],u[2] = SphToCart(slip[i,0],slip[i,1],0)
 		# Compute u(i)*n(j) + u(j)*n(i)
-		for j in range(3):
-			for k in range(3):
+		for j in range(0,3):
+			for k in range(0,3):
 				eps[j,k]=u[j]*n[k]+u[k]*n[j]
 		# Compute orientations of principal axes of strain
 		# Here we use the function eigh
@@ -97,7 +97,7 @@ def PTAxes(fault,slip,sense, fpsv):
 	# Plot in equal area stereonet
 	Stereonet(0,90*pi/180,10*pi/180,1)
 	# Plot P and T axes
-	for i in range(np.size(fault,0)):
+	for i in range(0,np.size(fault,0)):
 		if fpsv == 1:
 			# Plot fault
 			path = GreatCircle(fault[i,0],fault[i,1],1)

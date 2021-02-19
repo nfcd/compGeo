@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from PrincipalStress import PrincipalStress as PrincipalStress
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
+from PrincipalStress import PrincipalStress
+from SphToCart import SphToCart
+from CartToSph import CartToSph
 
 def StressMohrCircle(stress,tX1,pX1,tX3,planes):
 	'''
@@ -38,7 +38,7 @@ def StressMohrCircle(stress,tX1,pX1,tX3,planes):
 	
 	# Update stress tensor to principal stresses
 	stress = np.zeros((3,3))
-	for i in range(3):
+	for i in range(0,3):
 		stress[i,i] = pstress[i,0]
 	
 	# Draw sigma1-sigma3 circle
@@ -76,7 +76,7 @@ def StressMohrCircle(stress,tX1,pX1,tX3,planes):
 	ons = np.zeros((np.size(planes,0),4))
 	
 	# Compute normal and max. shear tractions
-	for i in range(np.size(planes,0)):
+	for i in range(0,np.size(planes,0)):
 		
 		# Calculate direction cosines of pole to plane
 		p[0],p[1],p[2] = SphToCart(planes[i,0],planes[i,1],1)
@@ -86,15 +86,15 @@ def StressMohrCircle(stress,tX1,pX1,tX3,planes):
 		
 		# Transform pole to	 principal stress coordinates
 		pT = np.zeros(3)
-		for j in range(3):
-			for k in range(3):
+		for j in range(0,3):
+			for k in range(0,3):
 				pT[j] = dCp[j,k]*p[k] + pT[j]
 		
 		# Calculate the tractions in principal stress
 		# coordinates
 		T = np.zeros(3)
-		for j in range(3):
-			for k in range(3):
+		for j in range(0,3):
+			for k in range(0,3):
 				T[j] = stress[j,k]*pT[k] + T[j]
 		
 		# Find the B and S axes
@@ -117,8 +117,8 @@ def StressMohrCircle(stress,tX1,pX1,tX3,planes):
 		# Calculate direction cosines of max.
 		# shear traction with respect to NED
 		ds = np.zeros(3)
-		for j in range(3):
-			for k in range(3):
+		for j in range(0,3):
+			for k in range(0,3):
 				ds[j] = dCp[k,j]*S[k] + ds[j]
 		
 		# Trend and plunge of max. shear traction

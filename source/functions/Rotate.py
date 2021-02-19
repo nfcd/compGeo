@@ -1,6 +1,6 @@
 import numpy as np
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
+from SphToCart import SphToCart
+from CartToSph import CartToSph
 
 def Rotate(rtrd,rplg,rot,trd,plg,ans0):
 	'''
@@ -56,9 +56,9 @@ def Rotate(rtrd,rplg,rot,trd,plg,ans0):
 	temp[0] , temp[1], temp[2] = SphToCart(trd,plg,0)
 	
 	# Perform the coordinate transformation
-	for i in range(0,3,1):
+	for i in range(0,3):
 		plotr[i] = 0.0
-		for j in range(0,3,1):
+		for j in range(0,3):
 			plotr[i] = a[i,j]*temp[j] + plotr[i]
 			
 	# Convert to lower hemisphere projection if data are

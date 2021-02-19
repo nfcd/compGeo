@@ -1,7 +1,7 @@
 import numpy as np
 
-from DirCosAxes import DirCosAxes as DirCosAxes
-from CartToSph import CartToSph as CartToSph
+from DirCosAxes import DirCosAxes
+from CartToSph import CartToSph
 
 def PrincipalStress(stress,tX1,pX1,tX3):
 	'''
@@ -53,24 +53,24 @@ def PrincipalStress(stress,tX1,pX1,tX3):
 	# so they need to be transformed to the NED coordinate
 	# system
 	tV = np.zeros((3,3))
-	for i in range(3):
-		for j in range(3):
-			for k in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
+			for k in range(0,3):
 				tV[j,i] = dC[k,j]*V[k,i] + tV[j,i]
 				
 	# Initialize dCp
 	dCp = np.zeros((3,3))
 	
 	# Direction cosines of principal stresses
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			dCp[i,j] = tV[j,2-i]
 		# Avoid precision issues
 		# Make sure the principal axes are unit vectors
 		dCp[i,:] = dCp[i,:]/np.linalg.norm(dCp[i,:])
 	
 	# Trend and plunge of principal stresses
-	for i in range(3):
+	for i in range(0,3):
 		pstress[i,1],pstress[i,2] = CartToSph(dCp[i,0],dCp[i,1],dCp[i,2])
 	
 	return pstress,dCp

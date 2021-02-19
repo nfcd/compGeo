@@ -1,7 +1,7 @@
 import numpy as np
 
-from CartToSph import CartToSph as CartToSph
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from CartToSph import CartToSph
+from ZeroTwoPi import ZeroTwoPi
 
 def InfStrain(e):
 	'''
@@ -38,8 +38,8 @@ def InfStrain(e):
 
 	# Compute strain and rotation tensors
 	# Eqs. 8.14 and 8.15
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			eps[i,j]=0.5*(e[i,j]+e[j,i])
 			ome[i,j]=0.5*(e[i,j]-e[j,i])
 

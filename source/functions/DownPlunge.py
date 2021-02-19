@@ -33,10 +33,10 @@ def DownPlunge(bedseg,trd,plg):
 	a[2,2] = -np.sin(plg)
 	
 	# Perform transformation
-	for nv in range(0,nvtex,1):
-		for i in range(0,3,1):
+	for nv in range(0,nvtex):
+		for i in range(0,3):
 			dpbedseg[nv,i] = 0.0
-			for j in range(0,3,1):
+			for j in range(0,3):
 					dpbedseg[nv,i] = a[i,j]*bedseg[nv,j] + dpbedseg[nv,i]
 	
 	return dpbedseg

@@ -1,6 +1,6 @@
 import numpy as np
 
-from SphToCart import SphToCart as SphToCart
+from SphToCart import SphToCart
 
 def DirCosAxes(tX1,pX1,tX3):
 	'''

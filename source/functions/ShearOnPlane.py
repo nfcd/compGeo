@@ -1,7 +1,7 @@
 import numpy as np
-from PrincipalStress import PrincipalStress as PrincipalStress
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
+from PrincipalStress import PrincipalStress
+from SphToCart import SphToCart
+from CartToSph import CartToSph
 
 def ShearOnPlane(stress,tX1,pX1,tX3,strike,dip):
 	'''
@@ -43,7 +43,7 @@ def ShearOnPlane(stress,tX1,pX1,tX3,strike,dip):
 	
 	# Update stress tensor to principal stress directions
 	stress = np.zeros((3,3))
-	for i in range(3):
+	for i in range(0,3):
 		stress[i,i] = pstress[i,0]
 	
 	# Calculate stress ratio
@@ -55,15 +55,15 @@ def ShearOnPlane(stress,tX1,pX1,tX3,strike,dip):
 	
 	# Transform pole to plane to  principal stress coordinates
 	pT = np.zeros(3);
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			pT[i] = dCp[i,j]*p[j] + pT[i]
 	
 	# Calculate the tractions in principal stress coordinates
 	T = np.zeros(3)
 	# Compute tractions using Cauchy's law
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			T[i] = stress[i,j]*pT[j] + T[i]
 	
 	# Find the B axis by the cross product of T and pT
@@ -89,21 +89,21 @@ def ShearOnPlane(stress,tX1,pX1,tX3,strike,dip):
 	# interested in the plane: sigma'11 = normal traction,
 	# sigma'12 = zero, and sigma'13 = max. shear traction
 	TT = np.zeros((3,3))
-	for i in range(3):
+	for i in range(0,3):
 		TT[i,0] = stress[0,0]*a[0,0]*a[i,0] + stress[1,1]*a[0,1]*a[i,1] +stress[2,2]*a[0,2]*a[i,2]
 	
 	# Transform normal traction, zero shear
 	# and max. shear traction to NED coords
 	dCTT = np.zeros((3,3))
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			dCTT[0,i] = dCp[j,i]*pT[j] + dCTT[0,i]
 			dCTT[1,i] = dCp[j,i]*B[j] + dCTT[1,i]
 			dCTT[2,i] = dCp[j,i]*S[j] + dCTT[2,i]
 	
 	# Compute trend and plunge of normal traction,
 	# zero shear, and max. shear traction on plane
-	for i in range(3):
+	for i in range(0,3):
 		TT[i,1],TT[i,2] = CartToSph(dCTT[i,0],dCTT[i,1],dCTT[i,2])
 	
 	return TT, dCTT, R

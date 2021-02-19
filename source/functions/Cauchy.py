@@ -1,7 +1,7 @@
 import numpy as np
 
-from DirCosAxes import DirCosAxes as DirCosAxes
-from SphToCart import SphToCart as SphToCart
+from DirCosAxes import DirCosAxes
+from SphToCart import SphToCart
 
 def Cauchy(stress,tX1,pX1,tX3,strike,dip):
 	'''
@@ -41,15 +41,15 @@ def Cauchy(stress,tX1,pX1,tX3,strike,dip):
 	# The transformation matrix is the direction cosines of
 	# X1X2X3
 	pT = np.zeros(3)
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			pT[i] = dC[i,j]*p[j] + pT[i]
 			
 	# Calculate the tractions in stress coordinates X1X2X3
 	T = np.zeros(3)
 	# Compute tractions using Cauchy's law: Eq. 7.4
-	for i in range(3):
-		for j in range(3):
+	for i in range(0,3):
+		for j in range(0,3):
 			T[i] = stress[i][j]*pT[j] + T[i]
 	
 	return T, pT

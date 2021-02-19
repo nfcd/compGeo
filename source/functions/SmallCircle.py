@@ -1,7 +1,7 @@
 import numpy as np
-from Rotate import Rotate as Rotate
-from StCoordLine import StCoordLine as StCoordLine
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from Rotate import Rotate
+from StCoordLine import StCoordLine
+from ZeroTwoPi import ZeroTwoPi
 
 def SmallCircle(trda,plga,coneAngle,sttype):
 	'''
@@ -45,17 +45,14 @@ def SmallCircle(trda,plga,coneAngle,sttype):
 	np1 = 0
 	np2 = 0
 	for i in range(rot.shape[0]):
-		# Rotate line: Notice that the line is considered as
-		# a vector
+		# Rotate line: The line is considered as a vector
 		rtrd , rplg = Rotate(trda,plga,rot[i],trd,plg,'v')
-		# Calculate stereonet coordinates and add to the 
-		# right path
-		# If plunge of rotated line is positive add to
-		# first path
+		# Calculate stereonet coordinates and add to path
+		# If rotated plunge is positive add to 1st path
 		if rplg >= 0.0:
 			path1[np1,0] , path1[np1,1] = StCoordLine(rtrd,rplg,sttype)
 			np1 = np1 +1
-		# Else add to the second path
+		# Else add to 2nd path
 		else:
 			path2[np2,0] , path2[np2,1] = StCoordLine(rtrd,rplg,sttype)
 			np2 = np2 +1

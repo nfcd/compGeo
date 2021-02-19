@@ -1,6 +1,6 @@
 import math
-from uncertainties import umath as umath
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from uncertainties import umath
+from ZeroTwoPi import ZeroTwoPi
 
 def CartToSphU(cn,ce,cd):
 	'''

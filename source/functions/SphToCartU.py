@@ -1,4 +1,4 @@
-from uncertainties import umath as umath
+from uncertainties import umath
 
 def SphToCartU(trd,plg,k):
 	'''

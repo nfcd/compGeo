@@ -1,7 +1,7 @@
 import numpy as np
 
-from Pole import Pole as Pole
-from CartToSph import CartToSph as CartToSph
+from Pole import Pole
+from CartToSph import CartToSph
 
 def FitPlane(pts):
 	'''
@@ -33,7 +33,7 @@ def FitPlane(pts):
 	
 	# Compute the covariance/orientation matrix
 	a = np.zeros((3,3))
-	for i in range(pts.shape[0]):
+	for i in range(0,pts.shape[0]):
 		ce = pts[i,0]
 		cn = pts[i,1]
 		cu = pts[i,2]

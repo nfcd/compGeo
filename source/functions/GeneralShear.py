@@ -60,10 +60,10 @@ def GeneralShear(pts,st1,gamma,kk,ninc):
 		F[1,]= [0.0, st1inc]
 
 	# Compute displacement paths
-	for i in range(npts): # for all points
-		for j in range(ninc+1): # for all strain increments
-			for k in range(2):
-				for L in range(2):
+	for i in range(0,npts): # for all points
+		for j in range(0,ninc+1): # for all strain increments
+			for k in range(0,2):
+				for L in range(0,2):
 					paths[j,i,k] = F[k,L]*paths[j-1,i,L] + paths[j,i,k]
 		# Plot displacement path of point
 		xx = paths[:,i,0]

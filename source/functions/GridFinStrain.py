@@ -5,8 +5,8 @@ from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 from scipy.spatial import Delaunay
 
-from lscov import lscov as lscov
-from FinStrain import FinStrain as FinStrain
+from lscov import lscov
+from FinStrain import FinStrain
 
 def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 	'''
@@ -70,7 +70,7 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 		nstat = 3
 		# Centers of cells
 		cent = np.zeros((ncells,2))
-		for i in range(ncells):
+		for i in range(0,ncells):
 			# Triangle vertices
 			v1x=pos[inds[i,0],0]
 			v2x=pos[inds[i,1],0]
@@ -120,8 +120,8 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 		# Cells' centers
 		cent = np.zeros((ncells,2))
 		count = 0
-		for i in range(cellsy):
-			for j in range(cellsx):
+		for i in range(0,cellsy):
+			for j in range(0,cellsx):
 				cent[count,0] = (XX[i,j]+XX[i,j+1])/2.0
 				cent[count,1] = (YY[i,j]+YY[i+1,j])/2.0
 				count += 1
@@ -130,11 +130,11 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 		# Initialize weight matrix for distance weighted
 		wv = np.zeros((ncells,nstat*2))
 		# For all cells set stations indexes
-		for i in range(ncells):
+		for i in range(0,ncells):
 			# Initialize sq distances to -1.0
 			sds = np.ones(nstat)*-1.0
 			# For all stations
-			for j in range(np.size(pos,0)):
+			for j in range(0,np.size(pos,0)):
 				# Sq distance from cell center to station
 				dx = cent[i,0] - pos[j,0]
 				dy = cent[i,1] - pos[j,1]
@@ -177,12 +177,12 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 	maxsh = np.zeros((ncells,2)) 
 		
 	# For each cell
-	for i in range(ncells):
+	for i in range(0,ncells):
 		# If required minimum number of stations
 		if min(inds[i,:]) >= 0:
 			# Eq. 8.24: Displacements column vector y
 			# and design matrix M. X1 = y, X2 = x
-			for j in range(nstat):
+			for j in range(0,nstat):
 				ic = inds[i,j]
 				y[j*2] = disp[ic,1]
 				y[j*2+1] = disp[ic,0]
@@ -196,7 +196,7 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 			elif k == 2:
 				x = lscov(M,y,wv[i,:])
 			# Displacement gradient tensor
-			for j in range(2):
+			for j in range(0,2):
 				e[j,0] = x[j*2+2]
 				e[j,1] = x[j*2+3]
 			# Compute strain
@@ -240,7 +240,7 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 	# Fill cells patches and colors
 	# If Delaunay
 	if k == 0:
-		for i in range(ncells):
+		for i in range(0,ncells):
 			# If minimum number of stations
 				if min(inds[i,:]) >= 0:
 					xpyp = [[pos[inds[i,0],0],pos[inds[i,0],1]],\
@@ -252,8 +252,8 @@ def GridFinStrain(pos,disp,frame,k,par,plotpar,plotst):
 	# If nearest neighbor or distance weighted
 	if k == 1 or k == 2:
 		count = 0
-		for i in range(cellsy):
-			for j in range(cellsx):
+		for i in range(0,cellsy):
+			for j in range(0,cellsx):
 				# If minimum number of stations
 				if min(inds[count,:]) >= 0:
 					xpyp = [[XX[i,j],YY[i,j]],[XX[i,j+1],YY[i,j+1]],\

@@ -1,7 +1,7 @@
 import numpy as np
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from SphToCart import SphToCart
+from CartToSph import CartToSph
+from ZeroTwoPi import ZeroTwoPi
 
 def GeogrToView(trd,plg,trdv,plgv):
 	'''
@@ -41,7 +41,7 @@ def GeogrToView(trd,plg,trdv,plgv):
 	
 	# Transform line
 	nDirCos = np.zeros(3)
-	for i in range(0,3,1):
+	for i in range(0,3):
 		nDirCos[i] = a[i,0]*dirCos[0] + a[i,1]*dirCos[1]+ a[i,2]*dirCos[2]
 	
 	# Compute line from new direction cosines

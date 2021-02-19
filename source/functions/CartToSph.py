@@ -1,5 +1,5 @@
 import math
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from ZeroTwoPi import ZeroTwoPi
 
 def CartToSph(cn,ce,cd):
 	'''
@@ -28,11 +28,9 @@ def CartToSph(cn,ce,cd):
 			trd = 3.0/2.0*pi # Eq. 4.14d, trend is west
 		else:
 			trd = pi/2.0 # Eq. 4.14c, trend is east
-	# Else
 	else:
 		trd = math.atan(ce/cn) # Eq. 4.14a
 		if cn < 0.0:
-			# Add pi 
 			trd = trd+pi # Eq. 4.14b
 		# Make sure trend is between 0 and 2*pi
 		trd = ZeroTwoPi(trd)

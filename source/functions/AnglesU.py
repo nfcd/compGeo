@@ -1,8 +1,8 @@
 import math
-from uncertainties import umath as umath
-from SphToCartU import SphToCartU as SphToCartU
-from CartToSphU import CartToSphU as CartToSphU
-from Pole import Pole as Pole
+from uncertainties import umath
+from SphToCartU import SphToCartU
+from CartToSphU import CartToSphU
+from Pole import Pole
 
 def AnglesU(trd1,plg1,trd2,plg2,ans0):
 	'''

@@ -1,5 +1,5 @@
 import math
-from ZeroTwoPi import ZeroTwoPi as ZeroTwoPi
+from ZeroTwoPi import ZeroTwoPi
 
 def StCoordLine(trd,plg,sttype):
 	'''

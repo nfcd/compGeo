@@ -1,6 +1,6 @@
-from uncertainties import umath as umath
-from CartToSphU import CartToSphU as CartToSphU
-from Pole import Pole as Pole
+from uncertainties import umath
+from CartToSphU import CartToSphU
+from Pole import Pole
 
 def ThreePointU(p1,p2,p3):
 	'''

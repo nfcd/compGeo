@@ -1,7 +1,7 @@
 import numpy as np
-from Pole import Pole as Pole
-from Rotate import Rotate as Rotate
-from StCoordLine import StCoordLine as StCoordLine
+from Pole import Pole
+from Rotate import Rotate
+from StCoordLine import StCoordLine
 
 def GreatCircle(strike,dip,sttype):
 	'''
@@ -27,15 +27,14 @@ def GreatCircle(strike,dip,sttype):
 	
 	# Now pick the strike line at the intersection of the
 	# great circle with the primitive of the stereonet
-	trd = strike
-	plg = 0.0
+	trd, plg = strike, 0.0
 	
 	# To make the great circle, rotate the line 180 degrees
 	# in increments of 1 degree
 	rot = np.arange(0,181,1)*pi/180
 	path = np.zeros((rot.shape[0],2))
 	
-	for i in range(rot.shape[0]):
+	for i in range(0,rot.shape[0]):
 	# Avoid joining ends of path
 		if rot[i] == pi:
 			rot[i] = rot[i]*0.9999

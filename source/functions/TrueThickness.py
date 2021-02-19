@@ -27,8 +27,8 @@ def TrueThickness(strike,dip,top,base):
 	# from ENU to SDP coordinates. Eq. 5.4
 	topn = np.zeros(3)
 	basen = np.zeros(3)
-	for i in range(0,3,1):
-		for j in range(0,3,1):
+	for i in range(0,3):
+		for j in range(0,3):
 			topn[i] = a[i,j]*top[j] + topn[i]
 			basen[i] = a[i,j]*base[j] + basen[i]
 	

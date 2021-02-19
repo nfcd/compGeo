@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Pole import Pole as Pole
-from GeogrToView import GeogrToView as GeogrToView
-from SmallCircle import SmallCircle as SmallCircle
-from GreatCircle import GreatCircle as GreatCircle
+from Pole import Pole
+from GeogrToView import GeogrToView
+from SmallCircle import SmallCircle
+from GreatCircle import GreatCircle
 
 def Stereonet(trdv,plgv,intrad,sttype):
 	'''
@@ -44,14 +44,12 @@ def Stereonet(trdv,plgv,intrad,sttype):
 	# Number of small circles
 	nCircles = int(pi/(intrad*2.0))
 	
-	# small circles
-	# start at the North
-	trd = 0.0
-	plg = 0.0
+	# small circles, start at North
+	trd, plg = 0.0, 0.0
 	
 	# If view direction is not the default (trdv=0,plgv=90)
 	# transform line to view direction
-	if trdv != 0.0 and plgv != east:
+	if trdv != 0.0 or plgv != east:
 		trd, plg = GeogrToView(trd,plg,trdv,plgv)
 	
 	# Plot small circles
@@ -80,7 +78,7 @@ def Stereonet(trdv,plgv,intrad,sttype):
 		# If view direction is not the default 
 		# (trdv = 0,plgv = 90)
 		# transform line to view direction
-		if trdv != 0.0 and plgv != east:
+		if trdv != 0.0 or plgv != east:
 			trd, plg = GeogrToView(trd,plg,trdv,plgv)
 		# Compute plane from pole
 		strike, dip = Pole(trd,plg,0)

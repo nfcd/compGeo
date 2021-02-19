@@ -1,7 +1,7 @@
 import math
-from SphToCart import SphToCart as SphToCart
-from CartToSph import CartToSph as CartToSph
-from Pole import Pole as Pole
+from SphToCart import SphToCart
+from CartToSph import CartToSph
+from Pole import Pole
 
 def Angles(trd1,plg1,trd2,plg2,ans0):
 	'''

@@ -32,7 +32,7 @@ def PureShear(pts,st1,ninc):
 	paths = np.zeros((ninc+1,npts,2))
 	paths[0,:,:] = pts # Initial points of paths
 
-	# Calculate incremental deformation gradient tensor
+	# Calculate incr. deformation gradient tensor Eq. 8.43
 	F = np.array([[st1inc, 0.0], [0.0, st3inc]])
 	
 	# Initialize figure

@@ -31,7 +31,7 @@ def SimpleShear(pts,gamma,ninc):
 	paths = np.zeros((ninc+1,npts,2))
 	paths[0,:,:] = pts # Initial points of paths
 
-	# Calculate incremental deformation gradient tensor
+	# Calculate incr. deformation gradient tensor Eq. 8.44
 	F = np.array([[1.0, gammainc],[0.0, 1.0]])
 	
 	# Initialize figure

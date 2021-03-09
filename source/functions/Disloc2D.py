@@ -5,6 +5,7 @@ def Disloc2D(tip,base,slip,nu,obsx,obsy):
 	This function calculates displacements on a 2D planar 
 	fault of finite extent, modeled by two edge dislocations 
 	in a homogeneous, isotropic elastic halfspace
+	
 	Arguments:
 		tip = tuple of (x,y) coordinates of the fault tip
 		base = tuple of (x,y) coordinates of the fault base
@@ -16,6 +17,8 @@ def Disloc2D(tip,base,slip,nu,obsx,obsy):
 		ux = x components of displ. vectors at obs. points 
 		uy = y components of displ. vectors at obs. points
 		
+	Disloc2D uses function Displacement
+	
 	Written by David Oakley (david.o.oakley@uis.no) 
 	'''
 	dip = arctan2(tip[1]-base[1],tip[0]-base[0])

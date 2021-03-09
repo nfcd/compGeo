@@ -44,7 +44,7 @@ def SmallCircle(trda,plga,coneAngle,sttype):
 	path2 = np.zeros((rot.shape[0],2))
 	np1 = 0
 	np2 = 0
-	for i in range(rot.shape[0]):
+	for i in range(0,rot.shape[0]):
 		# Rotate line: The line is considered as a vector
 		rtrd , rplg = Rotate(trda,plga,rot[i],trd,plg,'v')
 		# Calculate stereonet coordinates and add to path

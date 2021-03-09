@@ -48,12 +48,12 @@ def GeneralShear(pts,st1,gamma,kk,ninc):
 	ax2 = fig.add_subplot(1, 2, 2)
 
 	# Calculate incremental deformation gradient tensor
-	# If max. finite stretch parallel to shear direction
+	# If max. stretch parallel to shear direction Eq. 8.45
 	if kk == 0:
 		F=np.zeros((2,2))
 		F[0,]=[st1inc, (gammainc*(st1inc-st3inc))/(2.0*np.log(st1inc))]
 		F[1,]=[0.0, st3inc]
-	# If max. finite stretch perpendicular to shear direction
+	# If max. stretch perpendicular to shear direction Eq. 8.46
 	elif kk == 1:
 		F=np.zeros((2,2))
 		F[0,]= [st3inc, (gammainc*(st3inc-st1inc))/(2.0*np.log(st3inc))]

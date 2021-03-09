@@ -1,7 +1,9 @@
 # Computational Geosciences
 Welcome to the Computational Geosciences resource at the University of Stavanger (UiS), Norway. This is an educational project funded by the Faculty of Science and Technology at UiS. The resource is made by students and faculty from the departments of Energy Resources (IER) and Mechanical and Structural Engineering (IMBM). 
 
-Students: Angela Hoch (IER), Adham Amer (IMBM), Vania Mansoor and Linda Olsen (IER). 
+Students: Angela Hoch (IER), Adham Amer (IMBM), Vania Mansoor and Linda Olsen (IER).
+
+Postdocs: David Oakley (IER) 
 
 Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut Giljarhus (IMBM). 
 

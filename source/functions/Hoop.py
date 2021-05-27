@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 def Hoop(geom,stress):
 	'''
 	Hoop computes the hoop and radial stresses 
-	around a circular hole. Equations from
-	Jaeger et al. (2007), assuming that 
+	around a circular hole. assuming that 
 	the circle is on a principal plane,
 	smax (s1) is N-S (theta = 90 or 270), 
-	and smin (s2) is E-W (theta = 0 or 180)
+	and smin (s3) is E-W (theta = 0 or 180)
+	Based on Jaeger et al. (2007)
 
 	USE: [shm, srm] = Hoop(geom,stress)
 
@@ -16,7 +16,7 @@ def Hoop(geom,stress):
 		along the radius, and the number of points 
 		around the circle. These values are used
 		to construct the grid around the circle
-	stress: A 1 x 3 vector with the value of s1, s2,
+	stress: A 1 x 3 vector with the value of s1, s3,
 		and fluid pressure (pf), all in MPa
 	shm, srm: maximum hoop and radial stresses and
 		their theta orientations
@@ -37,7 +37,7 @@ def Hoop(geom,stress):
 
 	# Principal stresses and pore pressure (MPa)
 	s1 = stress[0] 
-	s2 = stress[1]
+	s3 = stress[1]
 	pf = stress[2]
 
 	# Initialize hoop and radial stresses
@@ -51,13 +51,13 @@ def Hoop(geom,stress):
 	# Compute hoop and radial stresses
 	for i in range(0,m):
 		for j in range(0,n):
-			# Hoop stress. Jaeger et al. Eq. 8.117
-			sh[i,j] = (s1+s2)/2*(1+(R1/R[i,j])**2) \
-				-(s2-s1)/2*(1+3*(R1/R[i,j])**4) \
+			# Hoop stress. Eq. 9.10
+			sh[i,j] = (s1+s3)/2*(1+(R1/R[i,j])**2) \
+				-(s3-s1)/2*(1+3*(R1/R[i,j])**4) \
 				*np.cos(2*T[i,j]) - pf*(R1/R[i,j])**2
-			# Radial stress. Jaeger et al. Eq. 8.118
-			sr[i,j] = (s1+s2)/2*(1-(R1/R[i,j])**2) \
-				+(s2-s1)/2*(1-4*(R1/R[i,j])**2+3*(R1/R[i,j])**4) \
+			# Radial stress. Eq. 9.10
+			sr[i,j] = (s1+s3)/2*(1-(R1/R[i,j])**2) \
+				+(s3-s1)/2*(1-4*(R1/R[i,j])**2+3*(R1/R[i,j])**4) \
 				*np.cos(2*T[i,j]) + pf*(R1/R[i,j])**2
 			# maximum hoop stress
 			if sh[i,j] > shm[0]:
@@ -99,14 +99,14 @@ def Hoop(geom,stress):
 	fig.colorbar(cbar, ax=ax2, label='MPa')
 	ax2.set_title('Radial stress',fontweight="bold")
 	
-	# Plot variation of hoop and radial stress along s2
+	# Plot variation of hoop and radial stress along s3
 	ax3.plot(R[0,:]/R1,sh[0,:],'r.-', label='Hoop')
 	ax3.plot(R[0,:]/R1,sr[0,:],'b.-', label='Radial')
 	ax3.grid(b=True)
 	ax3.set_xlabel('Normalized radial distance')
 	ax3.set_ylabel('Stress (MPa)')
 	ax3.legend(loc='upper right')
-	ax3.set_title('Stress variation along s2',fontweight="bold")
+	ax3.set_title('Stress variation along s3',fontweight="bold")
 	
 	# Plot variation of hoop and radial stress around circle
 	ax4.plot(T[:,0]*180/np.pi,sh[:,0],'r.-', label='Hoop')

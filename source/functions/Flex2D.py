@@ -44,21 +44,24 @@ def Flex2D(geom,elas,loads):
 	E = elas[0] # Young Modulus
 	v = elas[1] # Poisson Ratio
 	h = elas[2] # Elastic thickness
-	rigid = (E*h*h*h)/(12*(1.0-v*v)) # Flexural rigidity
+	# Flexural rigidity, Eq. 9.11
+	rigid = (E*h*h*h)/(12*(1.0-v*v)) 
 	densup = elas[3] # Density of foundation
 	g = 9.81 # Gravity
 	k = densup*g # Support of foundation
-	alpha = ((4*rigid)/(k))**(1/4) # Flexural parameter
+	# Flexural parameter, Eq. 9.13
+	alpha = ((4*rigid)/(k))**(1/4) 
 	
 	# Loads
-	lxmin = loads[0]
-	lxmax = loads[1]
-	lh = loads[2]
-	ldens = loads[3]
+	lxmin = loads[:,0]
+	lxmax = loads[:,1]
+	lh = loads[:,2]
+	ldens = loads[:,3]
 
 	# Compute deflection profile
 	# for all the loads columns
 	for i in range(0,len(lxmin)):
+		# Eqs. 9.14-9.16
 		q = lh[i] * ldens[i] * 9.81
 		# for all points in x
 		for j in range(0,len(x)):
@@ -74,7 +77,7 @@ def Flex2D(geom,elas,loads):
 				w[j] = w[j] + (q/(2.0*k))*(dA-dB)
 			# If to the right of the load
 			elif x[j] > lxmax[i]:
-				w[j] = w[j] + (-q/(2.0*k))*(dA-dB)
+				w[j] = w[j] - (q/(2.0*k))*(dA-dB)
 	
 	# Key deflection parameters
 	wp = np.zeros((3,2))

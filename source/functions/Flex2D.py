@@ -18,7 +18,7 @@ def Flex2D(geom,elas,loads):
 		points (x interval) in meters where the
 		deflection will be computed
 	elas: A 1 x 4 vector with the Young Modulus (in Pa), 
-		Poisson ration, Elastic thickness in meters, 
+		Poisson ratio, Elastic thickness in meters, 
 		and density of the foundation in kg/m^3
 	loads: A nloads x 4 vector with the left x coordinate,
 		right x coordinate, height, and density of each
@@ -42,7 +42,7 @@ def Flex2D(geom,elas,loads):
 
 	# Elastic and flexural parameters
 	E = elas[0] # Young Modulus
-	v = elas[1] # Poisson Ratio
+	v = elas[1] # Poisson ratio
 	h = elas[2] # Elastic thickness
 	# Flexural rigidity, Eq. 9.11
 	rigid = (E*h*h*h)/(12*(1.0-v*v)) 

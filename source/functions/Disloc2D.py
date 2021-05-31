@@ -4,7 +4,7 @@ def Disloc2D(tip,base,slip,nu,obsx,obsy):
 	'''
 	This function calculates displacements on a 2D planar 
 	fault of finite extent, modeled by two edge dislocations 
-	in a homogeneous, isotropic elastic halfspace
+	in a homogeneous, isotropic elastic half space
 	
 	Arguments:
 		tip = tuple of (x,y) coordinates of the fault tip
@@ -34,10 +34,9 @@ def Displacement(xi1,xi2,s1,s2,nu,x1,x2):
 	'''
 	Calculate displacements (u1,u2) in 2D in a half space at
 	points (x1,x2) due to an edge dislocation at (xi1,xi2) with 
-	slip vector (s1,s2). This uses Equantion 3.74 of Segall (2010), 
-	Earthquake and Volcano Deformation, as corrected in the Errata 
-	to that book. Indices 1 and 2 correspond to the x and y 
-	directions respectively.
+	slip vector (s1,s2). This uses Equations from Segall (2010), 
+	as corrected in the Errata to that book. Indices 1 and 2 
+	correspond to the x and y directions respectively.
 	Arguments:
 		xi1 = x coordinate of the dislocation tip 
 		xi2 = y coordinate of the dislocation tip 
@@ -59,12 +58,12 @@ def Displacement(xi1,xi2,s1,s2,nu,x1,x2):
 	# this makes it equivalent to that case
 	x1 = x1-xi1 
 	r1_sq = x1**2.+(x2-xi2)**2.
-	r2_sq = x1**2.+(x2+xi2)**2. #Eqn. 3.75 of Segall (2010)
+	r2_sq = x1**2.+(x2+xi2)**2. #Eq. 9.18
 	r1 = sqrt(r1_sq)
 	r2 = sqrt(r2_sq)
 	log_r2_r1 = log(r2/r1)
 	# Calculate the angles relative to the vertical axis
-	theta1 = arctan2(x1,(x2-xi2)) 
+	theta1 = arctan2(x1,(x2-xi2)) # Eq. 9.19
 	theta2 = arctan2(x1,(x2+xi2))
 	dip = arctan(s2/s1)
 	# This puts dip in the range [0,pi]
@@ -85,13 +84,7 @@ def Displacement(xi1,xi2,s1,s2,nu,x1,x2):
 	theta1[2.*pi-theta1<1e-10] = 0.;
 	theta2[2.*pi-theta2<1e-10] = 0.;
 	theta_diff = theta1-theta2;
-	#Solve Eqn. 3.74 (Segall, 2010) for the displacements:
-	u1 = (-s1/(pi*(1.-nu)))*(((1.-nu)/2.)*(-theta_diff)+x1*(x2-xi2)/(4.*r1_sq) \
-		-x1*(x2+(3.-4.*nu)*xi2)/(4.*r2_sq)+xi2*x2*x1*(x2+xi2)/r2_sq**2.) \
-		+(s2/(pi*(1.-nu)))*(((1.-2.*nu)/4.)*log_r2_r1-(x2-xi2)**2./(4.*r1_sq) \
-		+(x2**2.+xi2**2.-4.*(1.-nu)*xi2*(x2+xi2))/(4.*r2_sq)+x2*xi2*(x2+xi2)**2./r2_sq**2.)
-	u2 = (-s1/(pi*(1.-nu)))*(((1.-2.*nu)/4.)*log_r2_r1+(x2-xi2)**2./(4.*r1_sq) \
-		-((x2+xi2)**2.-2.*xi2**2.-2.*(1.-2.*nu)*xi2*(x2+xi2))/(4.*r2_sq) \
-		+x2*xi2*(x2+xi2)**2./r2_sq**2.)+(s2/(pi*(1.-nu)))*(((1.-nu)/2.)*(theta_diff) \
-		+x1*(x2-xi2)/(4.*r1_sq)-x1*(x2+(3.-4.*nu)*xi2)/(4.*r2_sq)-xi2*x2*x1*(x2+xi2)/r2_sq**2.);
+	# Eq. 9.17:
+	u1 = (-s1/(pi*(1.-nu)))*(((1.-nu)/2.)*(-theta_diff)+x1*(x2-xi2)/(4.*r1_sq) - x1*(x2+(3.-4.*nu)*xi2)/(4.*r2_sq)+xi2*x2*x1*(x2+xi2)/r2_sq**2.) + (s2/(pi*(1.-nu)))*(((1.-2.*nu)/4.)*log_r2_r1-(x2-xi2)**2./(4.*r1_sq) + (x2**2.+xi2**2.-4.*(1.-nu)*xi2*(x2+xi2))/(4.*r2_sq)+x2*xi2*(x2+xi2)**2./r2_sq**2.)
+	u2 = (-s1/(pi*(1.-nu)))*(((1.-2.*nu)/4.)*log_r2_r1+(x2-xi2)**2./(4.*r1_sq) - ((x2+xi2)**2.-2.*xi2**2.-2.*(1.-2.*nu)*xi2*(x2+xi2))/(4.*r2_sq) + x2*xi2*(x2+xi2)**2./r2_sq**2.)+(s2/(pi*(1.-nu)))*(((1.-nu)/2.)*(theta_diff) + x1*(x2-xi2)/(4.*r1_sq)-x1*(x2+(3.-4.*nu)*xi2)/(4.*r2_sq)-xi2*x2*x1*(x2+xi2)/r2_sq**2.)
 	return u1,u2

@@ -40,4 +40,4 @@ We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O
 To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
-Currently, nine chapters are published, though chapter 9 (Elasticity) is missing two sections. The last upcoming chapter will be about the inversion problem (Ch. 10).
+Chapter 9 (Elasticity) is missing two sections. The last chapter (Ch. 10) will be about the inversion problem.

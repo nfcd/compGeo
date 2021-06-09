@@ -37,7 +37,7 @@ The notebooks follow the directory structure of the resource, which is based on 
 
 We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. 
 
-To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
+To work with the notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
 Chapter 9 (Elasticity) is missing the section on wave propagation. The last chapter (Ch. 10) will be about the inversion problem.

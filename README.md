@@ -12,24 +12,24 @@ Please feel free to use this material for teaching and research. If you have any
 ## Manual: Working with the resource
 The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (26 MB).
 
-The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. The best way to work with the resource is to clone this repository.
+The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. 
 
 ### Clone the repository
-This saves the repository to your local machine. It behaves almost like a copy.
+The best way to work with the resource is to clone this repository. This saves all material to your local machine. It behaves almost like a copy.
 1. Open a terminal.
 2. Navigate to the folder where you would like to store the local copy of the repository. (`cd <foldername>`)
-3. Press the green button 'Clone or download' on the right hand side and copy the path.
+3. Press the green button 'Code' on the right hand side and copy the path in the Clone section.
 4. Execute the terminal command `git clone <fill in path here>`.
-5. Now you can start working with the resource files. They are saved in the folder you chose in the 2. step.
+5. Now you can start working with the resource files. They are saved in the folder you chose in step 2.
 
 ### Updating your local files
-Once in a while you should update your local files to the latest changes in the repository. This is important since we will be including new chapters along.
+Once in a while you should update your local files to the latest changes in the repository. This is important since we will be making changes and including new chapters along.
 1. Open a terminal.
 2. Navigate inside the folder of the repository on your machine. (`cd <foldername>`)
 3. Execute the terminal command `git pull`
 
 ## Background information
-The notebooks follow the directory structure of the resource, which is based on separate data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. When necessary, we have imported the Numpy and Matplotlib libraries in our functions and notebooks as:
+The notebooks follow the directory structure of the resource, which is based on data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. When necessary, we have imported the Numpy and Matplotlib libraries in our functions and notebooks as:
 
 `import numpy as np`
 
@@ -40,4 +40,4 @@ We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O
 To work with the jupyter notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
-Chapter 9 (Elasticity) is missing two sections. The last chapter (Ch. 10) will be about the inversion problem.
+Chapter 9 (Elasticity) is missing the section on wave propagation. The last chapter (Ch. 10) will be about the inversion problem.

@@ -40,4 +40,4 @@ We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O
 To work with the notebooks, open Jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
-The first nine chapters are completed. The last chapter (Ch. 10, The inversion problem) is missing.
+The first nine chapters are completed. The last chapter (Ch. 10, The inversion problem) is under work.

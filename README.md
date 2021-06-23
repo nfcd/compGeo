@@ -10,7 +10,7 @@ Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut
 Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
 
 ## Manual: Working with the resource
-The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (26 MB).
+The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (12 MB).
 
 The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. 
 
@@ -37,7 +37,7 @@ The notebooks follow the directory structure of the resource, which is based on 
 
 We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. 
 
-To work with the notebooks of the resource, open jupyter and navigate to the corresponding folder of your local copy of the resource.
+To work with the notebooks, open Jupyter and navigate to the corresponding folder of your local copy of the resource.
 
 ## Current state
-Chapter 9 (Elasticity) is missing the section on wave propagation. The last chapter (Ch. 10) will be about the inversion problem.
+The first nine chapters are completed. The last chapter (Ch. 10, The inversion problem) is missing.

@@ -1,74 +1,65 @@
 import numpy as np
-from SphToCart import SphToCart
-from CartToSph import CartToSph
+from sph_to_cart import sph_to_cart
+from cart_to_sph import cart_to_sph
 
-def Rotate(rtrd,rplg,rot,trd,plg,ans0):
-	'''
-	Rotate rotates a line by performing a coordinate
-	transformation. The algorithm was originally written
-	by Randall A. Marrett
-
+def rotate(rtrd,rplg,rot,trd,plg,ans0):
+	"""
+	rotate rotates a line by performing a coordinate
+	transformation
+	
 	rtrd = trend of rotation axis
 	rplg = plunge of rotation axis
 	rot = magnitude of rotation
-	trd = trend of the vector to be rotated
-	plg = plunge of the vector to be rotated
-	ans0 = A character indicating whether the line to be
-		rotated is an axis (ans0 = 'a') or a vector
-		(ans0 = 'v')
+	trd = trend of the line to be rotated
+	plg = plunge of the line to be rotated
+	ans0 = A character indicating whether the line 
+		to be rotated is an axis (ans0 = "a") or a 
+		vector (ans0 = "v")
 	trdr and plgr are the trend and plunge of the
 		rotated line
-
-	NOTE: All angles are in radians
 	
-	Rotate uses functions SphToCart and CartToSph
+	NOTE: All angles are in radians
 	
 	Python function translated from the Matlab function
 	Rotate in Allmendinger et al. (2012)
-	'''
+	"""
 	# Allocate some arrays
 	a = np.zeros((3,3)) #Transformation matrix
-	pole = np.zeros(3) #Dir. cosines of rotation axis
-	plotr = np.zeros(3) #Dir. cosines of rotated vector
-	temp = np.zeros(3)	#Dir. cosines of unrotated vector
+	raxis = np.zeros(3) #Dir. cosines of rotation axis
+	line = np.zeros(3)	#Dir. cosines of line to be rotated
+	liner = np.zeros(3) #Dir. cosines of rotated line
 	
-	# Convert rotation axis to direction cosines. The
-	# convention here is X1 = North, X2 = East, X3 = Down
-	pole[0] , pole[1], pole[2] = SphToCart(rtrd,rplg,0)
+	# Convert rotation axis to direction cosines
+	raxis[0] , raxis[1], raxis[2] = sph_to_cart(rtrd,rplg)
 	
 	# Calculate the transformation matrix a for the rotation
-	# Eq. 5.17
 	x = 1.0 - np.cos(rot)
-	sinRot = np.sin(rot)
-	cosRot = np.cos(rot)
-	a[0,0] = cosRot + pole[0]*pole[0]*x
-	a[0,1] = -pole[2]*sinRot + pole[0]*pole[1]*x
-	a[0,2] = pole[1]*sinRot + pole[0]*pole[2]*x
-	a[1,0] = pole[2]*sinRot + pole[1]*pole[0]*x
-	a[1,1] = cosRot + pole[1]*pole[1]*x
-	a[1,2] = -pole[0]*sinRot + pole[1]*pole[2]*x
-	a[2,0] = -pole[1]*sinRot + pole[2]*pole[0]*x
-	a[2,1] = pole[0]*sinRot + pole[2]*pole[1]*x
-	a[2,2] = cosRot + pole[2]*pole[2]*x
+	sinrot = np.sin(rot)
+	cosrot = np.cos(rot)
+	a[0,0] = cosrot + raxis[0]*raxis[0]*x
+	a[0,1] = -raxis[2]*sinrot + raxis[0]*raxis[1]*x
+	a[0,2] = raxis[1]*sinrot + raxis[0]*raxis[2]*x
+	a[1,0] = raxis[2]*sinrot + raxis[1]*raxis[0]*x
+	a[1,1] = cosrot + raxis[1]*raxis[1]*x
+	a[1,2] = -raxis[0]*sinrot + raxis[1]*raxis[2]*x
+	a[2,0] = -raxis[1]*sinrot + raxis[2]*raxis[0]*x
+	a[2,1] = raxis[0]*sinrot + raxis[2]*raxis[1]*x
+	a[2,2] = cosrot + raxis[2]*raxis[2]*x
 	
-	# Convert trend and plunge of vector to be rotated into
+	# Convert trend and plunge of line to be rotated into
 	# direction cosines
-	temp[0] , temp[1], temp[2] = SphToCart(trd,plg,0)
+	line[0] , line[1], line[2] = sph_to_cart(trd,plg)
 	
 	# Perform the coordinate transformation
-	for i in range(0,3):
-		plotr[i] = 0.0
-		for j in range(0,3):
-			plotr[i] = a[i,j]*temp[j] + plotr[i]
+	for i in range(3):
+		for j in range(3):
+			liner[i] = a[i,j]*line[j] + liner[i]
 			
-	# Convert to lower hemisphere projection if data are
-	# axes (ans0 = 'a')
-	if plotr[2] < 0.0 and ans0 == 'a' :
-		plotr[0] = -plotr[0]
-		plotr[1] = -plotr[1]
-		plotr[2] = -plotr[2]
+	# Convert to lower hemisphere projection if axis 
+	if liner[2] < 0.0 and ans0 == 'a':
+		liner *= -1.0
 		
 	# Convert from direction cosines back to trend and plunge
-	trdr , plgr = CartToSph(plotr[0], plotr[1], plotr[2])
+	trdr , plgr = cart_to_sph(liner[0], liner[1], liner[2])
 	
 	return trdr, plgr

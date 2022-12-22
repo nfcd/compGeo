@@ -1,87 +1,85 @@
-import math
-from SphToCart import SphToCart
-from CartToSph import CartToSph
-from Pole import Pole
+import numpy as np
+from sph_to_cart import sph_to_cart
+from cart_to_sph import cart_to_sph
+from pole import pole_from_plane, plane_from_pole
 
-def Angles(trd1,plg1,trd2,plg2,ans0):
-	'''
-	Angles calculates the angles between two lines,
-	between two planes, the line which is the intersection
-	of two planes, or the plane containing two apparent dips
+# Python functions based on the Matlab function
+# Angles in Allmendinger et al. (2012)
 
-	Angles(trd1,plg1,trd2,plg2,ans0) operates on
-	two lines or planes with trend/plunge or
-	strike/dip equal to trd1/plg1 and trd2/plg2
+def angle_bw_lines(trd1, plg1, trd2, plg2):
+	"""
+	angle_bw_lines returns the angle between two lines
+	of trend and plunge trd1, plg1, trd2, and plg2
+	Input and output angles are in radians
+	"""
+	# convert lines to directions cosines and numpy arrays
+	cn1, ce1, cd1 = sph_to_cart(trd1, plg1)
+	u = np.array([cn1, ce1, cd1])
+	cn2, ce2, cd2 = sph_to_cart(trd2, plg2)
+	v = np.array([cn2, ce2, cd2])
+	# angle between lines is arccosine of their dot product
+	return np.arccos(np.dot(u, v))
 
-	ans0 is a character that tells the function what
-	to calculate:
+def angle_bw_planes(str1, dip1, str2, dip2):
+	"""
+	angle_bw_planes returns the angle between two planes
+	of strike and dip str1, dip1, str2, and dip2
+	Input and output angles are in radians
+	"""
+	# compute poles to lines
+	pole1_trd, pole1_plg = pole_from_plane(str1, dip1)
+	pole2_trd, pole2_plg = pole_from_plane(str2, dip2)
+	# find angle between poles
+	angle = angle_bw_lines(pole1_trd, pole1_plg, 
+		pole2_trd, pole2_plg)
+	# angle between planes is the complementary angle
+	return (np.pi - angle)
 
-		ans0 = 'a' -> plane from two apparent dips
-		ans0 = 'l' -> the angle between two lines
+def pole_from_lines(trd1, plg1, trd2, plg2):
+	"""
+	pole_from_lines compute the pole to a plane given
+	two lines on the plane, with trend and plunge trd1, plg1,
+	trd2, and plg2
+	Input and output angles are in radians
+	"""
+	# convert lines to direction cosines and numpy arrays
+	cn1, ce1, cd1 = sph_to_cart(trd1, plg1)
+	u = np.array([cn1, ce1, cd1])
+	cn2, ce2, cd2 = sph_to_cart(trd2, plg2)
+	v = np.array([cn2, ce2, cd2])
+	# normal is cross product between vectors
+	pole = np.cross(u, v)
+	# make pole a unit vector
+	norm = np.linalg.norm(pole)
+	pole = pole/norm
+	# if pole points upwards, make it point downwards
+	if pole[2] < 0:
+		pole *= -1.0
+	# return trend and plunge of pole
+	return cart_to_sph(pole[0], pole[1], pole[2])
 
-		In the above two cases, the user sends the trend
-		and plunge of two lines
+def plane_from_app_dips(trd1, plg1, trd2, plg2):
+	"""
+	plane_from_app_dips returns the strike and dip of a plane
+	from two apparent dips with trend and plunge trd1, plg1,
+	trd2, and plg2
+	Input and output angles are in radians
+	"""
+	# Compute pole to plane from apparent dips (lines)
+	pole_trd, pole_plg = pole_from_lines(trd1,plg1,trd2,plg2)
+	# return strike and dip of plane
+	return plane_from_pole(pole_trd, pole_plg)
 
-		ans0 = 'i' -> the intersection of two planes
-		ans0 = 'p' -> the angle between two planes
- 
-		In the above two cases the user sends the strike
-		and dip of two planes in RHR format
+def int_bw_planes(str1, dip1, str2, dip2):
+	"""
+	int_bw_planes returns the intersection between two planes
+	of strike and dip str1, dip1, str2, dip2
+	Input and output angles are in radians
+	"""
+	# compute poles to planes
+	pole1_trd, pole1_plg = pole_from_plane(str1, dip1)
+	pole2_trd, pole2_plg = pole_from_plane(str2, dip2)
+	# intersection is normal to poles
+	return pole_from_lines(pole1_trd, pole1_plg, pole2_trd, 
+		pole2_plg)
 
-	NOTE: Input/Output angles are in radians
-
-	Angles uses functions SphToCart, CartToSph and Pole
-
-	Python function translated from the Matlab function
-	Angles in Allmendinger et al. (2012)
-	'''
-	# If planes have been entered
-	if ans0 == 'i' or ans0 == 'p':
-		k = 1
-	# Else if lines have been entered
-	elif ans0 == 'a' or ans0 == 'l':
-		k = 0
-	
-	# Calculate the direction cosines of the lines
-	# or poles to planes
-	cn1, ce1, cd1 = SphToCart(trd1,plg1,k)
-	cn2, ce2, cd2 = SphToCart(trd2,plg2,k)
-	
-	# If angle between 2 lines or between
-	# the poles to 2 planes
-	if ans0 == 'l' or ans0 == 'p':
-		# Use dot product 
-		ans1 = math.acos(cn1*cn2 + ce1*ce2 + cd1*cd2)
-		ans2 = math.pi - ans1
-	
-	# If intersection of two planes or pole to
-	# a plane containing two apparent dips
-	if ans0 == 'a' or ans0 == 'i':
-		# If the 2 planes or lines are parallel
-		# return an error
-		if trd1 == trd2 and plg1 == plg2:
-			raise ValueError('Error: lines or planes are parallel')
-		# Else use cross product
-		else:
-			cn = ce1*cd2 - cd1*ce2
-			ce = cd1*cn2 - cn1*cd2
-			cd = cn1*ce2 - ce1*cn2
-			#Make sure the vector points downe
-			if cd < 0.0:
-				cn = -cn
-				ce = -ce
-				cd = -cd
-			# Convert vector to unit vector
-			r = math.sqrt(cn*cn+ce*ce+cd*cd)
-			# Calculate line of intersection or pole to plane
-			trd, plg = CartToSph(cn/r,ce/r,cd/r)
-			# If intersection of two planes
-			if ans0 == 'i':
-				ans1 = trd
-				ans2 = plg
-			# Else if plane containing two dips,
-			# calculate plane from its pole
-			elif ans0 == 'a':
-				ans1, ans2 = Pole(trd,plg,0)
-	
-	return ans1, ans2

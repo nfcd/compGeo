@@ -1,81 +1,80 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from SphToCart import SphToCart
-from CartToSph import CartToSph
-from ZeroTwoPi import ZeroTwoPi
-from Stereonet import Stereonet
-from GreatCircle import GreatCircle
-from StCoordLine import StCoordLine
+from sph_to_cart import sph_to_cart
+from cart_to_sph import cart_to_sph
+from zero_twopi import zero_twopi
+from stereonet import stereonet
+from great_circle import great_circle
+from st_coord_line import st_coord_line
 
 
-def Bingham(T,P):
-	'''
-	Bingham calculates and plots a cylindrical best fit to
+def bingham(T,P,stype):
+	"""
+	bingham calculates and plots a cylindrical best fit to
 	a distribution of poles to bedding. The statistical
 	routine is based on algorithms in Fisher et al. (1988)
-
-	USE: eigVec, confCone, bestFit = Bingham(T,P)
+	
+	USE: eigvec, confcone, bestfit, fig, ax = bingham(T,P)
 		
 	T and P = Vectors of lines trends and plunges
-	respectively
+			respectively
+	stype = Stereonet type: 0 = equal angle, 1 = equal area
 		
-	eigVec = 3 x 3 matrix with eigenvalues (column 1), trends
+	eigvec = 3 x 3 matrix with eigenvalues (column 1), trends
 	(column 2) and plunges (column 3) of the eigenvectors.
 	Maximum eigenvalue and corresponding eigenvector are
 	in row 1, intermediate in row 2, and minimum in row 3.
-
-	confCone = 2 x 2 matrix with the maximum (column 1) and
+	
+	confcone = 2 x 2 matrix with the maximum (column 1) and
 	minimum (column 2) radius of the 95% elliptical
 	confidence cone around the eigenvector corresponding
 	to the largest (row 1), and lowest (row 2) eigenvalue
-
+	
 	besFit = 1 x 2 vector containing the strike and dip
 	(right hand rule) of the best fit great circle to
 	the distribution of lines
-
+	
+	fig and ax are handles to the figure and axes
+	
 	NOTE: Input/Output trends and plunges, as well as
-	confidence cones are in radians. Bingham plots the
+	confidence cones are in radians. bingham plots the
 	input poles, eigenvectors and best fit great circle
 	in an equal area stereonet.
-   
-	Bingham uses functions ZeroTwoPi, Pole, StCoordLine
-	SphToCart, CartToSph, Rotate, GreatCircle, SmallCircle,
-	GeogrToView, and Stereonet
-
+	
 	Python function translated from the Matlab function
 	Bingham in Allmendinger et al. (2012)
-	'''
+	"""
 	# Some constants
 	pi = np.pi
 	east = pi/2
 	twopi = pi*2
-
+	
 	# Number of lines
 	nlines = len(T)
-
+	
 	# Initialize the orientation matrix
 	a = np.zeros((3,3))
-
+	
 	# Fill the orientation matrix with the sums of the
 	# squares (for the principal diagonal) and the products
 	# of the direction cosines of each line. cn, ce and cd
 	# are the north, east and down direction cosines
 	for i in range(0,nlines): 
-		cn,ce,cd = SphToCart(T[i],P[i],0)
+		cn,ce,cd = sph_to_cart(T[i],P[i])
 		a[0,0] = a[0,0] + cn*cn
 		a[0,1] = a[0,1] + cn*ce
 		a[0,2] = a[0,2] + cn*cd
 		a[1,1] = a[1,1] + ce*ce
 		a[1,2] = a[1,2] + ce*cd
 		a[2,2] = a[2,2] + cd*cd
-
+	
 	# The orientation matrix is symmetric so the off-diagonal
 	# components can be equated
 	a[1,0] = a[0,1]
 	a[2,0] = a[0,2]
 	a[2,1] = a[1,2]
-
+	
 	# Calculate the eigenvalues and eigenvectors of the
 	# orientation matrix using function eigh.
 	# D is a vector of eigenvalues and V is a full matrix
@@ -91,38 +90,45 @@ def Bingham(T,P):
 			V[0,i] = -V[0,i]
 			V[1,i] = -V[1,i]
 			V[2,i] = -V[2,i]
-
-	# Initialize eigVec
-	eigVec = np.zeros((3,3))
-	#Fill eigVec
-	eigVec[0,0] = D[2]	  # Maximum eigenvalue
-	eigVec[1,0] = D[1]	  # Intermediate eigenvalue
-	eigVec[2,0] = D[0]	  # Minimum eigenvalue
-	# Trend and plunge of largest eigenvalue: column 3 of V
-	eigVec[0,1], eigVec[0,2] = CartToSph(V[0,2], V[1,2], V[2,2])
-	# Trend and plunge of interm. eigenvalue: column 2 of V
-	eigVec[1,1], eigVec[1,2] = CartToSph(V[0,1], V[1,1], V[2,1])
-	# Trend and plunge of minimum eigenvalue: column 1 of V
-	eigVec[2,1], eigVec[2,2] = CartToSph(V[0,0], V[1,0], V[2,0])
 	
-	# Initialize confCone
-	confCone = np.zeros((2,2))
+	# Initialize eigvec
+	eigvec = np.zeros((3,3))
+	#Fill eigvec
+	eigvec[0,0] = D[2]	  # Maximum eigenvalue
+	eigvec[1,0] = D[1]	  # Intermediate eigenvalue
+	eigvec[2,0] = D[0]	  # Minimum eigenvalue
+	# Trend and plunge of largest eigenvalue: column 3 of V
+	eigvec[0,1], eigvec[0,2] = cart_to_sph(V[0,2], V[1,2], 
+		V[2,2])
+	# Trend and plunge of interm. eigenvalue: column 2 of V
+	eigvec[1,1], eigvec[1,2] = cart_to_sph(V[0,1], V[1,1], 
+		V[2,1])
+	# Trend and plunge of minimum eigenvalue: column 1 of V
+	eigvec[2,1], eigvec[2,2] = cart_to_sph(V[0,0], V[1,0], 
+		V[2,0])
+	
+	# Initialize confcone
+	confcone = np.zeros((2,2))
 	# If there are more than 25 lines, calculate confidence
 	# cones at the 95% confidence level. The algorithm is
 	# explained in Fisher et al. (1987)
 	if nlines >= 25:
-		e11, e22, e12, d11, d22, d12 = 0, 0, 0, 0, 0, 0
-		en11 = 1/(nlines*(eigVec[2,0] - eigVec[0,0])**2)
-		en22 = 1/(nlines*(eigVec[1,0] - eigVec[0,0])**2)
-		en12 = 1/(nlines*(eigVec[2,0] - eigVec[0,0])*(eigVec[1,0] - eigVec[0,0]))
+		e11 = e22 = e12 = d11 = d22 = d12 = 0
+		en11 = 1/(nlines*(eigvec[2,0]-eigvec[0,0])**2)
+		en22 = 1/(nlines*(eigvec[1,0]-eigvec[0,0])**2)
+		en12 = 1/(nlines*(eigvec[2,0]-eigvec[0,0])*(eigvec[1,0]-
+			eigvec[0,0]))
 		dn11 = en11
-		dn22 = 1/(nlines*(eigVec[2,0] - eigVec[1,0])**2)
-		dn12 = 1/(nlines*(eigVec[2,0] - eigVec[1,0])*(eigVec[2,0] - eigVec[0,0]))
+		dn22 = 1/(nlines*(eigvec[2,0]-eigvec[1,0])**2)
+		dn12 = 1/(nlines*(eigvec[2,0]-eigvec[1,0])*(eigvec[2,0]-
+			eigvec[0,0]))
 		vec = np.zeros((3,3))
 		for i in range(0,3):
-			vec[i,0] = np.sin(eigVec[i,2] + east)*np.cos(twopi - eigVec[i,1])
-			vec[i,1] = np.sin(eigVec[i,2] + east)*np.sin(twopi - eigVec[i,1])
-			vec[i,2] = np.cos(eigVec[i,2] + east)
+			vec[i,0] = np.sin(eigvec[i,2]+east)*np.cos(twopi-
+				eigvec[i,1])
+			vec[i,1] = np.sin(eigvec[i,2]+east)*np.sin(twopi-
+				eigvec[i,1])
+			vec[i,2] = np.cos(eigvec[i,2]+east)
 		for i in range(0,nlines):
 			c1 = np.sin(P[i]+east)*np.cos(twopi-T[i])
 			c2 = np.sin(P[i]+east)*np.sin(twopi-T[i])
@@ -157,8 +163,8 @@ def Bingham(T,P):
 			DD, _ = np.linalg.eigh(f)
 			if DD[0] > 0 and DD[1] > 0:
 				if d/DD[0] <= 1 and d/DD[1] <= 1:
-					confCone[0,1] = np.arcsin(np.sqrt(d/DD[1]))
-					confCone[0,0] = np.arcsin(np.sqrt(d/DD[0]))
+					confcone[0,1] = np.arcsin(np.sqrt(d/DD[1]))
+					confcone[0,0] = np.arcsin(np.sqrt(d/DD[0]))
 		# Repeat the process for the eigenvector
 		# corresponding to the smallest eigenvalue
 		if abs(d11*d22-d12*d12) >= 0.000001:
@@ -169,33 +175,31 @@ def Bingham(T,P):
 			DD, _ = np.linalg.eigh(f)
 			if DD[0] > 0.0 and DD[1] > 0.0:
 				if d/DD[0] <= 1 and d/DD[1] <= 1:
-					confCone[1,1] = np.arcsin(np.sqrt(d/DD[1]))
-					confCone[1,0] = np.arcsin(np.sqrt(d/DD[0]))
-
+					confcone[1,1] = np.arcsin(np.sqrt(d/DD[1]))
+					confcone[1,0] = np.arcsin(np.sqrt(d/DD[0]))
+	
 	# Calculate the best fit great circle
 	# to the distribution of points
-	bestFit = np.zeros(2)
-	bestFit[0] = ZeroTwoPi(eigVec[2,1] + east)
-	bestFit[1] = east - eigVec[2,2]
-
+	bestfit = np.zeros(2)
+	bestfit[0] = zero_twopi(eigvec[2,1] + east)
+	bestfit[1] = east - eigvec[2,2]
+	
 	# Plot stereonet
-	Stereonet(0, 90*pi/180, 10*pi/180, 1)
+	fig, ax = stereonet(0, 90*pi/180, 10*pi/180, stype)
 	
 	# Plot lines
 	for i in range(0,nlines):
-		xp,yp = StCoordLine(T[i],P[i],1)
-		plt.plot(xp,yp,'k.')
+		xp,yp = st_coord_line(T[i],P[i],stype)
+		ax.plot(xp,yp,"k.")
 	
 	# Plot eigenvectors
 	for i in range(0,3):
-		xp,yp = StCoordLine(eigVec[i,1],eigVec[i,2],1)
-		plt.plot(xp,yp,'rs')
+		xp,yp = st_coord_line(eigvec[i,1],eigvec[i,2],stype)
+		ax.plot(xp,yp,"rs")
+		ax.text(xp-0.03,yp+0.03,str(i+1),c="r")
 	
 	# Plot best fit great circle
-	path = GreatCircle(bestFit[0],bestFit[1],1)
-	plt.plot(path[:,0],path[:,1],'r')
+	path = great_circle(bestfit[0],bestfit[1],stype)
+	ax.plot(path[:,0],path[:,1],"r")
 	
-	# Show plot
-	plt.show()
-
-	return eigVec, confCone, bestFit
+	return eigvec, confcone, bestfit, fig, ax

@@ -10,7 +10,7 @@ Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut
 Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
 
 ## Manual: Working with the resource
-The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (13 MB).
+The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (14 MB).
 
 The programming language of choice is Python, and our approach is as follows: We introduce briefly the theory and applications, implement them in Python functions, and illustrate them using Jupyter notebooks. 
 
@@ -29,15 +29,7 @@ Once in a while you should update your local files to the latest changes in the 
 3. Execute the terminal command `git pull`
 
 ## Background information
-The notebooks follow the directory structure of the resource, which is based on data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. When necessary, we have imported the Numpy and Matplotlib libraries in our functions and notebooks as:
-
-`import numpy as np`
-
-`import matplotlib.pyplot as plt`
-
-We also use other libraries such as Cartopy, pyproj, and uncertainties by Eric O. Lebigot. 
-
-To work with the notebooks, open Jupyter and navigate to the corresponding folder of your local copy of the resource.
+The notebooks follow the directory structure of the resource, which is based on data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. 
 
 ## Current state
-The first nine chapters are completed. The last chapter (Ch. 10, The inversion problem) is under work.
+The first nine chapters are completed. The latest revision of these chapters on Dec. 2022 was significant. Please update. The last chapter (Ch. 10) on the inversion problem is under work.

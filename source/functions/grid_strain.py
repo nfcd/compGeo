@@ -88,11 +88,11 @@ def grid_strain(pos,disp,k,par,plotpar,plotst):
 			s2 = np.sqrt((v1x-v3x)**2 + (v1y-v3y)**2)
 			s3 = np.sqrt((v2x-v1x)**2 + (v2y-v1y)**2)
 			a1 = np.arccos((v2x-v1x)*(v3x-v1x)/(s3*s2)+\
-						(v2y-v1y)*(v3y-v1y)/(s3*s2))
+				(v2y-v1y)*(v3y-v1y)/(s3*s2))
 			a2 = np.arccos((v3x-v2x)*(v1x-v2x)/(s1*s3)+\
-						(v3y-v2y)*(v1y-v2y)/(s1*s3))
+				(v3y-v2y)*(v1y-v2y)/(s1*s3))
 			a3 = np.arccos((v2x-v3x)*(v1x-v3x)/(s1*s2)+\
-						(v2y-v3y)*(v1y-v3y)/(s1*s2))
+				(v2y-v3y)*(v1y-v3y)/(s1*s2))
 			# If any of the internal angles is less than
 			# specified minimum, invalidate triangle
 			if a1 < par or a2 < par or a3 < par:
@@ -238,8 +238,8 @@ def grid_strain(pos,disp,k,par,plotpar,plotst):
 			# If minimum number of stations
 				if min(inds[i,:]) >= 0:
 					xpyp = [[pos[inds[i,0],0],pos[inds[i,0],1]],\
-							[pos[inds[i,1],0],pos[inds[i,1],1]],\
-							[pos[inds[i,2],0],pos[inds[i,2],1]]]
+						[pos[inds[i,1],0],pos[inds[i,1],1]],\
+						[pos[inds[i,2],0],pos[inds[i,2],1]]]
 					# length in km
 					xpyp = np.divide(xpyp,1e3)
 					polygon = Polygon(xpyp, True)
@@ -290,8 +290,8 @@ def grid_strain(pos,disp,k,par,plotpar,plotst):
 	intv = (vmax-vmin)*0.25
 	ticks=[vmin,vmin+intv,vmin+2*intv,vmin+3*intv,vmax]
 	lticks = ["{:.2e}".format(ticks[0]),\
-			"{:.2e}".format(ticks[1]),"{:.2e}".format(ticks[2]),\
-			"{:.2e}".format(ticks[3]),"{:.2e}".format(ticks[4])]
+		"{:.2e}".format(ticks[1]),"{:.2e}".format(ticks[2]),\
+		"{:.2e}".format(ticks[3]),"{:.2e}".format(ticks[4])]
 	cbar = fig.colorbar(pcoll, label=lcb, ticks=ticks)
 	cbar.ax.set_yticklabels(lticks)
 	

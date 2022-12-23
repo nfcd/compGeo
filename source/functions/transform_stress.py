@@ -6,7 +6,7 @@ def transform_stress(stress,tx1,px1,tx3,ntx1,npx1,ntx3):
 	transform_stress transforms a stress tensor from
 	old X1X2X3 to new X1'X2'X3' coordinates
 	
-	nstress = transform_stress(stress,tx1,px1,tx3,ntx1,npx1,ntx3)
+	nstress=transform_stress(stress,tx1,px1,tx3,ntx1,npx1,ntx3)
 	
 	stress = 3 x 3 stress tensor
 	tx1 = trend of X1 

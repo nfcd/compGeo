@@ -86,11 +86,11 @@ def grid_fin_strain(pos,disp,frame,k,par,plotpar,plotst):
 			s2 = np.sqrt((v1x-v3x)**2 + (v1y-v3y)**2)
 			s3 = np.sqrt((v2x-v1x)**2 + (v2y-v1y)**2)
 			a1 = np.arccos((v2x-v1x)*(v3x-v1x)/(s3*s2)+\
-						(v2y-v1y)*(v3y-v1y)/(s3*s2))
+				(v2y-v1y)*(v3y-v1y)/(s3*s2))
 			a2 = np.arccos((v3x-v2x)*(v1x-v2x)/(s1*s3)+\
-						(v3y-v2y)*(v1y-v2y)/(s1*s3))
+				(v3y-v2y)*(v1y-v2y)/(s1*s3))
 			a3 = np.arccos((v2x-v3x)*(v1x-v3x)/(s1*s2)+\
-						(v2y-v3y)*(v1y-v3y)/(s1*s2))
+				(v2y-v3y)*(v1y-v3y)/(s1*s2))
 			# If any of the internal angles is less than
 			# specified minimum, invalidate triangle
 			if a1 < par or a2 < par or a3 < par:

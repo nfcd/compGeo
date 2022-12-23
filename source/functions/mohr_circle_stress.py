@@ -144,7 +144,7 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 		else:	# Oblique slip
 			if ps[2] < 0.0:
 				ns[i,1] *= -1.0
-				
+	
 	# Plot planes
 	ax.plot(ns[:,0],ns[:,1],"ks")
 	

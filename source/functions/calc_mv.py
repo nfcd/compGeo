@@ -4,10 +4,9 @@ from cart_to_sph import cart_to_sph
 
 def calc_mv(T,P):
 	"""
-	calc_mv calculates the mean vector for a group of lines
-	
-	calc_mv(T,P) calculates the trend (trd) and plunge (plg)
-	of the mean vector, its mean resultant length (rave), and
+	calc_mv calculates the mean vector for a group of lines.
+	It calculates the trend (trd) and plunge (plg) of the
+	mean vector, its mean resultant length (rave), and
 	Fisher statistics (concentration factor (conc), 99 (d99)
 	and 95 (d95) % uncertainty cones); for a series of lines
 	whose trends and plunges are stored in the arrays T and P

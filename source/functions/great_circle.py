@@ -43,4 +43,3 @@ def great_circle(strike,dip,stype):
 		path[i,0], path[i,1] = st_coord_line(rtrd,rplg,stype)
 	
 	return path
-	

@@ -106,7 +106,7 @@ def hoop(geom,stress):
 	ax[1,0].set_ylabel("Stress (MPa)")
 	ax[1,0].legend(loc="upper right")
 	ax[1,0].set_title("Stress variation along s3",
-								fontweight="bold")
+		fontweight="bold")
 	
 	# Plot variation of hoop and radial stress around circle
 	ax[1,1].plot(T[:,0]*180/pi,sh[:,0],"r.-", label="Hoop")
@@ -118,6 +118,6 @@ def hoop(geom,stress):
 	ax[1,1].set_ylabel("Stress (MPa)")
 	ax[1,1].legend(loc="upper right")
 	ax[1,1].set_title("Stress variation around circle",
-								fontweight="bold")
+		fontweight="bold")
 	
 	return shm, srm, fig, ax

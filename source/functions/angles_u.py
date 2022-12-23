@@ -83,4 +83,3 @@ def int_bw_planes_u(str1, dip1, str2, dip2):
 	pole2_trd, pole2_plg = pole_from_plane(str2, dip2)
 	# intersection is normal to poles
 	return pole_from_lines_u(pole1_trd, pole1_plg, pole2_trd, pole2_plg)
-

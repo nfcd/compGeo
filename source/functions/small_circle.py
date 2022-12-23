@@ -13,8 +13,8 @@ def small_circle(trda,plga,cangle,stype):
 	plga = plunge of axis
 	cangle = cone angle
 	stype = Stereonet type: 0 = equal angle, 1 = equal area
-	path1 and path2 = vectors with the x and y coordinates of
-				the points in the small circle paths
+	path1 and path2 = vectors with the x and y coordinates
+		of the points in the small circle paths
 	np1 and np2 = Number of points in path1 and path2
 	
 	NOTE: All angles should be in radians

@@ -92,7 +92,8 @@ class Elastic_model:
 		for i in range(0,nx):
 			for j in range (0,nz):
 				if(vp[j,i] < vs[j,i]*np.sqrt(4./3.)):
-					raise Exception("This elastic model is not physically possible since the Possion ratio is less than 0.5.")
+					raise Exception("This elastic model is not physically possible" 
+					"since the Possion ratio is less than 0.5.")
 		
 		# Computing moduli
 		self.L2M = rho*vp*vp

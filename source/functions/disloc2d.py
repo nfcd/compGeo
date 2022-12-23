@@ -25,9 +25,9 @@ def disloc2d(tip,base,slip,nu,obsx,obsy):
 	s1 = slip*cos(dip)
 	s2 = slip*sin(dip)
 	[ux_part1,uy_part1] = displacement(tip[0],tip[1],s1,s2,
-										nu,obsx,obsy)
+		nu,obsx,obsy)
 	[ux_part2,uy_part2] = displacement(base[0],base[1],-s1,-s2,
-										nu,obsx,obsy)
+		nu,obsx,obsy)
 	ux = ux_part1+ux_part2
 	uy = uy_part1+uy_part2
 	return ux,uy

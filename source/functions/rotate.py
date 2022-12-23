@@ -54,7 +54,7 @@ def rotate(rtrd,rplg,rot,trd,plg,ans0):
 	for i in range(3):
 		for j in range(3):
 			liner[i] = a[i,j]*line[j] + liner[i]
-			
+	
 	# Convert to lower hemisphere projection if axis 
 	if liner[2] < 0.0 and ans0 == 'a':
 		liner *= -1.0

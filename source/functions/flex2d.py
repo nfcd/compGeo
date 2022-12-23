@@ -111,7 +111,7 @@ def flex2d(geom,elas,loads):
 	ax[0].set_xlabel("m")
 	ax[0].set_ylabel("m")
 	ax[0].xaxis.set_major_formatter(ticker.FormatStrFormatter
-												("%0.0e"))
+		("%0.0e"))
 	ax[0].set_title("Input loads",fontweight="bold")
 	
 	# Deflected loads plus deflection
@@ -127,7 +127,7 @@ def flex2d(geom,elas,loads):
 	ax[1].set_xlabel("m")
 	ax[1].set_ylabel("m")
 	ax[1].xaxis.set_major_formatter(ticker.FormatStrFormatter
-												("%0.0e"))
+		("%0.0e"))
 	ax[1].set_title("Deflected loads",fontweight="bold")
 	fig.subplots_adjust(hspace=0.6)
 	

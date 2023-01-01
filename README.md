@@ -7,7 +7,7 @@ Postdocs: David Oakley (IER)
 
 Faculty: Nestor Cardozo (IER), Lisa Watson (IER), Wiktor Weibull (IER), and Knut Giljarhus (IMBM). 
 
-Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact us at nestor.cardozo@uis.no
+Please feel free to use this material for teaching and research. If you have any comments or want to contribute to the resource, please contact me at [nestor.cardozo@uis.no](mailto:nestor.cardozo@uis.no)
 
 ## Manual: Working with the resource
 The resource consists of a book in pdf format (compGeo.pdf), and a source folder where data, functions and notebooks are included. The book is a large, full-resolution file (14 MB).

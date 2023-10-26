@@ -101,7 +101,7 @@ def hoop(geom,stress):
 	# Plot variation of hoop and radial stress along s3
 	ax[1,0].plot(R[0,:]/R1,sh[0,:],"r.-", label="Hoop")
 	ax[1,0].plot(R[0,:]/R1,sr[0,:],"b.-", label="Radial")
-	ax[1,0].grid(b=True)
+	ax[1,0].grid(True)
 	ax[1,0].set_xlabel("Normalized radial distance")
 	ax[1,0].set_ylabel("Stress (MPa)")
 	ax[1,0].legend(loc="upper right")
@@ -111,7 +111,7 @@ def hoop(geom,stress):
 	# Plot variation of hoop and radial stress around circle
 	ax[1,1].plot(T[:,0]*180/pi,sh[:,0],"r.-", label="Hoop")
 	ax[1,1].plot(T[:,0]*180/pi,sr[:,0],"b.-", label="Radial")
-	ax[1,1].grid(b=True)
+	ax[1,1].grid(True)
 	ax[1,1].set_xlim([0, 360])
 	ax[1,1].set_xticks([0, 90, 180, 270, 360])
 	ax[1,1].set_xlabel("Angle around the hole (deg)")

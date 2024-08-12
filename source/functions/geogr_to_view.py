@@ -19,10 +19,10 @@ def geogr_to_view(trd,plg,trdv,plgv):
 	Python function translated from the Matlab function
 	GeogrToView in Allmendinger et al. (2012)
 	"""
-	#some constants 
+	# some constants 
 	east = np.pi/2.0
 	
-	#Make transformation matrix between NED and View Direction
+	# make transformation matrix between NED and view direction
 	a = np.zeros((3,3))
 	a[2,0], a[2,1], a[2,2] = sph_to_cart(trdv,plgv)
 	temp1 = trdv + east
@@ -32,21 +32,21 @@ def geogr_to_view(trd,plg,trdv,plgv):
 	temp2 = plgv - east
 	a[0,0], a[0,1], a[0,2] = sph_to_cart(temp1,temp2)
 	
-	#Direction cosines of line
+	# direction cosines of line
 	dc = np.zeros(3)
 	dc[0], dc[1], dc[2] = sph_to_cart(trd,plg)
 	
-	# Transform line
+	# transform line
 	ndc = np.zeros(3)
 	for i in range(3):
 		ndc[i] = a[i,0]*dc[0] + a[i,1]*dc[1]+ a[i,2]*dc[2]
 	
-	# Compute line from new direction cosines
+	# compute line from new direction cosines
 	rtrd, rplg = cart_to_sph(ndc[0],ndc[1],ndc[2])
 	
-	# Take care of negative plunges
+	# take care of negative plunges
 	if rplg < 0.0 :
 		rtrd = zero_twopi(rtrd+np.pi)
-		rplg = -rplg
+		rplg *= -1.0
 	
 	return rtrd, rplg

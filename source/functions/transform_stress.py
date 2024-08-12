@@ -22,13 +22,13 @@ def transform_stress(stress,tx1,px1,tx3,ntx1,npx1,ntx3):
 	Python function translated from the Matlab function
 	TransformStress in Allmendinger et al. (2012)
 	"""
-	# Direction cosines of axes of old coordinate system
+	# direction cosines of axes of old coordinate system
 	odc = dircos_axes(tx1,px1,tx3)
 	
-	# Direction cosines of axes of new coordinate system
+	# direction cosines of axes of new coordinate system
 	ndc = dircos_axes(ntx1,npx1,ntx3)
 	
-	# Transformation matrix between old and new
+	# transformation matrix between old and new
 	# coordinate systems
 	a = np.zeros((3,3))
 	for i in range(3):
@@ -36,7 +36,7 @@ def transform_stress(stress,tx1,px1,tx3,ntx1,npx1,ntx3):
 			# Use dot product
 			a[i,j] = np.dot(ndc[i,:],odc[j,:])
 	
-	# Transform stress
+	# transform stress
 	nstress = np.zeros((3,3))
 	for i in range(3):
 		for j in range(3):

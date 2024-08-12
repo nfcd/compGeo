@@ -23,33 +23,33 @@ def small_circle(trda,plga,cangle,stype):
 	SmallCircle in Allmendinger et al. (2012)
 	"""
 	pi = np.pi
-	# Find where to start the small circle
+	# find where to start the small circle
 	if (plga - cangle) >= 0.0:
 		trd = trda
 		plg = plga - cangle
 	else:
 		if plga == pi/2.0:
-			plga = plga * 0.9999
+			plga *= 0.9999
 		angle = np.arccos(np.cos(cangle)/np.cos(plga))
 		trd = zero_twopi(trda+angle)
 		plg = 0.0
 	
-	# To make the small circle, rotate the starting line
+	# to make the small circle, rotate the starting line
 	# 360 degrees in increments of 1 degree
 	rot = np.radians(np.arange(0,361,1))
 	path1 = np.zeros((rot.shape[0],2))
 	path2 = np.zeros((rot.shape[0],2))
 	np1 = np2 = 0
-	for i in range(rot.size):
-		# Rotate line: The line is considered as a vector
+	for i in range(rot.shape[0]):
+		# rotate line: The line is considered as a vector
 		rtrd , rplg = rotate(trda,plga,rot[i],trd,plg,"v")
-		# Calculate stereonet coordinates and add to path
-		# If rotated plunge is positive add to 1st path
+		# calculate stereonet coordinates and add to path
+		# if rotated plunge is positive add to 1st path
 		if rplg >= 0.0:
 			path1[np1,0] , path1[np1,1] = st_coord_line(rtrd,rplg,
 				stype)
 			np1 += 1
-		# Else add to 2nd path
+		# else add to 2nd path
 		else:
 			path2[np2,0] , path2[np2,1] = st_coord_line(rtrd,rplg,
 				stype)

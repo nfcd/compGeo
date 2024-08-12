@@ -15,10 +15,10 @@ def cart_to_sph(cn,ce,cd):
 	CartToSph in Allmendinger et al. (2012)
 	"""
 	pi = math.pi
-	# Plunge 
+	# plunge 
 	plg = math.asin(cd) 
 	
-	# Trend: If north direction cosine is zero, trend
+	# trend: If north direction cosine is zero, trend
 	# is east or west. Choose which one by the sign of
 	# the east direction cosine
 	if cn == 0.0:
@@ -29,8 +29,8 @@ def cart_to_sph(cn,ce,cd):
 	else:
 		trd = math.atan(ce/cn) 
 		if cn < 0.0:
-			trd = trd + pi 
-		# Make sure trend is between 0 and 2*pi
+			trd += pi 
+		# make sure trend is between 0 and 2*pi
 		trd = zero_twopi(trd)
 	
 	return trd, plg

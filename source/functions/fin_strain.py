@@ -28,59 +28,59 @@ def fin_strain(e,frame):
 	Python function translated from the Matlab function
 	FinStrain in Allmendinger et al. (2012)
 	"""
-	# Initialize variables
+	# initialize variables
 	eps = np.zeros((3,3))
 	pstrain = np.zeros((3,3))
 	maxsh = np.zeros(2)
 	
-	# Compute strain tensor
+	# compute strain tensor
 	for i in range(3):
 		for j in range(3):
 			eps[i,j] = 0.5*(e[i][j]+e[j][i])
 			for k in range(3):
-				# If undeformed reference frame: 
+				# if undeformed reference frame: 
 				# Lagrangian strain tensor
 				if frame == 0:
 					eps[i,j] = eps[i,j] + 0.5*(e[k][i]*e[k][j])
-				# If deformed reference frame: 
+				# if deformed reference frame: 
 				# Eulerian strain tensor
 				elif frame == 1:
 					eps[i,j] = eps[i,j] - 0.5*(e[k][i]*e[k][j])
 	
-	# Compute principal elongations and orientations
+	# compute principal elongations and orientations
 	D, V = np.linalg.eigh(eps)
 	
 	# Principal elongations
 	for i in range(3):
 		ind = 2-i
-		# Magnitude
-		# If undeformed reference frame: 
+		# magnitude
+		# if undeformed reference frame: 
 		# Lagrangian strain tensor
 		if frame == 0:
 			pstrain[i,0] = np.sqrt(1.0+2.0*D[ind])-1.0
-		# If deformed reference frame:
+		# if deformed reference frame:
 		# Eulerian strain tensor
 		elif frame == 1:
 			pstrain[i,0] = np.sqrt(1.0/(1.0-2.0*D[ind]))-1.0
-		# Orientations
+		# orientations
 		pstrain[i,1],pstrain[i,2] = cart_to_sph(V[0,ind],
 			V[1,ind],V[2,ind])
 	
-	# Dilatation
+	# dilatation
 	dilat = (1.0+pstrain[0,0])*(1.0+pstrain[1,0])* \
 		(1.0+pstrain[2,0]) - 1.0
 	
-	# Maximum shear strain: This only works if plane strain
-	lmax = (1.0+pstrain[0,0])**2 # Maximum quad. elongation
-	lmin = (1.0+pstrain[2,0])**2 # Minimum quad. elongation
-	# Maximum shear strain: Ramsay (1967) Eq. 3.46
+	# maximum shear strain: This only works if plane strain
+	lmax = (1.0+pstrain[0,0])**2 # maximum quad. elongation
+	lmin = (1.0+pstrain[2,0])**2 # minimum quad. elongation
+	# maximum shear strain: Ramsay (1967) Eq. 3.46
 	maxsh[0] = (lmax-lmin)/(2.0*np.sqrt(lmax*lmin))
-	# Angle of maximum shear strain with respect to maximum
+	# angle of maximum shear strain with respect to maximum
 	# principal strain. Ramsay (1967) Eq. 3.45
-	# If undeformed reference frame
+	# if undeformed reference frame
 	if frame == 0:
 		maxsh[1] = np.pi/4.0
-	# If deformed reference frame
+	# if deformed reference frame
 	elif frame == 1:
 		maxsh[1] = np.arctan(np.sqrt(lmin/lmax))
 	

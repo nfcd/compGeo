@@ -46,7 +46,7 @@ class Derivatives:
 	def __init__(self): 
 		pass
 	
-	# Compute discrete forward derivatives
+	# compute discrete forward derivatives
 	def Dxfw(self,M, dx):
 		nz,nx = M.shape
 		D = np.zeros(M.shape)
@@ -61,7 +61,7 @@ class Derivatives:
 		D = D/(dz)
 		return D
 	
-	# Compute discrete backward derivatives
+	# compute discrete backward derivatives
 	def Dxbw(self,M, dx):
 		nz,nx = M.shape
 		D = np.zeros(M.shape)
@@ -89,18 +89,18 @@ class Elastic_model:
 		self.ox = ox
 		self.oz = oz
 		
-		for i in range(0,nx):
-			for j in range (0,nz):
+		for i in range(nx):
+			for j in range(nz):
 				if(vp[j,i] < vs[j,i]*np.sqrt(4./3.)):
 					raise Exception("This elastic model is not physically possible" 
 					"since the Possion ratio is less than 0.5.")
 		
-		# Computing moduli
+		# computing moduli
 		self.L2M = rho*vp*vp
 		self.M = rho*vs*vs
 		self.L = self.L2M - 2*self.M;
 
-		# Staggering
+		# staggering
 		self.B_x = 1./rho
 		self.B_x[:,0:nx-1] = 1./(0.5*(rho[:,0:nx-1]+rho[:,1:nx]))
 		self.B_z = 1./rho
@@ -109,7 +109,7 @@ class Elastic_model:
 		self.Mxz[:,0:nx-1] = 0.5*(self.M[:,0:nx-1] + self.M[:,1:nx])
 		self.Mxz[0:nz-1,:] = 0.5*(self.Mxz[0:nz-1,:] + self.Mxz[1:nz,:])
 		
-		# Adding free surface condition at the top
+		# adding free surface condition at the top
 		self.B_x[1,:] = 2.0*self.B_x[1,:]
 		self.L[1,:] = 0.0
 		self.L2M[1,:] = self.M[1,:]
@@ -147,11 +147,11 @@ class Elastic_waves:
 		self.ox = Model.ox
 		self.oz = Model.oz
 		
-		self.Sxx = np.zeros([self.nz,self.nx]) # Stress component
-		self.Szz = np.zeros([self.nz,self.nx]) # Stress component
-		self.Sxz = np.zeros([self.nz,self.nx]) # Stress component
-		self.Vx = np.zeros([self.nz,self.nx]) # Particle velocity component
-		self.Vz = np.zeros([self.nz,self.nx]) # Particle velocity component
+		self.Sxx = np.zeros([self.nz,self.nx]) # stress component
+		self.Szz = np.zeros([self.nz,self.nx]) # stress component
+		self.Sxz = np.zeros([self.nz,self.nx]) # stress component
+		self.Vx = np.zeros([self.nz,self.nx]) # particle velocity component
+		self.Vz = np.zeros([self.nz,self.nx]) # particle velocity component
 		self.nt=nt
 		self.dt=dt
 	
@@ -209,7 +209,7 @@ class Elastic_waves:
 		self.forwardstepVelocity(Derivative,Model)
 		self.forwardstepStress(Derivative,Model)
 	
-	# Solve elastodynamic equations
+	# solve elastodynamic equations
 	def forwardstepVelocity(self,Derivative,Model):
 		dx = self.dx
 		dz = self.dz
@@ -217,21 +217,21 @@ class Elastic_waves:
 		nx = self.nx
 		nz = self.nz
 		
-		## Forward step Vx
+		# forward step Vx
 		der = Derivative.Dxfw(self.Sxx,dx)
 		self.Vx = self.Vx + dt*Model.B_x*der
 		
 		der = Derivative.Dzbw(self.Sxz,dz) 
 		self.Vx = self.Vx + dt*Model.B_x*der
 		
-		## Forward step Vz
+		# forward step Vz
 		der = Derivative.Dxbw(self.Sxz,dx)
 		self.Vz = self.Vz + dt*Model.B_z*der
 		
 		der = Derivative.Dzfw(self.Szz,dz)
 		self.Vz = self.Vz + dt*Model.B_z*der
 	
-	# Solve elastodynamic equations
+	# solve elastodynamic equations
 	def forwardstepStress(self,Derivative,Model):
 		dx = self.dx
 		dz = self.dz
@@ -239,7 +239,7 @@ class Elastic_waves:
 		nx = self.nx
 		nz = self.nz
 		
-		# Forward step normal stresses
+		# forward step normal stresses
 		der = Derivative.Dxbw(self.Vx,dx)
 		self.Sxx = self.Sxx + dt*Model.L2M*der
 		self.Szz = self.Szz + dt*Model.L*der
@@ -248,10 +248,10 @@ class Elastic_waves:
 		self.Sxx = self.Sxx + dt*Model.L*der
 		self.Szz = self.Szz + dt*Model.L2M*der
 		
-		# Free surface condition at the top
+		# free surface condition at the top
 		self.Szz[1,:] = 0.0
 		
-		# Forward step shear stress
+		# forward step shear stress
 		der = Derivative.Dxfw(self.Vz,dx)
 		self.Sxz = self.Sxz + dt*Model.Mxz*der
 		

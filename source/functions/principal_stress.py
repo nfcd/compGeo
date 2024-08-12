@@ -30,22 +30,22 @@ def principal_stress(stress,tx1,px1,tx3):
 	Python function translated from the Matlab function
 	PrincipalStress in Allmendinger et al. (2012)
 	"""
-	# Compute direction cosines of X1X2X3
+	# compute direction cosines of X1X2X3
 	dc = dircos_axes(tx1,px1,tx3)
 	
-	# Initialize pstress
+	# initialize pstress
 	pstress = np.zeros((3,3))
 	
-	# Calculate the eigenvalues and eigenvectors
+	# calculate the eigenvalues and eigenvectors
 	# of the stress tensor
 	D, V = np.linalg.eigh(stress)
 	
-	# Fill principal stress magnitudes
+	# fill principal stress magnitudes
 	pstress[0,0] = D[2] # Maximum principal stress
 	pstress[1,0] = D[1] # Interm. principal stress
 	pstress[2,0] = D[0] # Minimum principal stress
 	
-	# The direction cosines of the principal stresses are
+	# the direction cosines of the principal stresses are
 	# with respect to the X1X2X3 stress coordinate system,
 	# so they need to be transformed to the NED coordinate
 	# system
@@ -56,20 +56,20 @@ def principal_stress(stress,tx1,px1,tx3):
 				tv[j,i] = dc[k,j]*V[k,i] + tv[j,i]
 				
 	
-	# Initialize dcp
+	# initialize dcp
 	dcp = np.zeros((3,3))
 	
-	# Direction cosines of principal stresses
-	for i in range(0,3):
-		for j in range(0,3):
+	# direction cosines of principal stresses
+	for i in range(3):
+		for j in range(3):
 			dcp[i,j] = tv[j,2-i]
-		# Avoid precision issues
-		# Make sure the principal axes are unit vectors
+		# avoid precision issues
+		# make sure the principal axes are unit vectors
 		dcp[i,:] = dcp[i,:]/np.linalg.norm(dcp[i,:])
 	
-	# Trend and plunge of principal stresses
-	for i in range(0,3):
+	# trend and plunge of principal stresses
+	for i in range(3):
 		pstress[i,1],pstress[i,2] = cart_to_sph(dcp[i,0],
 			dcp[i,1],dcp[i,2])
 	
-	return pstress,dcp
+	return pstress, dcp

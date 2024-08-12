@@ -23,16 +23,16 @@ def rotate(rtrd,rplg,rot,trd,plg,ans0):
 	Python function translated from the Matlab function
 	Rotate in Allmendinger et al. (2012)
 	"""
-	# Allocate some arrays
+	# allocate some arrays
 	a = np.zeros((3,3)) #Transformation matrix
 	raxis = np.zeros(3) #Dir. cosines of rotation axis
 	line = np.zeros(3)	#Dir. cosines of line to be rotated
 	liner = np.zeros(3) #Dir. cosines of rotated line
 	
-	# Convert rotation axis to direction cosines
+	# convert rotation axis to direction cosines
 	raxis[0] , raxis[1], raxis[2] = sph_to_cart(rtrd,rplg)
 	
-	# Calculate the transformation matrix a for the rotation
+	# calculate the transformation matrix a for the rotation
 	x = 1.0 - np.cos(rot)
 	sinrot = np.sin(rot)
 	cosrot = np.cos(rot)
@@ -46,20 +46,24 @@ def rotate(rtrd,rplg,rot,trd,plg,ans0):
 	a[2,1] = raxis[0]*sinrot + raxis[2]*raxis[1]*x
 	a[2,2] = cosrot + raxis[2]*raxis[2]*x
 	
-	# Convert trend and plunge of line to be rotated into
+	# convert trend and plunge of line to be rotated into
 	# direction cosines
 	line[0] , line[1], line[2] = sph_to_cart(trd,plg)
 	
-	# Perform the coordinate transformation
+	# perform the coordinate transformation
 	for i in range(3):
 		for j in range(3):
 			liner[i] = a[i,j]*line[j] + liner[i]
 	
-	# Convert to lower hemisphere projection if axis 
+	# make sure the rotated line is a unit vector
+	norm = np.linalg.norm(liner)
+	liner = liner/norm
+	
+	# convert to lower hemisphere projection if axis 
 	if liner[2] < 0.0 and ans0 == 'a':
 		liner *= -1.0
 		
-	# Convert from direction cosines back to trend and plunge
+	# convert from direction cosines back to trend and plunge
 	trdr , plgr = cart_to_sph(liner[0], liner[1], liner[2])
 	
 	return trdr, plgr

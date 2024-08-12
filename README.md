@@ -32,4 +32,4 @@ Once in a while you should update your local files to the latest changes in the 
 The notebooks follow the directory structure of the resource, which is based on data, functions and notebooks folders. We recommend that you follow the same directory structure when running the notebooks. 
 
 ## Current state
-The first nine chapters are completed. The latest revision of these chapters on Dec. 2022 was significant. Please update. The last chapter (Ch. 10) on the inversion problem is under work.
+The first nine chapters are completed. The latest revision of these chapters on Aug. 2024 was significant. Please update. The last chapter (Ch. 10) on the inversion problem is in progress.

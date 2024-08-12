@@ -15,7 +15,7 @@ def sph_to_cart_u(trd,plg):
 	
 	Based on Python function sph_to_cart
 	"""
-	# Compute direction cosines from trend and plunge
+	# compute direction cosines from trend and plunge
 	cn = umath.cos(trd) * umath.cos(plg)
 	ce = umath.sin(trd) * umath.cos(plg)
 	cd = umath.sin(plg)

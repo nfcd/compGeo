@@ -15,7 +15,7 @@ def sph_to_cart(trd,plg):
 	Python function based on the Matlab function
 	SphToCart in Allmendinger et al. (2012)
 	"""
-	# Compute direction cosines from trend and plunge
+	# compute direction cosines from trend and plunge
 	cn = math.cos(trd) * math.cos(plg)
 	ce = math.sin(trd) * math.cos(plg)
 	cd = math.sin(plg)

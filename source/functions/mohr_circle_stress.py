@@ -5,7 +5,7 @@ from sph_to_cart import sph_to_cart
 from cart_to_sph import cart_to_sph
 from pole import pole_from_plane
 
-def mohr_circle_stress(stress,tx1,px1,tx3,planes):
+def mohr_circle_stress(stress,tx1,px1,tx3,planes,ax):
 	"""
 	Given the stress tensor in a X1X2X3 coordinate system,
 	and a group of n planes, mohr_circle_stress draws the Mohr
@@ -13,20 +13,19 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 	also returns the normal and max. shear tractions on the
 	planes and their orientations
 	
-	ns,ons,fig,ax=mohr_circle_stress(stress,tx1,px1,tx3,planes)
+	ns,ons = mohr_circle_stress(stress,tx1,px1,tx3,planes,ax)
 	
 	stress = 3 x 3 stress tensor
 	tx1 = trend of X1
 	px1 = plunge of X1
 	tx3 = trend of X3
 	planes =  n x 2 vector with strike and dip of planes
+	ax = handle to axes where the Mohr Circle will be drawn
 	ns = n x 2 vector with the normal and max. shear
 		tractions on the planes
 	ons = n x 4 vector with the trend and plunge of the
 		normal traction (columns 1 and 2), and the
 		max. shear traction (columns 3 and 4)
-		
-	fig and ax are handles to the figure and axes
 	
 	NOTE = Planes orientation follows the right hand rule
 		Input and output angles are in radians
@@ -34,18 +33,15 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 	# tolerance for near zero values
 	tol = 1e-6
 	
-	# Compute principal stresses and their orientations
+	# compute principal stresses and their orientations
 	pstress, dcp = principal_stress(stress,tx1,px1,tx3)
 	
-	# Update stress tensor to principal stresses
+	# update stress tensor to principal stresses
 	stress = np.zeros((3,3))
-	for i in range(0,3):
+	for i in range(3):
 		stress[i,i] = pstress[i,0]
 	
-	# Make figure
-	fig, ax = plt.subplots()
-	
-	# Draw sigma1-sigma3 circle
+	# draw sigma1-sigma3 circle
 	c = (stress[0,0] + stress[2,2])/2.0
 	r = (stress[0,0] - stress[2,2])/2.0
 	th =np.arange(0,2*np.pi,np.pi/50)
@@ -55,14 +51,14 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 	y = r * sinth
 	ax.plot(x,y,"k-")
 	
-	# Draw sigma1-sigma2 circle
+	# draw sigma1-sigma2 circle
 	c = (stress[0,0] + stress[1,1])/2.0
 	r = (stress[0,0] - stress[1,1])/2.0
 	x = r * costh + c
 	y = r * sinth
 	ax.plot(x,y,"k-")
 	
-	# Draw sigma2-sigma3 circle
+	# draw sigma2-sigma3 circle
 	c = (stress[1,1] + stress[2,2])/2.0
 	r = (stress[1,1] - stress[2,2])/2.0
 	x = r * costh + c
@@ -70,18 +66,18 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 	ax.plot(x,y,"k-")
 	
 	
-	# Initialize pole to plane
+	# initialize pole to plane
 	p = np.zeros(3)
 	
-	# Initialize vectors with normal and
+	# initialize vectors with normal and
 	# max. shear tractions
-	ns = np.zeros((np.size(planes,0),2))
-	ons = np.zeros((np.size(planes,0),4))
+	ns = np.zeros((planes.shape[0],2))
+	ons = np.zeros((planes.shape[0],4))
 	
-	# Compute normal and max. shear tractions
-	for i in range(np.size(planes,0)):
+	# compute normal and max. shear tractions
+	for i in range(planes.shape[0]):
 		
-		# Calculate direction cosines of pole to plane
+		# calculate direction cosines of pole to plane
 		trd, plg = pole_from_plane(planes[i,0],planes[i,1])
 		p[0],p[1],p[2] = sph_to_cart(trd, plg)
 		
@@ -94,20 +90,20 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 			for k in range(3):
 				pt[j] = dcp[j,k]*p[k] + pt[j]
 		
-		# Calculate the tractions in principal stress
+		# calculate the tractions in principal stress
 		# coordinates
 		t = np.zeros(3)
 		for j in range(3):
 			for k in range(3):
 				t[j] = stress[j,k]*pt[k] + t[j]
 		
-		# Find the b and s axes
+		# find the b and s axes
 		b = np.cross(t,pt)
 		s = np.cross(pt,b)
 		b = b/np.linalg.norm(b)
 		s = s/np.linalg.norm(s)
 	
-		# Transformation matrix from principal
+		# transformation matrix from principal
 		# stress coordinates to plane coordinates
 		a = np.zeros((3,3))
 		a[0,:] = pt
@@ -120,7 +116,7 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 		ns[i,1] = stress[0,0]*a[0,0]*a[2,0] + stress[1,1]\
 			*a[0,1]*a[2,1]+ stress[2,2]*a[0,2]*a[2,2]
 		
-		# Calculate direction cosines of max.
+		# calculate direction cosines of max.
 		# shear traction with respect to NED
 		ds = np.zeros(3)
 		for j in range(3):
@@ -130,10 +126,10 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 		# trend and plunge of max. shear traction
 		ons[i,2],ons[i,3] = cart_to_sph(ds[0],ds[1],ds[2])
 		
-		# Cross product of pole and max. shear traction
+		# cross product of pole and max. shear traction
 		ps = np.cross(p,ds)
 		
-		# Make clockwise shear traction negative
+		# make clockwise shear traction negative
 		if np.abs(ps[2]) < tol: # Dip slip
 			if ds[2] > 0.0: # Normal slip
 				if pt[0]*pt[2] < 0.0:
@@ -145,18 +141,18 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 			if ps[2] < 0.0:
 				ns[i,1] *= -1.0
 	
-	# Plot planes
+	# plot planes
 	ax.plot(ns[:,0],ns[:,1],"ks")
 	
-	# Make axes equal and plot grid
+	# make axes equal and plot grid
 	ax.axis ("equal")
 	ax.grid()
 	
-	# Move x-axis to center and y-axis to origin
+	# move x-axis to center and y-axis to origin
 	ax.spines["bottom"].set_position("center")
 	ax.spines["left"].set_position("zero")
 	
-	# Eliminate upper and right axes
+	# eliminate upper and right axes
 	ax.spines["right"].set_color("none")
 	ax.spines["top"].set_color("none")
 	
@@ -164,8 +160,8 @@ def mohr_circle_stress(stress,tx1,px1,tx3,planes):
 	ax.xaxis.set_ticks_position("bottom")
 	ax.yaxis.set_ticks_position("left")
 	
-	# Add labels at end of axes
+	# add labels at end of axes
 	ax.set_xlabel(r"$\sigma$",x=1)
 	ax.set_ylabel(r"$\tau$",y=1,rotation=0)
 	
-	return ns, ons, fig, ax
+	return ns, ons

@@ -1,20 +1,20 @@
 import math
 from zero_twopi import zero_twopi
 
-def pole_from_plane(strike,dip):
+def pole_from_plane(stk,dip):
 	'''
 	pole_from_plane returns the trend (trd) and 
 	plunge (plg) of a pole, given the strike and 
 	dip of the plane
 	
 	NOTE: Input/Output angles are in radians.
-	Input strike and dip is in RHR format
+	Input stk and dip is in RHR format
 	'''
-	# Some constants
+	# some constants
 	east = math.pi/2
 	
-	# Pole from plane
-	trd = zero_twopi (strike - east)
+	# pole from plane
+	trd = zero_twopi (stk - east)
 	plg = east - dip
 	
 	return trd, plg
@@ -26,19 +26,19 @@ def plane_from_pole(trd,plg):
 	plunge (plg) of its pole
 	
 	NOTE: Input/Output angles are in radians.
-	Output strike and dip is in RHR format
+	Output stk and dip is in RHR format
 	'''
-	# Some constants
+	# some constants
 	pi = math.pi
 	east = pi/2
 	
-	# Unusual case of pole pointing upwards
+	# unusual case of pole pointing upwards
 	if plg < 0.0:
 		trd += pi
 		plg *= -1.0
 		
-	# Calculate plane given its pole
-	strike = zero_twopi(trd + east)
+	# calculate plane given its pole
+	stk = zero_twopi(trd + east)
 	dip = east - plg
 		
-	return strike, dip
+	return stk, dip

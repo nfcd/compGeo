@@ -4,7 +4,7 @@ from zero_twopi import zero_twopi
 def st_coord_line(trd,plg,stype):
 	"""
 	st_coord_line computes the coordinates of a line
-	in an equal angle or equal area stereonet of unit radius
+	on an equal angle or equal area stereonet of unit radius
 	
 	trd = trend of line
 	plg = plunge of line
@@ -19,20 +19,17 @@ def st_coord_line(trd,plg,stype):
 	# Take care of negative plunges
 	if plg < 0:
 		trd = zero_twopi(trd+math.pi)
-		plg = -plg
-	
-	# Some constants
-	pis4 = math.pi/4
-	s2 = math.sqrt(2)
-	plgs2 = plg/2
+		plg *= -1.0
 	
 	# Equal angle stereonet
 	if stype == 0:
-		xp = math.tan(pis4 - plgs2)*math.sin(trd)
-		yp = math.tan(pis4 - plgs2)*math.cos(trd)
+		x = math.tan(math.pi/4 - plg/2)
 	# Equal area stereonet
 	elif stype == 1:
-		xp = s2*math.sin(pis4 - plgs2)*math.sin(trd)
-		yp = s2*math.sin(pis4 - plgs2)*math.cos(trd)
+		x = math.sqrt(2) * math.sin(math.pi/4 - plg/2)
+	
+	# Compute coordinates
+	xp = x * math.sin(trd)
+	yp = x * math.cos(trd)
 	
 	return xp, yp

@@ -8,14 +8,15 @@ from scipy.spatial import Delaunay
 from lscov import lscov as lscov
 from inf_strain import inf_strain
 
-def grid_strain(pos,disp,k,par,plotpar,plotst,fig,ax):
+def grid_inf_strain(pos,disp,k,par,plotpar,plotst,fig,ax):
 	"""
-	grid_strain computes the infinitesimal strain of a network
-	of stations with displacements in x (east) and y (north).
-	Strain in z is assumed to be zero (plane strain)
+	grid__inf_strain computes the infinitesimal strain 
+	of a network of stations with displacements in x 
+	(east) and y (north). Strain in z is assumed to be 
+	zero (plane strain)
 	
 	USE: cent,eps,ome,pstrain,rotc = 
-		grid_strain(pos,disp,k,par,plotpar,plotst,fig,ax)
+		grid_inf_strain(pos,disp,k,par,plotpar,plotst,fig,ax)
 	
 	pos = nstations x 2 matrix with x (east) and y (north)
 		positions of stations in meters

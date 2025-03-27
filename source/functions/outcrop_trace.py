@@ -1,7 +1,7 @@
 import numpy as np
 
 def outcrop_trace(stk,dip,p1,XG,YG,ZG):
-	'''
+	"""
 	outcrop_trace estimates the outcrop trace of a plane,
 	given the strike (stk) and dip (dip) of the plane,
 	the ENU coordinates of a point (p1) where the plane
@@ -16,7 +16,7 @@ def outcrop_trace(stk,dip,p1,XG,YG,ZG):
 		p1 must be an array
 		XG and YG arrays should be constructed using
 		the Numpy function meshgrid
-	'''
+	"""
 	# make the transformation matrix from ENU coordinates to
 	# SDP coordinates. We just need the third row of this
 	# matrix

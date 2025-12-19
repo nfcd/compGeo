@@ -1,7 +1,7 @@
 import numpy as np
 from uncertainties import umath # From E. Lebigot
+from angles_u import plane_from_pole_u
 from cart_to_sph_u import cart_to_sph_u
-from pole import plane_from_pole
 
 def three_points_u(p1,p2,p3):
 	"""
@@ -28,7 +28,7 @@ def three_points_u(p1,p2,p3):
 	# make this vector a unit vector by dividing it
 	# by its magnitude
 	mvcu = umath.sqrt(np.dot(vcu, vcu))
-	if mvcu == 0: # If points collinear
+	if mvcu.n == 0: # If points collinear, use nominal value n to check
 		raise ValueError("Error: points are collinear")
 	
 	vcu = vcu/mvcu # unit vector
@@ -37,13 +37,13 @@ def three_points_u(p1,p2,p3):
 	p = np.array([vcu[1], vcu[0], -vcu[2]])
 	
 	# make pole point downwards
-	if p[2] < 0:
+	if p[2].n < 0: # use nominal value n to check
 		p *= -1.0
 	
 	# find the trend and plunge of the pole
 	trd, plg = cart_to_sph_u(p[0],p[1],p[2])
 	
-	# find stk and dip of plane
-	stk, dip = plane_from_pole(trd, plg)
-	
+	# find strike and dip of plane
+	stk, dip = plane_from_pole_u(trd, plg)
+
 	return stk, dip

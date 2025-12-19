@@ -26,7 +26,7 @@ def angle_bw_planes(str1, dip1, str2, dip2):
 	of strike and dip str1, dip1, str2, and dip2
 	Input and output angles are in radians
 	"""
-	# compute poles to lines
+	# compute poles from planes
 	p1_trd, p1_plg = pole_from_plane(str1, dip1)
 	p2_trd, p2_plg = pole_from_plane(str2, dip2)
 	# find angle between poles
@@ -75,7 +75,7 @@ def int_bw_planes(str1, dip1, str2, dip2):
 	of strike and dip str1, dip1, str2, dip2
 	Input and output angles are in radians
 	"""
-	# compute poles to planes
+	# compute poles from planes
 	p1_trd, p1_plg = pole_from_plane(str1, dip1)
 	p2_trd, p2_plg = pole_from_plane(str2, dip2)
 	# intersection is normal to poles

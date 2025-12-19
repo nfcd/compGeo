@@ -1,24 +1,22 @@
-import numpy as np
-from uncertainties import ufloat # From E. Lebigot
 from uncertainties import umath # From E. Lebigot
 
 def true_thickness_u(stk,dip,top,base):
 	"""
-	true_thickness_u calculates the thickness (t) of a unit
-	given the strike (stk) and dip (dip) of the unit,
-	and points at its top (top) and base (base).
-	stk and dip, as well as the points have
-	uncertainties.
+	Calculate true thickness with uncertainty propagation
 	
-	top and base are 1 x 3 arrays defining the location
-	of top and base points in an ENU coordinate system.
-	For each one of these arrays, the first, second
-	and third entries are the E, N and U coordinates.
-	These coordinates have uncertainties
-	
-	NOTE: stk and dip should be input in radians and
-		they have uncertainties in radians. The
-		returned thickness has also uncertainties
+	Parameters
+    ----------
+    stk, dip : UFloat
+        Strike and dip and their uncertainties in radians
+    top, base : sequence of length 3 coordinates of the top 
+		and base points of the unit in East (E), North (N), 
+		Up (U) system. Each coordinate has its uncertainty
+		(UFloat).
+
+    Returns
+    -------
+    UFloat
+        True thickness with uncertainty
 	"""
 	# make the transformation matrix from ENU coordinates
 	# to SDP coordinates
@@ -26,20 +24,24 @@ def true_thickness_u(stk,dip,top,base):
 	cos_str = umath.cos(stk)
 	sin_dip = umath.sin(dip)
 	cos_dip = umath.cos(dip)
-	a = np.array([[sin_str, cos_str, ufloat(0,0)],
-	[cos_str*cos_dip, -sin_str*cos_dip, -sin_dip],
-	[-cos_str*sin_dip, sin_str*sin_dip, -cos_dip]])
+
+	a = [
+        [ sin_str,            cos_str,           0       ],
+        [-cos_str*cos_dip,    sin_str*cos_dip,   sin_dip ],
+        [-cos_str*sin_dip,    sin_str*sin_dip,  -cos_dip ]
+    ]
 	
 	# transform the top and base points
 	# from ENU to SDP coordinates
-	topn = np.array([ufloat(0,0), ufloat(0,0), ufloat(0,0)])
-	basen = np.array([ufloat(0,0), ufloat(0,0), ufloat(0,0)])
+	topn  = [0, 0, 0]
+	basen = [0, 0, 0]
 	for i in range(3):
 		for j in range(3):
-			topn[i] = a[i,j]*top[j] + topn[i]
-			basen[i] = a[i,j]*base[j] + basen[i]
+			topn[i] += a[i][j]*top[j]
+			basen[i] += a[i][j]*base[j]
 	
 	# compute the thickness of the unit
-	t = np.abs(basen[2] - topn[2])
+	# this is an overkill but avoids deprecation warnings
+	t = umath.sqrt((basen[2] - topn[2])**2)
 	
 	return t

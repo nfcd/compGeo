@@ -33,3 +33,5 @@ The notebooks follow the directory structure of the resource, which is based on 
 
 ## Current state
 The first nine chapters are completed. The latest revision of these chapters on Aug. 2024 was significant. Please update. The last chapter (Ch. 10) on the inversion problem is in progress.
+
+Last updated: December 19, 2025 (fixed several issues with uncertainties package).

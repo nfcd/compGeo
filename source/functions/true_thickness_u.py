@@ -41,7 +41,9 @@ def true_thickness_u(stk,dip,top,base):
 			basen[i] += a[i][j]*base[j]
 	
 	# compute the thickness of the unit
-	# this is an overkill but avoids deprecation warnings
-	t = umath.sqrt((basen[2] - topn[2])**2)
+	t = basen[2] - topn[2]
+	# ensure thickness is positive
+	if t.n < 0: # use nominal value n to check sign
+		t *= -1.0
 	
 	return t

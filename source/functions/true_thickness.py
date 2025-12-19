@@ -1,38 +1,48 @@
-import numpy as np
+import math
 
 def true_thickness(stk,dip,top,base):
 	"""
-	true_thickness calculates the thickness (t) of a unit
-	given the strike (stk) and dip (dip) of the unit,
-	and points at its top (top) and base (base)
+	Calculate true thickness
 	
-	top and base are 1 x 3 arrays defining the location
-	of top and base points in an ENU coordinate system.
-	For each one of these arrays, the first, second
-	and third entries are the E, N and U coordinates
-	
-	NOTE: stk and dip should be input in radians
+	Parameters
+    ----------
+    stk, dip : float
+        Strike and dip in radians
+    top, base : sequence of length 3 coordinates of the top 
+		and base points of the unit in East (E), North (N), 
+		Up (U) system. 
+
+    Returns
+    -------
+    Float
+        True thickness
 	"""
-	# make the transformation matrix a 
-	# from ENU coordinates to SDP coordinates
-	sin_str = np.sin(stk)
-	cos_str = np.cos(stk)
-	sin_dip = np.sin(dip)
-	cos_dip = np.cos(dip)
-	a = np.array([[sin_str, cos_str, 0],
-	[cos_str*cos_dip, -sin_str*cos_dip, -sin_dip],
-	[-cos_str*sin_dip, sin_str*sin_dip, -cos_dip]])
+	# make the transformation matrix from ENU coordinates
+	# to SDP coordinates
+	sin_str = math.sin(stk)
+	cos_str = math.cos(stk)
+	sin_dip = math.sin(dip)
+	cos_dip = math.cos(dip)
+
+	a = [
+        [ sin_str,            cos_str,           0       ],
+        [-cos_str*cos_dip,    sin_str*cos_dip,   sin_dip ],
+        [-cos_str*sin_dip,    sin_str*sin_dip,  -cos_dip ]
+    ]
 	
 	# transform the top and base points
 	# from ENU to SDP coordinates
-	topn = np.zeros(3)
-	basen = np.zeros(3)
+	topn  = [0, 0, 0]
+	basen = [0, 0, 0]
 	for i in range(3):
 		for j in range(3):
-			topn[i] = a[i,j]*top[j] + topn[i]
-			basen[i] = a[i,j]*base[j] + basen[i]
+			topn[i] += a[i][j]*top[j]
+			basen[i] += a[i][j]*base[j]
 	
 	# compute the thickness of the unit
-	t = np.abs(basen[2] - topn[2])
+	t = basen[2] - topn[2]
+	# ensure thickness is positive
+	if t < 0: 
+		t *= -1.0
 	
 	return t
